@@ -1,0 +1,337 @@
+All items	100	0	CUUR0000SA0
+Food	13.928	1	CUUR0000SAF1
+Food at home	7.686	2	CUUR0000SAF11
+Cereals and bakery products	0.982	3	CUUR0000SAF111
+Cereals and cereal products	0.298	4	CUUR0000SEFA
+Flour and prepared flour mixes	0.041	5	CUUR0000SEFA01
+Breakfast cereal	0.137	5	CUUR0000SEFA02
+Rice, pasta, cornmeal	0.12	5	CUUR0000SEFA03
+Rice	 	6	CUUR0000SS01031
+Bakery products	0.684	4	CUUR0000SEFB
+Bread	0.194	5	CUUR0000SEFB01
+White bread	 	6	CUUR0000SS02011
+Bread other than white	 	6	CUUR0000SS02021
+Fresh biscuits, rolls, muffins	0.099	5	CUUR0000SEFB02
+Cakes, cupcakes, and cookies	0.178	5	CUUR0000SEFB03
+Cookies	 	6	CUUR0000SS02042
+Fresh cakes and cupcakes	 	6	CUUR0000SS02041
+Other bakery products	0.213	5	CUUR0000SEFB04
+Fresh sweetrolls, coffeecakes, doughnuts	 	6	CUUR0000SS02063
+Crackers, bread, and cracker products	 	6	CUUR0000SS0206A
+Frozen and refrigerated bakery products, pies, tarts, turnovers	 	6	CUUR0000SS0206B
+Meats, poultry, fish, and eggs	1.738	3	CUUR0000SAF112
+Meats, poultry, and fish	1.635	4	CUUR0000SAF1121
+Meats	1.034	5	CUUR0000SAF11211
+Beef and veal	0.477	6	CUUR0000SEFC
+Uncooked ground beef	0.173	7	CUUR0000SEFC01
+Uncooked beef roasts	0.075	7	CUUR0000SEFC02
+Uncooked beef steaks	0.186	7	CUUR0000SEFC03
+Uncooked other beef and veal	0.043	7	CUUR0000SEFC04
+Pork	0.327	6	CUUR0000SEFD
+Bacon, breakfast sausage, and related products	0.134	7	CUUR0000SEFD01
+Bacon and related products	 	8	CUUR0000SS04011
+Breakfast sausage and related products	 	8	CUUR0000SS04012
+Ham	0.064	7	CUUR0000SEFD02
+Ham, excluding canned	 	8	CUUR0000SS04031
+Pork chops	0.051	7	CUUR0000SEFD03
+Other pork including roasts, steaks, and ribs	0.078	7	CUUR0000SEFD04
+Other meats	0.229	6	CUUR0000SEFE
+Frankfurters	 	7	CUUR0000SS05011
+Lunchmeats	 	7	CUUR0000SS0501A
+Poultry	0.33	5	CUUR0000SEFF
+Chicken	0.269	6	CUUR0000SEFF01
+Fresh whole chicken	 	7	CUUR0000SS06011
+Fresh and frozen chicken parts	 	7	CUUR0000SS06021
+Other uncooked poultry including turkey	0.061	6	CUUR0000SEFF02
+Fish and seafood	0.271	5	CUUR0000SEFG
+Fresh fish and seafood	0.138	6	CUUR0000SEFG01
+Processed fish and seafood	0.133	6	CUUR0000SEFG02
+Shelf stable fish and seafood	 	7	CUUR0000SS07011
+Frozen fish and seafood	 	7	CUUR0000SS07021
+Eggs	0.102	5	CUUR0000SEFH
+Dairy and related products	0.767	3	CUUR0000SEFJ
+Milk	0.209	4	CUUR0000SEFJ01
+Fresh whole milk	 	5	CUUR0000SS09011
+Fresh milk other than whole	 	5	CUUR0000SS09021
+Cheese and related products	0.256	4	CUUR0000SEFJ02
+Ice cream and related products	0.108	4	CUUR0000SEFJ03
+Other dairy and related products	0.194	4	CUUR0000SEFJ04
+Fruits and vegetables	1.344	3	CUUR0000SAF113
+Fresh fruits and vegetables	1.057	4	CUUR0000SAF1131
+Fresh fruits	0.56	5	CUUR0000SEFK
+Apples	0.076	6	CUUR0000SEFK01
+Bananas	0.075	6	CUUR0000SEFK02
+Citrus fruits	0.142	6	CUUR0000SEFK03
+Oranges, including tangerines	 	7	CUUR0000SS11031
+Other fresh fruits	0.267	6	CUUR0000SEFK04
+Fresh vegetables	0.497	5	CUUR0000SEFL
+Potatoes	0.078	6	CUUR0000SEFL01
+Lettuce	0.062	6	CUUR0000SEFL02
+Tomatoes	0.079	6	CUUR0000SEFL03
+Other fresh vegetables	0.278	6	CUUR0000SEFL04
+Processed fruits and vegetables	0.287	5	CUUR0000SEFM
+Canned fruits and vegetables	0.15	6	CUUR0000SEFM01
+Canned fruits	 	7	CUUR0000SS13031
+Canned vegetables	 	7	CUUR0000SS14021
+Frozen fruits and vegetables	0.086	6	CUUR0000SEFM02
+Frozen vegetables	 	7	CUUR0000SS14011
+Other processed fruits and vegetables including dried	0.051	6	CUUR0000SEFM03
+Dried beans, peas, and lentils	 	7	CUUR0000SS14022
+Nonalcoholic beverages and beverage materials	0.918	3	CUUR0000SAF114
+Juices and nonalcoholic drinks	0.658	4	CUUR0000SEFN
+Carbonated drinks	0.277	5	CUUR0000SEFN01
+Frozen noncarbonated juices and drinks	0.006	5	CUUR0000SEFN02
+Nonfrozen noncarbonated juices and drinks	0.375	5	CUUR0000SEFN03
+Beverage materials including coffee and tea	0.26	4	CUUR0000SEFP
+Coffee	0.167	5	CUUR0000SEFP01
+Roasted coffee	 	6	CUUR0000SS17031
+Instant coffee	 	6	CUUR0000SS17032
+Other beverage materials including tea	0.093	5	CUUR0000SEFP02
+Other food at home	1.937	3	CUUR0000SAF115
+Sugar and sweets	0.265	4	CUUR0000SEFR
+Sugar and sugar substitutes	0.037	5	CUUR0000SEFR01
+Candy and chewing gum	0.175	5	CUUR0000SEFR02
+Other sweets	0.053	5	CUUR0000SEFR03
+Fats and oils	0.213	4	CUUR0000SEFS
+Butter and margarine	0.062	5	CUUR0000SEFS01
+Butter	 	6	CUUR0000SS10011
+Margarine	 	6	CUUR0000SS16011
+Salad dressing	0.05	5	CUUR0000SEFS02
+Other fats and oils including peanut butter	0.101	5	CUUR0000SEFS03
+Peanut butter	 	6	CUUR0000SS16014
+Other foods	1.459	4	CUUR0000SEFT
+Soups	0.088	5	CUUR0000SEFT01
+Frozen and freeze dried prepared foods	0.251	5	CUUR0000SEFT02
+Snacks	0.334	5	CUUR0000SEFT03
+Spices, seasonings, condiments, sauces	0.289	5	CUUR0000SEFT04
+Salt and other seasonings and spices	 	6	CUUR0000SS18041
+Olives, pickles, relishes	 	6	CUUR0000SS18042
+Sauces and gravies	 	6	CUUR0000SS18043
+Other condiments	 	6	CUUR0000SS1804B
+Baby food	0.042	5	CUUR0000SEFT05
+Other miscellaneous foods	0.455	5	CUUR0000SEFT06
+Prepared salads	 	6	CUUR0000SS18064
+Food away from home	6.242	2	CUUR0000SEFV
+Full service meals and snacks	3.128	3	CUUR0000SEFV01
+Limited service meals and snacks	2.773	3	CUUR0000SEFV02
+Food at employee sites and schools	0.091	3	CUUR0000SEFV03
+Food at elementary and secondary schools	 	4	CUUR0000SSFV031A
+Food from vending machines and mobile vendors	0.08	3	CUUR0000SEFV04
+Other food away from home	0.17	3	CUUR0000SEFV05
+Energy	6.941	1	CUUR0000SA0E
+Energy commodities	3.809	2	CUUR0000SACE
+Fuel oil and other fuels	0.161	3	CUUR0000SEHE
+Fuel oil	0.095	4	CUUR0000SEHE01
+Propane, kerosene, and firewood	0.066	4	CUUR0000SEHE02
+Motor fuel	3.648	3	CUUR0000SETB
+Gasoline	3.57	4	CUUR0000SETB01
+Gasoline, unleaded regular	 	5	CUUR0000SS47014
+Gasoline, unleaded midgrade	 	5	CUUR0000SS47015
+Gasoline, unleaded premium	 	5	CUUR0000SS47016
+Other motor fuels	0.077	4	CUUR0000SETB02
+Energy services	3.133	2	CUUR0000SEHF
+Electricity	2.412	3	CUUR0000SEHF01
+Utility	0.721	3	CUUR0000SEHF02
+All items less food and energy	79.131	1	CUUR0000SA0L1E
+Commodities less food and energy commodities	20.325	2	CUUR0000SACL1E
+Household furnishings and supplies	3.745	3	CUUR0000SAH31
+Window and floor coverings and other linens	0.274	4	CUUR0000SEHH
+Floor coverings	0.061	5	CUUR0000SEHH01
+Window coverings	0.054	5	CUUR0000SEHH02
+Other linens	0.159	5	CUUR0000SEHH03
+Furniture and bedding	0.952	4	CUUR0000SEHJ
+Bedroom furniture	0.324	5	CUUR0000SEHJ01
+Living room, kitchen, and dining room furniture	0.467	5	CUUR0000SEHJ02
+Other furniture	0.153	5	CUUR0000SEHJ03
+Appliances	0.221	4	CUUR0000SEHK
+Major appliances	0.079	5	CUUR0000SEHK01
+Laundry equipment	 	6	CUUR0000SS30021
+Other appliances	0.139	5	CUUR0000SEHK02
+Other household equipment and furnishings	0.539	4	CUUR0000SEHL
+Clocks, lamps, and decorator items	0.315	5	CUUR0000SEHL01
+Indoor plants and flowers	0.093	5	CUUR0000SEHL02
+Dishes and flatware	0.052	5	CUUR0000SEHL03
+Nonelectric cookware and tableware	0.08	5	CUUR0000SEHL04
+Tools, hardware, outdoor equipment and supplies	0.868	4	CUUR0000SEHM
+Tools, hardware and supplies	0.242	5	CUUR0000SEHM01
+Outdoor equipment and supplies	0.441	5	CUUR0000SEHM02
+Housekeeping supplies	0.889	4	CUUR0000SEHN
+Household cleaning products	0.353	5	CUUR0000SEHN01
+Household paper products	0.228	5	CUUR0000SEHN02
+Miscellaneous household products	0.308	5	CUUR0000SEHN03
+Apparel	2.739	3	CUUR0000SAA
+Men's and boys' apparel	0.686	4	CUUR0000SAA1
+Men's apparel	0.547	5	CUUR0000SEAA
+Men's suits, sport coats, and outerwear	0.086	6	CUUR0000SEAA01
+Men's underwear, nightwear, swimwear and accessories	0.16	6	CUUR0000SEAA02
+Men's shirts and sweaters	0.15	6	CUUR0000SEAA03
+Men's pants and shorts	0.145	6	CUUR0000SEAA04
+Boys' apparel	0.139	5	CUUR0000SEAB
+Women's and girls' apparel	1.111	4	CUUR0000SAA2
+Women's apparel	0.915	5	CUUR0000SEAC
+Women's outerwear	0.06	6	CUUR0000SEAC01
+Women's dresses	0.096	6	CUUR0000SEAC02
+Women's suits and separates	0.472	6	CUUR0000SEAC03
+Women's underwear, nightwear, swimwear and accessories	0.278	6	CUUR0000SEAC04
+Girls' apparel	0.196	5	CUUR0000SEAD
+Footwear	0.653	4	CUUR0000SEAE
+Men's footwear	0.234	5	CUUR0000SEAE01
+Boys' and girls' footwear	0.135	5	CUUR0000SEAE02
+Women's footwear	0.285	5	CUUR0000SEAE03
+Infants' and toddlers' apparel	0.122	4	CUUR0000SEAF
+Jewelry and watches	0.166	4	CUUR0000SEAG
+Watches	0.041	5	CUUR0000SEAG01
+Jewelry	0.125	5	CUUR0000SEAG02
+Transportation commodities less motor fuel	7.318	3	CUUR0000SATCLTB
+New vehicles	3.684	4	CUUR0000SETA01
+New cars and trucks	 	5	CUUR0000SS4501A
+New cars	 	6	CUUR0000SS45011
+New trucks	 	6	CUUR0000SS45021
+Used cars and trucks	2.998	4	CUUR0000SETA02
+Motor vehicle parts and equipment	0.389	4	CUUR0000SETC
+Tires	0.247	5	CUUR0000SETC01
+Vehicle accessories other than tires	0.142	5	CUUR0000SETC02
+Vehicle parts and equipment other than tires	 	6	CUUR0000SS48021
+Motor oil, coolant, and fluids	 	6	CUUR0000SS47021
+Medical care commodities	1.539	3	CUUR0000SAM1
+Medicinal drugs	1.473	4	CUUR0000SEMF
+Prescription drugs	1.11	5	CUUR0000SEMF01
+Nonprescription drugs	0.363	5	CUUR0000SEMF02
+Medical equipment and supplies	0.066	4	CUUR0000SEMG
+Recreation commodities	1.996	3	CUUR0000SARC
+Video and audio products	0.266	4	CUUR0000SERAC
+Televisions	0.094	5	CUUR0000SERA01
+Other video equipment	0.042	5	CUUR0000SERA03
+Audio equipment	0.074	5	CUUR0000SERA05
+Recorded music and music subscriptions	0.044	5	CUUR0000SERA06
+Pets and pet products	0.621	4	CUUR0000SERB01
+Pet food	 	5	CUUR0000SS61031
+Purchase of pets, pet supplies, accessories	 	5	CUUR0000SS61032
+Sporting goods	0.601	4	CUUR0000SERC
+Sports vehicles including bicycles	0.36	5	CUUR0000SERC01
+Sports equipment	0.231	5	CUUR0000SERC02
+Photographic equipment and supplies	0.026	4	CUUR0000SERD01
+Photographic equipment	 	5	CUUR0000SS61023
+Recreational reading materials	0.119	4	CUUR0000SERG
+Newspapers and magazines	0.069	5	CUUR0000SERG01
+Recreational books	0.048	5	CUUR0000SERG02
+Other recreational goods	0.362	4	CUUR0000SERE
+Toys	0.279	5	CUUR0000SERE01
+Toys, games, hobbies and playground equipment	 	6	CUUR0000SS61011
+Sewing machines, fabric and supplies	0.021	5	CUUR0000SERE02
+Music instruments and accessories	0.046	5	CUUR0000SERE03
+Education and communication commodities	0.493	3	CUUR0000SAEC
+Educational books and supplies	0.107	4	CUUR0000SEEA
+College textbooks	 	5	CUUR0000SSEA011
+Information technology commodities	0.386	4	CUUR0000SEEEC
+Computers, peripherals, and smart home assistants	0.297	5	CUUR0000SEEE01
+Computer software and accessories	0.017	5	CUUR0000SEEE02
+Telephone hardware, calculators, and other consumer information items	0.071	5	CUUR0000SEEE04
+Alcoholic beverages	1.019	3	CUUR0000SAF116
+Alcoholic beverages at home	0.569	4	CUUR0000SEFW
+Beer, ale, and other malt beverages at home	0.218	5	CUUR0000SEFW01
+Distilled spirits at home	0.093	5	CUUR0000SEFW02
+Whiskey at home	 	6	CUUR0000SS20021
+Distilled spirits, excluding whiskey, at home	 	6	CUUR0000SS20022
+Wine at home	0.258	5	CUUR0000SEFW03
+Alcoholic beverages away from home	0.45	4	CUUR0000SEFX
+Beer, ale, and other malt beverages away from home	 	5	CUUR0000SS20051
+Wine away from home	 	5	CUUR0000SS20052
+Distilled spirits away from home	 	5	CUUR0000SS20053
+Other goods	1.477	3	CUUR0000SAGC
+Tobacco and smoking products	0.612	4	CUUR0000SEGA
+Cigarettes	0.533	5	CUUR0000SEGA01
+Tobacco products other than cigarettes	0.06	5	CUUR0000SEGA02
+Personal care products	0.667	4	CUUR0000SEGB
+Hair, dental, shaving, and miscellaneous personal care products	0.358	5	CUUR0000SEGB01
+Cosmetics, perfume, bath, nail preparations and implements	0.301	5	CUUR0000SEGB02
+Miscellaneous personal goods	0.197	4	CUUR0000SEGE
+Stationery, stationery supplies, gift wrap	 	5	CUUR0000SS33032
+Services less energy services	58.806	2	CUUR0000SASLE
+Shelter	32.857	3	CUUR0000SAH1
+Rent of shelter	32.503	4	CUUR0000SAS2RS
+Rent of primary residence	7.709	5	CUUR0000SEHA
+Lodging away from home	0.956	5	CUUR0000SEHB
+Housing at school, excluding board	0.116	6	CUUR0000SEHB01
+Other lodging away from home including hotels and motels	0.841	6	CUUR0000SEHB02
+Owners' equivalent rent of residences	23.838	5	CUUR0000SEHC
+Owners' equivalent rent of primary residence	22.64	6	CUUR0000SEHC01
+Tenants' and household insurance	0.354	5	CUUR0000SEHD
+Water and sewer and trash collection services	1.093	3	CUUR0000SEHG
+Water and sewerage maintenance	0.798	4	CUUR0000SEHG01
+Garbage and trash collection	0.295	4	CUUR0000SEHG02
+Household operations	0.892	3	CUUR0000SEHP
+Domestic services	0.302	4	CUUR0000SEHP01
+Gardening and lawncare services	0.302	4	CUUR0000SEHP02
+Moving, storage, freight expense	0.091	4	CUUR0000SEHP03
+Repair of household items	0.117	4	CUUR0000SEHP04
+Medical care services	7.209	3	CUUR0000SAM2
+Professional services	3.653	4	CUUR0000SEMC
+Physicians' services	1.836	5	CUUR0000SEMC01
+Dental services	0.99	5	CUUR0000SEMC02
+Eyeglasses and eye care	0.357	5	CUUR0000SEMC03
+Services by other medical professionals	0.47	5	CUUR0000SEMC04
+Hospital and related services	2.403	4	CUUR0000SEMD
+Hospital services	2.205	5	CUUR0000SEMD01
+Inpatient hospital services	 	6	CUUR0000SS5702
+Outpatient hospital services	 	6	CUUR0000SS5703
+Nursing homes and adult day services	0.124	4	CUUR0000SEMD02
+Care of invalids and elderly at home	0.074	4	CUUR0000SEMD03
+Health insurance	1.153	4	CUUR0000SEME
+Transportation services	5.2	3	CUUR0000SAS4
+Leased cars and trucks	0.6	4	CUUR0000SETA03
+Car and truck rental	0.169	4	CUUR0000SETA04
+Motor vehicle maintenance and repair	1.09	4	CUUR0000SETD
+Motor vehicle body work	0.059	5	CUUR0000SETD01
+Motor vehicle maintenance and servicing	0.629	5	CUUR0000SETD02
+Motor vehicle repair	0.344	5	CUUR0000SETD03
+Motor vehicle insurance	1.622	4	CUUR0000SETE
+Motor vehicle fees	0.556	4	CUUR0000SETF
+State motor vehicle registration and license fees	0.29	5	CUUR0000SETF01
+Parking and other fees	0.252	5	CUUR0000SETF03
+Parking fees and tolls	 	6	CUUR0000SS52051
+Public transportation	1.15	4	CUUR0000SETG
+Airline fares	0.668	5	CUUR0000SETG01
+Other intercity transportation	0.182	5	CUUR0000SETG02
+Ship fare	 	6	CUUR0000SS53023
+Intracity transportation	0.297	5	CUUR0000SETG03
+Intracity mass transit	 	6	CUUR0000SS53031
+Recreation services	3.744	3	CUUR0000SARS
+Video and audio services	1.253	4	CUUR0000SERAS
+Cable and satellite television service	1.179	5	CUUR0000SERA02
+Video discs and other media, including rental of video	0.074	5	CUUR0000SERA04
+Video discs and other media	 	6	CUUR0000SS31022
+Rental of video discs and other media	 	6	CUUR0000SS62055
+Pet services including veterinary	0.56	4	CUUR0000SERB02
+Veterinarian services	 	5	CUUR0000SS62054
+Photographers and photo processing	0.044	4	CUUR0000SERD02
+Other recreation services	1.887	4	CUUR0000SERF
+Club membership for shopping clubs, fraternal, or other organizations, or participant sports fees	0.676	5	CUUR0000SERF01
+Admissions	0.681	5	CUUR0000SERF02
+Admission to movies, theaters, and concerts	 	6	CUUR0000SS62031
+Admission to sporting events	 	6	CUUR0000SS62032
+Fees for lessons or instructions	0.215	5	CUUR0000SERF03
+Education and communication services	6.158	3	CUUR0000SAES
+Tuition, other school fees, and childcare	2.845	4	CUUR0000SEEB
+College tuition and fees	1.524	5	CUUR0000SEEB01
+Elementary and high school tuition and fees	0.421	5	CUUR0000SEEB02
+Day care and preschool	0.748	5	CUUR0000SEEB03
+Technical and business school tuition and fees	0.036	5	CUUR0000SEEB04
+Postage and delivery services	0.112	4	CUUR0000SEEC
+Postage	0.102	5	CUUR0000SEEC01
+Delivery services	0.01	5	CUUR0000SEEC02
+Telephone services	2.311	4	CUUR0000SEED
+Wireless telephone services	1.903	5	CUUR0000SEED03
+Land-line telephone services	0.407	5	CUUR0000SEED04
+Internet services and electronic information providers	0.88	4	CUUR0000SEEE03
+Other personal services	1.652	3	CUUR0000SAGS
+Personal care services	0.687	4	CUUR0000SEGC
+Haircuts and other personal care services	0.687	5	CUUR0000SEGC01
+Miscellaneous personal services	0.966	4	CUUR0000SEGD
+Legal services	0.245	5	CUUR0000SEGD01
+Funeral expenses	0.138	5	CUUR0000SEGD02
+Laundry and dry cleaning services	0.217	5	CUUR0000SEGD03
+Apparel services other than laundry and dry cleaning	0.03	5	CUUR0000SEGD04
+Financial services	0.226	5	CUUR0000SEGD05
+Checking account and other bank services	 	6	CUUR0000SS68021
+Tax return preparation and other accounting fees	 	6	CUUR0000SS68023
