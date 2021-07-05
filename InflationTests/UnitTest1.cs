@@ -56,8 +56,36 @@ namespace InflationTests
             }
 
             rootLevel.BackPopulateNodesRecursive();
-        } 
-        
+        }
+
+
+        [TestMethod]
+        public void TestUpdateWeights()
+        {
+            var readObs = new DictionaryObservations();
+
+            var readCat = new ParseCategory();
+            var rootLevel = readCat.root;
+
+            foreach (var branch in rootLevel.Flatten())
+            {
+
+                branch.SetObservation(readObs.series[branch._serieCodeId]);
+
+            }
+
+
+            rootLevel.Children[0].Children[0].UpdateWeightUpAndDown(30, true);
+            rootLevel.Children[0].Children[1].UpdateWeightUpAndDown(5, true);
+
+            var totalWeightAfterUpdate = rootLevel.GetTotalWeight();
+            rootLevel.NormalizeWeights();
+            totalWeightAfterUpdate = rootLevel.GetTotalWeight();
+            rootLevel.UpdateWeightUpAndDown(100);
+            totalWeightAfterUpdate = rootLevel.GetTotalWeight();
+
+        }
+
         [TestMethod]
         public void TestCaculateInflationFromTop()
         {
@@ -76,17 +104,45 @@ namespace InflationTests
 
             rootLevel.BackPopulateNodesRecursive();
 
-            rootLevel.Children[0].Children[0].UpdateWeight(30, true);
-            rootLevel.Children[0].Children[1].UpdateWeight(5, true);
+            rootLevel.Children[0].Children[0].UpdateWeightUpAndDown(30, true);
+            rootLevel.Children[0].Children[1].UpdateWeightUpAndDown(5, true);
 
             var totalWeightAfterUpdate = rootLevel.GetTotalWeight();
-
+            
             var result = rootLevel.CalculateInflationRecursivelyFromProvidedLevels2();
         }
 
+        [TestMethod]
+
+        public void TestCaculateInflationAfterNormalize()
+        {
+            var readObs = new DictionaryObservations();
+
+            var readCat = new ParseCategory();
+            var rootLevel = readCat.root;
+
+            foreach (var branch in rootLevel.Flatten())
+            {
+
+                branch.SetObservation(readObs.series[branch._serieCodeId]);
+
+            }
 
 
+            rootLevel.BackPopulateNodesRecursive();
 
+            rootLevel.Children[0].Children[0].UpdateWeightUpAndDown(30, true);
+            rootLevel.Children[0].Children[1].UpdateWeightUpAndDown(5, true);
 
+            var totalWeightAfterUpdate = rootLevel.GetTotalWeight();
+
+            rootLevel.NormalizeWeights();
+            rootLevel.UpdateWeightUpAndDown(100);
+            totalWeightAfterUpdate = rootLevel.GetTotalWeight();
+
+            var result = rootLevel.CalculateInflationRecursivelyFromProvidedLevels2();
+
+            //celcius referral code: 18983601a8
+        }
     }
 }

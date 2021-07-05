@@ -172,19 +172,56 @@ namespace Contracts
             return HasChild() && Children.Any(c => c.Value.HasWeight());
         }
 
-        public void UpdateWeight(decimal newWeight, bool userSet = false)
+        public void UpdateWeightUpAndDown(decimal newWeight, bool userSet = false)
+        {
+            var currentWeightOnStartingNode = Value.GetWeight;
+            UpdateWeightUp(newWeight);
+            Value.UpdateWeight(currentWeightOnStartingNode); // reset the weight change on starting node to populate down too.
+            UpdateWeightDown(newWeight, userSet);
+        }
+
+        private void UpdateWeightDown(decimal newWeight, bool userSet = false)
         {
             // the childs will have updated weights but should be user set ?
             if (HasWeightedChild())
             {
                 foreach (var child in Children)
                 {
-                    child.UpdateWeight(newWeight/Value.GetWeight * child.Value.GetWeight, false);
+                    child.UpdateWeightDown(newWeight / Value.GetWeight * child.Value.GetWeight, false);
                 }
             }
 
             // new weight should be equal to sum of child weights ( but only leaf level series should be used in caclulations)
-            Value.UpdateWeight(newWeight,userSet);
+            Value.UpdateWeight(newWeight, userSet);
+        }
+        private void UpdateWeightUp(decimal newWeight)
+        {
+            if (this.Parent != null)
+            {
+                Parent.UpdateWeightUp(Parent.Value.GetWeight + (newWeight - Value.GetWeight));
+            }
+
+            Value.UpdateWeight(this.Value.GetWeight + (newWeight - Value.GetWeight));
+
+        }
+
+        public void NormalizeWeights()
+        {
+            //make childs equal to parent if child not 0
+            var nodeWeight = Value.GetWeight;
+            decimal childTotalWeight = 0;
+            foreach (var c in Children)
+            {
+                childTotalWeight += c.Value.GetWeight;
+            }
+            foreach (var c in Children)
+            {
+                if (c.Value.GetWeight != 0)
+                {
+                    c.Value.UpdateWeight(c.Value.GetWeight * nodeWeight / childTotalWeight);
+                    c.NormalizeWeights();
+                }
+            }
         }
 
         public decimal GetTotalWeight()
