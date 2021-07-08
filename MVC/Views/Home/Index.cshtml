@@ -1,0 +1,34 @@
+﻿@using Contracts
+@{
+    //ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<table id="tblCustomers" class="table" cellpadding="0" cellspacing="0">
+    <tr>
+        <th style="width:100px">Category Name</th>
+        <th style="width:150px">Weight</th>
+        <th style="width:150px"></th>
+    </tr>
+    @foreach (Category cat in Model)
+    {
+        <tr>
+            <td class="Name">         
+                <span>@cat._name</span>
+            </td>
+            <td class="Weight">
+                <span>@cat.GetWeight</span>
+            </td>
+            <td>
+                <a class="Edit" href="javascript:;">Edit</a>
+                <a class="Update" href="javascript:;" style="display:none">Update</a>
+                <a class="Cancel" href="javascript:;" style="display:none">Cancel</a>
+                <a class="Delete" href="javascript:;">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

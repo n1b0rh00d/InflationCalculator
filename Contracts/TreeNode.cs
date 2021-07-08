@@ -162,6 +162,18 @@ namespace Contracts
             return new[] { Value }.Concat(_children.SelectMany(x => x.Flatten()));
         }
 
+        public IEnumerable<TreeNode<TCategory>> ListAll()
+        {
+            List<TreeNode<TCategory>> listAll = new List<TreeNode<TCategory>>();
+            listAll.Add(this);
+            foreach (var child in Children)
+            {
+                listAll.AddRange(child.ListAll());
+            }
+
+            return listAll;
+        }
+
         public bool HasChild()
         {
             return Children != null && Children.Count != 0;
@@ -178,6 +190,12 @@ namespace Contracts
             UpdateWeightUp(newWeight);
             Value.UpdateWeight(currentWeightOnStartingNode); // reset the weight change on starting node to populate down too.
             UpdateWeightDown(newWeight, userSet);
+        }
+
+        public void UpdateWeightUpAndDown(string newWeight, bool userSet = false)
+        {
+            if(decimal.TryParse(newWeight, out var parsedWeight))
+            UpdateWeightUpAndDown(parsedWeight, userSet);
         }
 
         private void UpdateWeightDown(decimal newWeight, bool userSet = false)

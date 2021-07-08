@@ -9,6 +9,7 @@ namespace Contracts
         public Dictionary<string, SerieObservation> MensualObservations;
         public Dictionary<string, SerieObservation> AnnualObservations;
 
+
         public SerieObservations()
         {
             MensualObservations = new Dictionary<string, SerieObservation>();

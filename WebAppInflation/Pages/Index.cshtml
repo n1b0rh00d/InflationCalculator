@@ -1,0 +1,52 @@
+﻿@using Contracts
+@Model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Home page";
+    
+}
+
+<html>
+<body>
+<table id="tblCustomers" class="table" cellpadding="0" cellspacing="0">
+    <tr>
+        <th style="width:100px">Customer Id</th>
+        <th style="width:150px">Name</th>
+        <th style="width:150px">Country</th>
+        <th style="width:150px"></th>
+    </tr>
+    @foreach (Category cat in Model)
+    {
+        <tr>
+            <td class="Name">
+                <span>@cat._name</span>
+                <input type="text" value="@cat._name" style="display:none" />
+            </td>
+            <td>
+                <a class="Edit" href="javascript:;">Edit</a>
+                <a class="Update" href="javascript:;" style="display:none">Update</a>
+                <a class="Cancel" href="javascript:;" style="display:none">Cancel</a>
+                <a class="Delete" href="javascript:;">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td style="width: 150px">
+            Name<br />
+            <input type="text" id="txtName" style="width:140px" />
+        </td>
+        <td style="width: 150px">
+            Country:<br />
+            <input type="text" id="txtCountry" style="width:140px" />
+        </td>
+        <td style="width: 200px">
+            <br />
+            <input type="button" id="btnAdd" value="Add" />
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
+
