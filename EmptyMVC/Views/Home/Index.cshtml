@@ -92,6 +92,24 @@ console.log("refresh the display");
 });
 </script>
 
+
+<script type="text/javascript">
+        $(function () {
+            $.ajax({
+                type: 'POST',
+                url: 'default.aspx/sayhello',
+                data: JSON.stringify({ name: 'John' }),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (msg) {
+                    // Notice that msg.d is used to retrieve the result object
+                    alert(msg.d);
+                }
+            });
+        });
+    
+</script>
+
 <table id="tblCustomers" class="table" cellpadding="0" cellspacing="0">
     <tr>
         <th style="width:100px">Category Name</th>
@@ -116,6 +134,7 @@ console.log("refresh the display");
                         spacing += "  ";
                     }
                     var paddedName = spacing + @cat._name;
+                    var paddedWeight = spacing + @cat.GetWeight;
                 }
                 @{
                     idWeight = "Weight" + count;
@@ -126,23 +145,20 @@ console.log("refresh the display");
                         <pre>@paddedName</pre></span>
                 </td>
                 <td contenteditable='true' class="Weight" id=@idWeight>
-                    @cat.GetWeight
+                    <span>
+                        <pre>@paddedWeight</pre></span>
                 </td>
 
                 <td class="UpdateButton">
                 <button id=@idButton>Update</button>
-
-
+                
                 <script>
                 document.getElementById("@idButton").addEventListener("click", function() 
                 {
                     newNumber = document.getElementById("@idWeight").innerHTML;
                     console.log(newNumber);
-
-                    @{
-                        node.UpdateWeightUpAndDown(newNumber, true);
-                    }
-                                        console.log(@root.GetTotalWeight());
+                    console.log(@root.UpdateWeightUpAndDown(200, true));
+                    console.log(@root.GetTotalWeight());
                 });
 
                 </script>

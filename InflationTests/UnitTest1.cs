@@ -81,14 +81,15 @@ namespace InflationTests
             var readCat = new ParseCategory();
             var rootLevel = readCat.root;
 
-            foreach (var branch in rootLevel.Flatten())
+            var listall = rootLevel.ListAll();
+            foreach (var branch in listall)
             {
 
-                branch.SetObservation(readObs.series[branch._serieCodeId]);
+                branch.Value.SetObservation(readObs.series[branch.Value._serieCodeId]);
 
             }
 
-
+            
             rootLevel.Children[0].Children[0].UpdateWeightUpAndDown(30, true);
             rootLevel.Children[0].Children[1].UpdateWeightUpAndDown(5, true);
 

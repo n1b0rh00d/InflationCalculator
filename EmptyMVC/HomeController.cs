@@ -24,5 +24,11 @@ namespace EmptyMVC
             //rootLevel.BackFillMissingYearlyData();
             return View(rootLevel);
         }
+
+        [HttpPost]
+        public static string SayHello(string name)
+        {
+            return "Hello " + name;
+        }
     }
 }

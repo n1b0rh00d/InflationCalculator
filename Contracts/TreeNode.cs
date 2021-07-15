@@ -21,6 +21,25 @@ namespace Contracts
             get { return _children[i]; }
         }
 
+        public string TabbedView(int depth, string text)
+        {
+            var tabbedText = "";
+            for (int i = 0; i < depth; i++)
+            {
+                tabbedText += "  ";
+            }
+
+            return tabbedText + text;
+        }
+
+        public string Name  => TabbedView(Value._depth , Value._name);
+        
+        public decimal Weight
+        {
+            get { return Value.GetWeight;}
+            set { this.UpdateWeightUpAndDown(value,true); }
+        } 
+
         public TreeNode<TCategory> Parent { get; private set; }
 
         public TCategory Value { get { return _value; } }
@@ -28,6 +47,25 @@ namespace Contracts
         public ReadOnlyCollection<TreeNode<TCategory>> Children
         {
             get { return _children.AsReadOnly(); }
+        }
+
+        public double AverageInflation
+        {
+            get
+            {
+                return (double)this.Value.observations.AnnualObservations
+                    .Select(x => x.Value._percentChange)
+                    .Average();
+            }
+        }
+
+        public double ValueOfADollar
+        {
+            get
+            {
+                return 1/Math.Pow(1+(double) this.Value.observations.AnnualObservations
+                    .Select(x => x.Value._percentChange).Average()/100, this.Value.observations.AnnualObservations.Count);
+            }
         }
 
         public TreeNode<TCategory> AddChild(TCategory value)
@@ -89,6 +127,7 @@ namespace Contracts
                 // Start recursion on all subnodes.
                 foreach (TreeNode<TCategory> oSubNode in this._children)
                 {
+                    //TODO: if weight is 0 we can skip
                     result = SerieObservations.SumObservations(result, oSubNode.CalculateInflationRecursivelyFromProvidedLevels());
                     totalWeights += oSubNode.Value.GetWeight;
                 }
@@ -184,18 +223,21 @@ namespace Contracts
             return HasChild() && Children.Any(c => c.Value.HasWeight());
         }
 
-        public void UpdateWeightUpAndDown(decimal newWeight, bool userSet = false)
+        public bool UpdateWeightUpAndDown(decimal newWeight, bool userSet = false)
         {
             var currentWeightOnStartingNode = Value.GetWeight;
             UpdateWeightUp(newWeight);
             Value.UpdateWeight(currentWeightOnStartingNode); // reset the weight change on starting node to populate down too.
             UpdateWeightDown(newWeight, userSet);
+            return true;
         }
 
         public void UpdateWeightUpAndDown(string newWeight, bool userSet = false)
         {
-            if(decimal.TryParse(newWeight, out var parsedWeight))
-            UpdateWeightUpAndDown(parsedWeight, userSet);
+            if (decimal.TryParse(newWeight, out var parsedWeight))
+                UpdateWeightUpAndDown(parsedWeight, userSet);
+            else
+                throw new Exception("Provided: " + newWeight);
         }
 
         private void UpdateWeightDown(decimal newWeight, bool userSet = false)
@@ -267,6 +309,10 @@ namespace Contracts
             decimal SumMissingPonderations = 0;
             foreach (var obs in Value.observations.AnnualObservations)
             {
+                if(this.Name.Contains("Water and sewer and trash collection services"))
+                {
+                    var a = "";
+                }
                 foreach (var childnode in _children)
                 {
                     if (childnode.Value.observations.AnnualObservations.ContainsKey(obs.Key))
