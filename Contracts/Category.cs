@@ -8,10 +8,15 @@ namespace Contracts
     {
         public string _name;
         public string _serieCodeId;
-        private decimal _weight;
+        public decimal _weight;
         public int _depth;
         public SerieObservations observations;
         private  bool UserAdjustedWeight = false;
+
+        public Category()
+        {
+
+        }
 
         public Category(string name, string weight, string depth, string serieCodeId)
         {

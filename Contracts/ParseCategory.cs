@@ -5,31 +5,34 @@ using System.Linq;
 
 namespace Contracts
 {
-    public class ParseCategory 
+    public class ParseCategory
     {
-        char[] delimiter = new char[] { '\t' };
+        private char[] delimiter = new char[] { '\t' };
 
         //The top-level Node
         public TreeNode<Category> root;
 
         //Temp value for processing in parseTextIntoTree
-        TreeNode<Category> ParentNode;
+        private TreeNode<Category> ParentNode;
 
         //Temp value for processing in parseTextIntoTree
-        int actualdepth = -1;
+        private int actualdepth = -1;
 
         //The depth step between two layers
-        int depthdifference = 1;
+        private int depthdifference = 1;
 
         public ParseCategory()
         {
             buildDirectoryFromFile("C:\\Users\\rchapas\\source\\repos\\InflationCalculator\\ItemWeight.txt");
         }
 
+        public ParseCategory(List<Category> cats)
+        {
+            buildDirectoryFromListOfCat(cats);
+        }
+
         public void buildDirectoryFromFile(string fileLocation)
         {
-            int depth = 0;
-
             foreach (var line in File.ReadLines(fileLocation))
             {
                 var data = line.Split(delimiter).Select(x => x.Trim()).ToArray();
@@ -40,6 +43,14 @@ namespace Contracts
 
                 var newCat = new Category(data[0], data[1], data[2], data[3]);
                 parseTextIntoTree(newCat, newCat._depth);
+            }
+        }
+
+        public void buildDirectoryFromListOfCat(List<Category> categories)
+        {
+            foreach (var cat in categories)
+            {
+                parseTextIntoTree(cat, cat._depth);
             }
         }
 

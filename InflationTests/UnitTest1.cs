@@ -1,5 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
 using Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 
 namespace InflationTests
 {
@@ -168,7 +171,6 @@ namespace InflationTests
             rootLevel.Children[0].Children[1].UpdateWeightUpAndDown(5, true);
 
             var totalWeightAfterUpdate = rootLevel.GetTotalWeight();
-
             rootLevel.NormalizeWeights();
             rootLevel.UpdateWeightUpAndDown(100);
             totalWeightAfterUpdate = rootLevel.GetTotalWeight();
@@ -176,6 +178,33 @@ namespace InflationTests
             var result = rootLevel.CalculateInflationRecursivelyFromProvidedLevels2();
 
             //celcius referral code: 18983601a8
+        }
+
+        [TestMethod]
+        public void UpdateData()
+        {
+            var readObs = new DictionaryObservations();
+
+            var readCat = new ParseCategory();
+            var rootLevel = readCat.root;
+
+            foreach (var branch in rootLevel.Flatten())
+            {
+
+                branch.SetObservation(readObs.series[branch._serieCodeId]);
+
+            }
+
+
+            //rootLevel.BackPopulateNodesRecursive();
+            rootLevel.NormalizeWeights();
+            rootLevel.UpdateWeightUpAndDown(100);
+
+            
+
+            SaveLoad.SaveBackfilledData(rootLevel.Flatten().ToList());
+            var res = SaveLoad.LoadBackfilledData();
+
         }
     }
 }

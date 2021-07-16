@@ -16,6 +16,11 @@ namespace Contracts
 
         public bool IsBackfilled = false;
 
+        public SerieObservation()
+        {
+
+        }
+
         public SerieObservation(string serieId, string year, string month, string value)
         {
             _serieId = serieId;
