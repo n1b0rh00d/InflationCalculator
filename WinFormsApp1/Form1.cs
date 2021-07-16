@@ -22,18 +22,8 @@ namespace WinFormsApp1
             InitializeComponent();
 
             this.dataGridView1.AutoGenerateColumns = true;
-            var readObs = new DictionaryObservations();
 
-            var readCat = new ParseCategory();
-            rootLevel = readCat.root;
-            rootLevel.NormalizeWeights();
-
-            foreach (var branch in rootLevel.Flatten())
-            {
-                branch.SetObservation(readObs.series[branch._serieCodeId]);
-            }
-
-            rootLevel.BackPopulateNodesRecursive();
+            LoadData();
 
             this.dataGridView1.DataSource = rootLevel.ListAll().Where(x => x.Value._depth <= Depth).ToList(); ;
 
@@ -43,6 +33,22 @@ namespace WinFormsApp1
             this.dataGridView1.Columns[1].ReadOnly = false;
             refreshGraph(true);
         }
+
+        private void LoadData()
+        {
+            rootLevel = SaveLoad.LoadOrDownload();
+        }
+
+        private void SaveData()
+        {
+            SaveLoad.SaveBackfilledData(rootLevel.Flatten().ToList());
+        }
+
+        private void DeleteSavedData()
+        {
+            SaveLoad.DeleteData();
+        }
+
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {

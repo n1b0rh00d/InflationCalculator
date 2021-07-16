@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -8,10 +9,10 @@ namespace Contracts
 {
     public class SaveLoad
     {
-        public static void SaveBackfilledData(List<Category> categories)
+        public static void SaveBackfilledData(List<Category> categories, string path = "inflationData.txt")
         {
             var serializedData = JsonConvert.SerializeObject(categories);
-            File.WriteAllText("inflationData.txt", serializedData);
+            File.WriteAllText(path, serializedData);
         }
         public static TreeNode<Category> LoadBackfilledData()
         {
@@ -20,11 +21,35 @@ namespace Contracts
             return new ParseCategory(cats).root;
         }
 
-        public static List<Category>  DownloadLatestData()
+        public static List<Category>  DownloadOriginalData()
         {
-            return JsonConvert.DeserializeObject<List<Category>>(File.ReadAllText("inflationData.txt"));
-
+            WebClient w = new WebClient();
+            var originalData = w.DownloadString(
+                "https://raw.githubusercontent.com/n1b0rh00d/InflationCalculator/master/inflationData.txt");
+            var cats = JsonConvert.DeserializeObject<List<Category>>(originalData);
+            SaveBackfilledData(cats);
+            return cats;
         }
+
+        public static TreeNode<Category> LoadOrDownload()
+        {
+            if (File.Exists("inflationData.txt"))
+            {
+                return LoadBackfilledData();
+            }
+            else
+            {
+                return new ParseCategory(DownloadOriginalData()).root;
+            }
+        }
+
+        public static void DeleteData()
+        {
+            File.Delete("inflationData.txt");
+        }
+
+        // need something to get latest data
+        //https://download.bls.gov/pub/time.series/cu/cu.data.0.Current
 
     }
 }

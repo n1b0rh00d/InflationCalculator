@@ -195,16 +195,15 @@ namespace InflationTests
 
             }
 
-
-            //rootLevel.BackPopulateNodesRecursive();
+            rootLevel.BackPopulateNodesRecursive();
             rootLevel.NormalizeWeights();
             rootLevel.UpdateWeightUpAndDown(100);
 
             
 
-            SaveLoad.SaveBackfilledData(rootLevel.Flatten().ToList());
-            var res = SaveLoad.LoadBackfilledData();
+            SaveLoad.SaveBackfilledData(rootLevel.Flatten().ToList(), "../../../../inflationData.txt");
 
+            //upload new data
         }
     }
 }
