@@ -25,7 +25,7 @@ namespace WinFormsApp1
 
             LoadData();
 
-            this.dataGridView1.DataSource = rootLevel.ListAll().Where(x => x.Value._depth <= Depth).ToList(); ;
+            this.dataGridView1.DataSource = rootLevel.ListAll().Where(x => x.Value._depth <= Depth).ToList();
 
             this.dataGridView1.Columns[2].Visible = false;
             this.dataGridView1.Columns[3].Visible = false;
@@ -53,6 +53,7 @@ namespace WinFormsApp1
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.Refresh();
+            refreshGraph(isAnnual);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -100,6 +101,11 @@ namespace WinFormsApp1
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Depth = int.Parse(listBox1.SelectedItem.ToString());
+            Refresh();
+        }
+
+        private void Refresh()
+        {
             var entries = rootLevel.ListAll().Where(x => x.Value._depth <= Depth).ToList();
             this.dataGridView1.Columns.Clear();
             this.dataGridView1.AutoGenerateColumns = true;
@@ -112,6 +118,7 @@ namespace WinFormsApp1
             this.dataGridView1.Columns[4].SortMode = DataGridViewColumnSortMode.Automatic;
 
             dataGridView1.Refresh();
+            refreshGraph(isAnnual);
         }
 
         private void buttonSwitch_Click(object sender, EventArgs e)
@@ -129,6 +136,24 @@ namespace WinFormsApp1
             }
 
             refreshGraph(isAnnual);
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            SaveData();
+        }
+
+        private void buttonLoad_Click(object sender, EventArgs e)
+        {
+            LoadData();
+            Refresh();
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            DeleteSavedData();
+            LoadData();
+            Refresh();
         }
     }
 }
