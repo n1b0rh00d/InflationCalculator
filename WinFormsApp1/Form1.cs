@@ -106,7 +106,7 @@ namespace WinFormsApp1
 
         private void Refresh()
         {
-            var entries = rootLevel.ListAll().Where(x => x.Value._depth <= Depth).ToList();
+            var entries = rootLevel.ListAll(Depth);
             this.dataGridView1.Columns.Clear();
             this.dataGridView1.AutoGenerateColumns = true;
 

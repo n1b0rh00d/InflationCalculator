@@ -1,4 +1,5 @@
 ﻿@using Contracts
+@using EmptyMVC
 
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
@@ -10,25 +11,53 @@
     <p>View inflation based on your consumption</p>
 </div>
 
-<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+<p>
+    Average American as per bls statistics
+    <form method="POST" action="?consumerType=0">
+        <button type="submit">Regular</button>
+    </form>
+    
+    Minimalist with only need of shelter and food at home
+    <form method="POST" action="?consumerType=1">
+        <button type="submit">Minimalist Renter</button>
+    </form>
+
+    Minimalist owning their home and making own meals
+    <form method="POST" action="?consumerType=2">
+        <button type="submit">Minimalist Home owner</button>
+    </form>
+
+    Enjoying eating outside
+    <form method="POST" action="?consumerType=3">
+        <button type="submit">Restaurant Foodie</button>
+    </form>
+</p>
+
 <canvas id="myChart2" style="width:100%;max-width:700px"></canvas>
 
+
+
+
 @{
-    SerieObservations inflationNumbers= Model.CalculateInflationRecursivelyFromProvidedLevels();
+    IndexWrapper values = Model;
+    TreeNode<Category> root = values.RootLevel;
+    int depth = values.Depth;
+    var avgInf = values.AvgInflation;
+    var valueOfDollar = values.ValueOfDollar;
+}
+
+<p>Average Inflation: @avgInf</p>
+<p>Value of a 1997 Dollar today: @valueOfDollar</p>
+
+
+
+@{
+    SerieObservations inflationNumbers= root.CalculateInflationRecursivelyFromProvidedLevels();
     var annualInflation = inflationNumbers.AnnualObservations;
-
-    //for updating the chart
-    //chartObject.data.datasets = newData.datasets;
-    //chartObject.data.labels = newData.labels;
-    //chartObject.update();
 }
-
-@{
-    TreeNode<Category> root = Model;
-}
-
 
 <script type="text/javascript">
+
 
     var myArray = [];
 
@@ -36,29 +65,6 @@
     {
         @:myArray.push({x:"@v.Value._year",y:"@v.Value._percentChange"});
     }
-
-var xyValues = [
-{x:50, y:7},
-{x:60, y:8},
-];
-
-new Chart("myChart", {
-  type: "scatter",
-  data: {
-    datasets: [{
-      pointRadius: 4,
-      pointBackgroundColor: "rgb(0,0,255)",
-      data: xyValues
-    }]
-  },
-  options: {
-    legend: {display: false},
-    scales: {
-      xAxes: [{ticks: {min: 40, max:160}}],
-      yAxes: [{ticks: {min: 6, max:16}}],
-    }
-  }
-});
 
 new Chart("myChart2", {
 type: "scatter",
@@ -81,48 +87,19 @@ yAxes: [{ticks: {min: -5, max:10}}],
 </script>
 
 
-<button id="Normalize">Normalize</button>
-
-<script>
-
-document.getElementById("Normalize").addEventListener("click", function() 
-{
-@{ root.NormalizeWeights();} 
-console.log("refresh the display");
-});
-</script>
-
-
-<script type="text/javascript">
-        $(function () {
-            $.ajax({
-                type: 'POST',
-                url: 'default.aspx/sayhello',
-                data: JSON.stringify({ name: 'John' }),
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                success: function (msg) {
-                    // Notice that msg.d is used to retrieve the result object
-                    alert(msg.d);
-                }
-            });
-        });
-    
-</script>
-
 <table id="tblCustomers" class="table" cellpadding="0" cellspacing="0">
     <tr>
         <th style="width:100px">Category Name</th>
         <th style="width:150px">Weight</th>
         <th style="width:150px"></th>
     </tr>
+    
+  
+    
+
     @{
 
-        var count = 0;
-        var idButton = "";
-        var idWeight = "";
-        var newNumber = "";
-        foreach (TreeNode<Category> node in Model.ListAll())
+        foreach (TreeNode<Category> node in root.ListAll(depth))
         {
             var cat = node.Value;
 
@@ -136,35 +113,21 @@ console.log("refresh the display");
                     var paddedName = spacing + @cat._name;
                     var paddedWeight = spacing + @cat.GetWeight;
                 }
-                @{
-                    idWeight = "Weight" + count;
-                    idButton = "Button" + count;
-                }
+               
                 <td class="Name">
                     <span>
                         <pre>@paddedName</pre></span>
                 </td>
-                <td contenteditable='true' class="Weight" id=@idWeight>
+                <td class="Weight">
                     <span>
                         <pre>@paddedWeight</pre></span>
                 </td>
 
-                <td class="UpdateButton">
-                <button id=@idButton>Update</button>
-                
-                <script>
-                document.getElementById("@idButton").addEventListener("click", function() 
-                {
-                    newNumber = document.getElementById("@idWeight").innerHTML;
-                    console.log(newNumber);
-                    console.log(@root.UpdateWeightUpAndDown(200, true));
-                    console.log(@root.GetTotalWeight());
-                });
-
-                </script>
-
-                @{ count++; }
             </tr>
         }
     }
 </table>
+
+<p>For setting more customized weights (let's say you are vegan and don't eat meats, so you want to remove it) 
+    saving and loading data
+    Please download the application</p>

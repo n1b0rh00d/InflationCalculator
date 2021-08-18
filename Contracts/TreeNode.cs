@@ -214,6 +214,11 @@ namespace Contracts
 
             return listAll;
         }
+        public IEnumerable<TreeNode<TCategory>> ListAll(int depth)
+        {
+            return this.ListAll().Where(x => x.Value._depth <= depth).ToList();
+        }
+
 
         public bool HasChild()
         {

@@ -9,26 +9,42 @@ namespace EmptyMVC
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int consumerType, int depth=1)
         {
-            var readObs = new DictionaryObservations();
+            return View(new IndexWrapper(consumerType,depth));
+        }
+    }
 
-            var readCat = new ParseCategory();
-            var rootLevel = readCat.root;
-            
-            foreach (var branch in rootLevel.Flatten())
-            {
-                branch.SetObservation(readObs.series[branch._serieCodeId]);
-            }
-           
-            //rootLevel.BackFillMissingYearlyData();
-            return View(rootLevel);
+    public class IndexWrapper 
+    {
+        public TreeNode<Category> RootLevel;
+
+        public int Depth;
+
+        public double AvgInflation;
+
+        public double ValueOfDollar;
+
+        public IndexWrapper(int consumerType, int depth = 1)
+        {
+            RootLevel = SaveLoad.LoadOrDownload();
+
+            var c = (ConsumerType)consumerType;
+
+            AdjustWeightToConsumerType.AdjustWeight(RootLevel, c);
+
+            Depth = depth;
+            SerieObservations inflationNumbers = RootLevel.CalculateInflationRecursivelyFromProvidedLevels();
+            var annualInflation = inflationNumbers.AnnualObservations;
+            //var x = annualInflation.Select(x => new DateTime(year: int.Parse(x.Value._year), month: 1, 1).ToOADate()).ToArray();
+
+            var y = annualInflation.Select(x => (double)x.Value._percentChange).ToArray();
+
+            AvgInflation = y.Average();
+
+            ValueOfDollar =  1 / Math.Pow(1 + y.Average() / 100, y.Length);
         }
 
-        [HttpPost]
-        public static string SayHello(string name)
-        {
-            return "Hello " + name;
-        }
+
     }
 }
