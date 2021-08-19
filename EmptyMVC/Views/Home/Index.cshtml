@@ -102,72 +102,115 @@
             <!-- end header inner -->
         </header>
         <!-- end header -->
-        <section class="slider_section">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <!-- state banner -->
-                        <h2>Yearly reported inflation</h2>
-                        <canvas id="InflationChart" style="width:100%;"></canvas>
-                        <p>Average Inflation: @avgInf</p>
-                        <p>Value of a 1997 Dollar today: @valueOfDollar</p>
-                        <!-- end banner -->
-                    </div>
-                    <div class="col-md-6">
-                        <div class="full-slider_cont">
-                            <h1>Inflation Is Eating
-                                <br>
-                                <span class="dark_brown">Your Savings</span>
-                            </h1>
-                            <pre>
+    <section class="slider_section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- state banner -->
+                    <h2>Yearly reported inflation</h2>
+                    <canvas id="InflationChart" style="width:100%;"></canvas>
+                    <p>Average Inflation: @avgInf</p>
+                    <p>Value of a 1997 Dollar today: @valueOfDollar</p>
+                    <!-- end banner -->
+                </div>
+                <div class="col-md-6">
+                    <div class="full-slider_cont">
+                        <h1>Inflation Is Eating
+                            <br>
+                            <span class="dark_brown">Your Savings</span>
+                        </h1>
+                        <pre>
 
 Little text about inflation facts
 
                             </pre>
-                            <div class="button_section"> <a class="main_bt" href="#">Exchange</a> <a class="main_bt" href="#">About Us</a> </div>
-                        </div>
+                        <div class="button_section"> <a class="main_bt" href="#">Exchange</a> <a class="main_bt" href="#">About Us</a> </div>
                     </div>
                 </div>
-                
-                
-                <div class="text-center">
-                    <h1 class="display-4">Welcome</h1>
-                    <p>View inflation based on your consumption</p>
-                </div>
-
-                <p> //Make this in table with multiple columns
-                    Average American as per bls statistics
-                    <form method="POST" action="?consumerType=0">
-                        <button type="submit">Regular</button>
-                    </form>
-    
-                    Minimalist with only need of shelter and food at home
-                    <form method="POST" action="?consumerType=1">
-                        <button type="submit">Minimalist Renter</button>
-                    </form>
-
-                    Minimalist owning their home and making own meals
-                    <form method="POST" action="?consumerType=2">
-                        <button type="submit">Minimalist Home owner</button>
-                    </form>
-
-                    Enjoying eating outside
-                    <form method="POST" action="?consumerType=3">
-                        <button type="submit">Restaurant Foodie</button>
-                    </form>
-                </p>
-
-                
             </div>
-        </section>
+        </div>
+    </section>
+    <div class="container">
+     <div class="row">
+               
+               
+     </div>
+    </div>
         <!-- Currency -->
         <div class="Currency">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="titlepage">
-                            <h2>VIEW THE WEIGHT OF EACH <strong class="cur">CATEGORIES</strong></h2>
+                            <h2>VIEW INFLATION BASED ON YOUR <strong class="cur">CONSUMPTION STYLE</strong></h2>
                             <span><img src="images/boder.png" alt="img" /> </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="three-box">
+                        <figure><img src="images/1.jpg" alt="img"/></figure>
+                        <div class="Bitcoin">
+                            <i><img src="images/dollar.png" alt="img"/></i>
+                            <h3>Average Consumer</h3>
+                            <p>Official data, correspond to the average consumer</p>
+                        </div>
+                        <form method="POST" action="?consumerType=0">
+                            <button class="read-more" type="submit">Regular</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="three-box">
+                        <figure><img src="images/2.jpg" alt="img"/></figure>
+                        <div class="Bitcoin">
+                            <i><img src="images/dollar.png" alt="img"/></i>
+                            <h3>Minimalist Renter</h3>
+                            <p>Minimalist with only need of shelter and food at home </p>
+                        </div>
+                        <form method="POST" action="?consumerType=1">
+                            <button class="read-more" type="submit">Minimalist Renter</button>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="three-box">
+                        <figure><img src="images/3.jpg" alt="img"/></figure>
+                        <div class="Bitcoin">
+                            <i><img src="images/dollar.png" alt="img"/></i>
+                            <h3>Minimalist Home Owner</h3>
+                            <p> Minimalist owning their home and making own meals </p>
+                        </div>
+                        <form method="POST" action="?consumerType=2">
+                            <button class="read-more" type="submit">Minimalist Home owner</button>
+                        </form>
+                        <a class="read-more" href="#">//todo Link to Weight</a> 
+                    </div>
+                </div>
+         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+             <div class="three-box">
+                 <figure><img src="images/3.jpg" alt="img"/></figure>
+                 <div class="Bitcoin">
+                     <i><img src="images/dollar.png" alt="img"/></i>
+                     <h3>Maximalist</h3>
+                     <p>Less eating at home, more activities </p>
+                 </div>
+                 <form method="POST" action="?consumerType=3">
+                     <button class="read-more" type="submit">Restaurant Foodie</button>
+                 </form>
+                 <a class="read-more" href="#">//todo Link to Weight</a> 
+             </div>
+         </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="titlepage">
+                            <h2>VIEW THE WEIGHT OF EACH <strong class="cur">CATEGORIES</strong></h2>
+                            <span><img src="images/boder.png" alt="img"/> </span>
                         </div>
                     </div>
                 </div>
@@ -190,55 +233,54 @@ Little text about inflation facts
                             <option value="11">11</option>
                         </select>
                         <input type="submit">
-                    
-                        </form>
-                        <table id="tblCustomers" class="table" cellpadding="0" cellspacing="0">
-                            <tr>
-                                <th style="width:100px">Category Name</th>
-                                <th style="width:150px">Weight</th>
-                                <th style="width:150px"></th>
-                            </tr>
 
-                            @{
+                    </form>
+                    <table id="tblCustomers" class="table" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th style="width: 100px">Category Name</th>
+                            <th style="width: 150px">Weight</th>
+                            <th style="width: 150px"></th>
+                        </tr>
 
-                                foreach (TreeNode
-                                    <Category>
-                                    node in root.ListAll(depth))
-                                {
-                                    var cat = node.Value;
+                        @{
 
-                                    <tr>
-                                        @{
-                                            var spacing = "";
-                                            for (int i = 0; i < cat._depth; i++)
-                                            {
-                                                spacing += "  ";
-                                            }
-                                            var paddedName = spacing + @cat._name;
-                                            var paddedWeight = spacing + @cat.GetWeight;
+                            foreach (TreeNode<Category>
+                                node in root.ListAll(depth))
+                            {
+                                var cat = node.Value;
+
+                                <tr>
+                                    @{
+                                        var spacing = "";
+                                        for (int i = 0; i < cat._depth; i++)
+                                        {
+                                            spacing += "  ";
                                         }
+                                        var paddedName = spacing + @cat._name;
+                                        var paddedWeight = spacing + @cat.GetWeight;
+                                    }
 
-                                        <td class="Name">
-                                            <span>
-                                                <pre>@paddedName</pre>
-                                            </span>
-                                        </td>
-                                        <td class="Weight">
-                                            <span>
-                                                <pre>@paddedWeight</pre>
-                                            </span>
-                                        </td>
+                                    <td class="Name">
+                                        <span>
+                                            <pre>@paddedName</pre>
+                                        </span>
+                                    </td>
+                                    <td class="Weight">
+                                        <span>
+                                            <pre>@paddedWeight</pre>
+                                        </span>
+                                    </td>
 
-                                    </tr>
-                                }
+                                </tr>
                             }
-                        </table> </div>
-                
+                        }
+                    </table> </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="titlepage">
                             <h2>NEED TO TAKE CARE OF YOUR <strong class="cur">CURRENCY INVESTMENTS</strong></h2>
-                            <span><img src="images/boder.png" alt="img" /> </span>
+                            <span><img src="images/boder.png" alt="img"/> </span>
                         </div>
                     </div>
                 </div>
