@@ -53,13 +53,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Views\Home\Donate.html" />
-    <Content Include="Views\Home\Download.html" />
-    <Content Include="Views\Home\Feedback.html" />
-    <Content Include="Views\Home\Methodology.html" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Contracts\Contracts.csproj" />
   </ItemGroup>
 

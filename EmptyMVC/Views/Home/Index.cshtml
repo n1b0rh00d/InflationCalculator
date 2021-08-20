@@ -1,25 +1,67 @@
+@using Contracts
+@using EmptyMVC
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
     </script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-
+   
  
     @{
         IndexWrapper values = Model;
-        TreeNode<Category>
-            root = values.RootLevel;
+        TreeNode<Category> root = values.RootLevel;
         int depth = values.Depth;
         var avgInf = values.AvgInflation;
         var valueOfDollar = values.ValueOfDollar;
     }
     @{
-        SerieObservations inflationNumbers= root.CalculateInflationRecursivelyFromProvidedLevels();
+        SerieObservations inflationNumbers = root.CalculateInflationRecursivelyFromProvidedLevels();
         var annualInflation = inflationNumbers.AnnualObservations;
     }
 
     <!DOCTYPE html>
     <html lang="en">
+    <style>
+        
+
+        button.accordion {
+            width: 100%;
+            background-color: whitesmoke;
+            border: none;
+            outline: none;
+            text-align: left;
+            padding: 15px 20px;
+            font-size: 18px;
+            color: #444;
+            cursor: pointer;
+            transition: background-color 0.2s linear;
+        }
+
+        button.accordion:after {
+            content: '\f055';
+            font-family: "fontawesome";
+            font-size: 14px;
+            float: right;
+        }
+
+        button.accordion.is-open:after {
+            content: '\f056';
+        }
+
+        button.accordion:hover, button.accordion.is-open {
+            background-color: #ddd;
+        }
+
+        .accordion-content {
+            background-color: white;
+            border-left: 1px solid whitesmoke;
+            border-right: 1px solid whitesmoke;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-in-out;
+        }
+    </style>
     <head>
         <!-- basic -->
         <meta charset="utf-8">
@@ -39,7 +81,7 @@
         <!-- Responsive-->
         <link rel="stylesheet" href="css/responsive.css">
         <!-- fevicon -->
-        <link rel="icon" href="images/fevicon.png" type="image/gif" />
+        <link rel="icon" href="images/fevicon.png" type="image/gif"/>
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
         <!-- Tweaks for older IEs-->
@@ -49,68 +91,68 @@
     </head>
     <!-- body -->
     <body class="main-layout">
-        <!-- loader  -->
-        <div class="loader_bg">
-            <div class="loader"><img src="images/loading.gif" alt="#" /></div>
-        </div>
-        <!-- end loader -->
-        <!-- header -->
-        <header>
-            <!-- header inner -->
-            <div class="head-top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                            <div class="email"> <a href="#">Personalized Inflation Numbers</a> </div>
-                        </div>
-                        <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                            <div class="icon"> <i> <a href="#"><img src="icon/facebook.png"></a></i> <i> <a href="#"><img src="icon/Twitter.png"></a></i> <i> <a href="#"><img src="icon/linkedin.png"></a></i> <i> <a href="#"><img src="icon/google+.png"></a></i> </div>
-                        </div>-->
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                            <div class="contact"> <a href="#">Contact :  PersonalizedInflation@gmail.com</a> </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- loader  -->
+    <div class="loader_bg">
+        <div class="loader"><img src="images/loading.gif" alt="#"/></div>
+    </div>
+    <!-- end loader -->
+    <!-- header -->
+    <header>
+        <!-- header inner -->
+        <div class="head-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
-                        <div class="full">
-                            <div class="center-desk">
-                                <div class="logo"> <a href="index.html"><img src="images/logo.jpg" alt="#"></a> </div>
-                            </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        <div class="email"> <a href="#">Personalized Inflation Numbers</a> </div>
+                    </div>
+                    <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        <div class="icon"> <i> <a href="#"><img src="icon/facebook.png"></a></i> <i> <a href="#"><img src="icon/Twitter.png"></a></i> <i> <a href="#"><img src="icon/linkedin.png"></a></i> <i> <a href="#"><img src="icon/google+.png"></a></i> </div>
+                    </div>-->
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        <div class="contact"> <a href="#">Contact : PersonalizedInflation@gmail.com</a> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                    <div class="full">
+                        <div class="center-desk">
+                            <div class="logo"> <a href="index.html"><img src="images/logo.jpg" alt="#"></a> </div>
                         </div>
                     </div>
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-                        <div class="menu-area">
-                            <div class="limit-box">
-                                <nav class="main-menu">
-                                    <ul class="menu-area-main">
-                                        <li class="active"> <a href="index.html">Home</a> </li>
-                                        <li> <a href="Download.html">Download</a> </li>
-                                        <li> <a href="Methodology.html">Methodology</a> </li>
-                                        <li> <a href="Donate.html">Donate</a> </li>
-                                        <li> <a href="Feedback.html">Feedback</a> </li>
-                                        <li> <a href="#"><img src="images/search_icon.png" alt="#" /></a> </li>
-                                    </ul>
-                                </nav>
-                            </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                    <div class="menu-area">
+                        <div class="limit-box">
+                            <nav class="main-menu">
+                                <ul class="menu-area-main">
+                                    <li class="active"> <a href="index.html">Home</a> </li>
+                                    <li> <a href="Download.html">Download</a> </li>
+                                    <li> <a href="Methodology.html">Methodology</a> </li>
+                                    <li> <a href="Donate.html">Donate</a> </li>
+                                    <li> <a href="Feedback.html">Feedback</a> </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- end header inner -->
-        </header>
-        <!-- end header -->
+        </div>
+        <!-- end header inner -->
+    </header>
+   
+    <!-- end header -->
     <section class="slider_section">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
                     <!-- state banner -->
                     <h2>Yearly reported inflation</h2>
-                    <canvas id="InflationChart" style="width:100%;"></canvas>
-                    <p>Average Inflation: @avgInf</p>
-                    <p>Value of a 1997 Dollar today: @valueOfDollar</p>
+                    <canvas id="InflationChart" style="width: 100%;"></canvas>
+                    <h4>Average Inflation: @avgInf</h4>
+                    <h4>Value of a 1997 Dollar today: @valueOfDollar</h4>
                     <!-- end banner -->
                 </div>
                 <div class="col-md-6">
@@ -119,37 +161,35 @@
                             <br>
                             <span class="dark_brown">Your Savings</span>
                         </h1>
-                        <pre>
-
-Little text about inflation facts
-
-                            </pre>
-                        <div class="button_section"> <a class="main_bt" href="#">Exchange</a> <a class="main_bt" href="#">About Us</a> </div>
+                        <p>Inflation is a general increase in prices and fall in the purchasing value of money.<br />
+                            Technologies, Sciences and Scale should make the price of every commodities drop, while our purchasing power and quality of life increase.<br />
+                        <b>But it's not happening</b> ! Prices keep rising and by the time you retire, your savings will have become meaningless.<br />
+                        View below why <b>inflation number aren't accurate</b> and learn how to calculate inflation based on your spending</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <div class="container">
-     <div class="row">
-               
-               
-     </div>
+        <div class="row">
+
+
+        </div>
     </div>
-        <!-- Currency -->
-        <div class="Currency">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="titlepage">
-                            <h2>VIEW INFLATION BASED ON YOUR <strong class="cur">CONSUMPTION STYLE</strong></h2>
-                            <span><img src="images/boder.png" alt="img" /> </span>
-                        </div>
+    <!-- Currency -->
+    <div class="Currency">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>VIEW INFLATION BASED ON YOUR <strong class="cur">CONSUMPTION STYLE</strong></h2>
+                        <span><img src="images/boder.png" alt="img"/> </span>
                     </div>
                 </div>
+            </div>
 
-                <div class="row">
-                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="three-box">
                         <figure><img src="images/1.jpg" alt="img"/></figure>
                         <div class="Bitcoin">
@@ -187,408 +227,435 @@ Little text about inflation facts
                         <form method="POST" action="?consumerType=2">
                             <button class="read-more" type="submit">Minimalist Home owner</button>
                         </form>
-                        <a class="read-more" href="#">//todo Link to Weight</a> 
                     </div>
                 </div>
-         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-             <div class="three-box">
-                 <figure><img src="images/3.jpg" alt="img"/></figure>
-                 <div class="Bitcoin">
-                     <i><img src="images/dollar.png" alt="img"/></i>
-                     <h3>Maximalist</h3>
-                     <p>Less eating at home, more activities </p>
-                 </div>
-                 <form method="POST" action="?consumerType=3">
-                     <button class="read-more" type="submit">Restaurant Foodie</button>
-                 </form>
-                 <a class="read-more" href="#">//todo Link to Weight</a> 
-             </div>
-         </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="titlepage">
-                            <h2>VIEW THE WEIGHT OF EACH <strong class="cur">CATEGORIES</strong></h2>
-                            <span><img src="images/boder.png" alt="img"/> </span>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="three-box">
+                        <figure><img src="images/3.jpg" alt="img"/></figure>
+                        <div class="Bitcoin">
+                            <i><img src="images/dollar.png" alt="img"/></i>
+                            <h3>Maximalist</h3>
+                            <p>Less eating at home, more activities </p>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <p>Choose a different depth to see sub categories</p>
-
-                    <form action="">
-
-                        <select name="depth" id="depth">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                        </select>
-                        <input type="submit">
-
-                    </form>
-                    <table id="tblCustomers" class="table" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <th style="width: 100px">Category Name</th>
-                            <th style="width: 150px">Weight</th>
-                            <th style="width: 150px"></th>
-                        </tr>
-
-                        @{
-
-                            foreach (TreeNode<Category>
-                                node in root.ListAll(depth))
-                            {
-                                var cat = node.Value;
-
-                                <tr>
-                                    @{
-                                        var spacing = "";
-                                        for (int i = 0; i < cat._depth; i++)
-                                        {
-                                            spacing += "  ";
-                                        }
-                                        var paddedName = spacing + @cat._name;
-                                        var paddedWeight = spacing + @cat.GetWeight;
-                                    }
-
-                                    <td class="Name">
-                                        <span>
-                                            <pre>@paddedName</pre>
-                                        </span>
-                                    </td>
-                                    <td class="Weight">
-                                        <span>
-                                            <pre>@paddedWeight</pre>
-                                        </span>
-                                    </td>
-
-                                </tr>
-                            }
-                        }
-                    </table> </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="titlepage">
-                            <h2>NEED TO TAKE CARE OF YOUR <strong class="cur">CURRENCY INVESTMENTS</strong></h2>
-                            <span><img src="images/boder.png" alt="img"/> </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                        <div class="three-box">
-                            <figure><img src="images/1.jpg" alt="img"/></figure>
-                            <div class="Bitcoin">
-                                <i><img src="images/dollar.png" alt="img"/></i>
-                                <h3>Bitcoin Transaction</h3>
-                                <p>ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud lit esse </p>
-                            </div>
-                            <a class="read-more" href="#">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                        <div class="three-box">
-                            <figure><img src="images/2.jpg" alt="img"/></figure>
-                            <div class="Bitcoin">
-                                <i><img src="images/dollar.png" alt="img"/></i>
-                                <h3>Bitcoin Exchange</h3>
-                                <p>ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
-                            </div>
-                            <a class="read-more" href="#">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                        <div class="three-box">
-                            <figure><img src="images/3.jpg" alt="img"/></figure>
-                            <div class="Bitcoin">
-                                <i><img src="images/dollar.png" alt="img"/></i>
-                                <h3>Bitcoin Investment</h3>
-                                <p>ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
-                            </div>
-                            <a class="read-more" href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end Currency -->
-        <!--state abouts -->
-        <div class="abouts">
-            <dir class="abouts-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                            <div class="abouts-us">
-                                <h3>About Us <strong class="cur">our company</strong></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit ani</p>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                            <div class="abouts-us">
-                                <figure><img src="images/about.png" alt="img" /></figure>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </dir>
-        </div>
-
-        <!-- service -->
-        <div class="service">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                            <div class="STRONG">
-                                <i><img src="icon/strong.png" alt="icon" /></i>
-                                <h3>STRONG SECURITY</h3>
-                                <p>ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
-                            </div>
-                        </div>
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                            <div class="world">
-                                <i><img src="icon/world.png" alt="icon" /></i>
-                                <h3>WORLD COVERAGE</h3>
-                                <p>ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-                        <div class="service-box">
-                            <h2>our <strong class="cur">services</strong></h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
-                            <figure><img class="img-responsive" src="images/service-image.jpg" alt="img" /></figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end service -->
-        <!-- state abouts -->
-        <div class="our experts">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="titlepage2">
-                            <h2>Help <strong class="cur">Donate</strong></h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="experts-box">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                            <div class="experts-threebox">
-                                <figure><img src="images/experts-1.jpg" alt="img" /></figure>
-                                <h3>marco verratti </h3>
-                                <span>Ceo Founder</span>
-                                <p>exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor</p>
-                                <div class="icon"> <i> <a href="#"><img src="images/facebook.png"></a></i> <i> <a href="#"><img src="images/Twitter.png"></a></i> <i> <a href="#"><img src="images/linkedin.png"></a></i> <i> <a href="#"><img src="images/instagram.png"></a></i> </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                            <div class="experts-threebox">
-                                <figure><img src="images/experts-2.jpg" alt="img" /></figure>
-                                <h3>lina marzouki</h3>
-                                <span>Director</span>
-                                <p>exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor</p>
-                                <div class="icon"> <i> <a href="#"><img src="images/facebook.png"></a></i> <i> <a href="#"><img src="images/Twitter.png"></a></i> <i> <a href="#"><img src="images/linkedin.png"></a></i> <i> <a href="#"><img src="images/instagram.png"></a></i> </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                            <div class="experts-threebox">
-                                <figure><img src="images/experts-3.jpg" alt="img" /></figure>
-                                <h3>antonio conte </h3>
-                                <span>Money Developer</span>
-                                <p>
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                    <div class="icon"> <i> <a href="#"><img src="images/facebook.png"></a></i> <i> <a href="#"><img src="images/Twitter.png"></a></i> <i> <a href="#"><img src="images/linkedin.png"></a></i> <i> <a href="#"><img src="images/instagram.png"></a></i> </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end abouts -->
-        <div class="Request">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="titlepage3">
-                            <h2>Request A call</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <form>
-                            <input class="form-control" placeholder="Name" type="Name">
-                            <input class="form-control" placeholder="Phone" type="Phone">
-                            <input class="form-control" placeholder="Email" type="Email">
-                            <textarea class="textarea" placeholder="Message">Message</textarea>
+                        <form method="POST" action="?consumerType=3">
+                            <button class="read-more" type="submit">Restaurant Foodie</button>
                         </form>
                     </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="three-box">
+                        <figure><img src="images/3.jpg" alt="img"/></figure>
+                        <div class="Bitcoin">
+                            <i><img src="images/dollar.png" alt="img"/></i>
+                            <h3>Maximalist</h3>
+                            <p>Less eating at home, more activities </p>
+                        </div>
+                        <form method="POST" action="?consumerType=3">
+                            <button class="read-more" type="submit">Restaurant Foodie</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="three-box">
+                        <figure><img src="images/3.jpg" alt="img"/></figure>
+                        <div class="Bitcoin">
+                            <i><img src="images/dollar.png" alt="img"/></i>
+                            <h3>Maximalist</h3>
+                            <p>Less eating at home, more activities </p>
+                        </div>
+                        <form method="POST" action="?consumerType=3">
+                            <button class="read-more" type="submit">Restaurant Foodie</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>VIEW THE WEIGHT OF EACH <strong class="cur">CATEGORIES</strong></h2>
+                        <span><img src="images/boder.png" alt="img"/> </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <p>Choose a different depth to see sub categories</p>
+
+                <form action="">
+
+                    <select name="depth" id="depth">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                    </select>
+                    <input type="submit">
+
+                </form>
+                <table id="tblCustomers" class="table" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th style="width: 100px">Category Name</th>
+                        <th style="width: 150px">Weight</th>
+                        <th style="width: 150px"></th>
+                    </tr>
+
+                    @{
+
+                        foreach (TreeNode<Category>
+                            node in root.ListAll(depth))
+                        {
+                            var cat = node.Value;
+
+                            <tr>
+                                @{
+                                    var spacing = "";
+                                    for (int i = 0; i < cat._depth; i++)
+                                    {
+                                        spacing += "  ";
+                                    }
+                                    var paddedName = spacing + @cat._name;
+                                    var paddedWeight = spacing + @Math.Round(cat.GetWeight,3);
+                                }
+
+                                <td class="Name">
+                                    <span>
+                                        <pre>@paddedName</pre>
+                                    </span>
+                                </td>
+                                <td class="Weight">
+                                    <span>
+                                        <pre>@paddedWeight</pre>
+                                    </span>
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                </table> </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>NEED TO TAKE CARE OF YOUR <strong class="cur">CURRENCY INVESTMENTS</strong></h2>
+                        <span><img src="images/boder.png" alt="img"/> </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="three-box">
+                        <figure><img src="images/1.jpg" alt="img"/></figure>
+                        <div class="Bitcoin">
+                            <i><img src="images/dollar.png" alt="img"/></i>
+                            <h3>Invest in Bitcoin</h3>
+                            <p>Investing in cryptocurrency can be a way to beat inflation, with a finite number of bitcoins this is the best investment against inflation</p>
+                        </div>
+                        <a class="read-more" href="#">Read More</a>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="three-box">
+                        <figure><img src="images/2.jpg" alt="img"/></figure>
+                        <div class="Bitcoin">
+                            <i><img src="images/dollar.png" alt="img"/></i>
+                            <h3>Invest in equities</h3>
+                            <p>Investing in promising companies in the stock market is a safe way to protect yourself from prices always going up</p>
+                        </div>
+                        <a class="read-more" href="#">Read More</a>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="three-box">
+                        <figure><img src="images/3.jpg" alt="img"/></figure>
+                        <div class="Bitcoin">
+                            <i><img src="images/dollar.png" alt="img"/></i>
+                            <h3>Credit and Credit Consolidation</h3>
+                            <p>With debasement of the currency, it is interesting to borrow in fiat for your investments, while keeping interest rate low</p>
+                        </div>
+                        <a class="read-more" href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Currency -->
+    <!--state abouts -->
+    <div class="abouts">
+        <div class="abouts-bg">
+            <div class="container">
+                <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <div class="Request-box">
-                            <figure><img src="images/Request.jpg" alt="img" /></figure>
-                            <div class="Register">
-                                <h3>Get started today widh digital money bitcon</h3>
+                        <div class="abouts-us">
+                                                <h3>Why reported inflation is <strong class="cur">Incorrect</strong></h3>
+                                                <p>You probably have noticed that the prices seems to increase more than what is announced officially.
+                                                    While the numbers gathered and published are probably correct from a global perspective,
+                                                    they will never match the inflation that you will experience for multiple reasons.</p>
+                            <button class="accordion">No one is Average</button>
+                            <div class="accordion-content">
                                 <p>
-                                    consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim
+                                    Inflation is based on an average of what people consume. So as an average of everyone else, you are considered to be both a home owner and a renter, drinking, smoking, eating candies, eating fruits and vegetable at home and going to restaurants. You are buying both clothes for men and for women, owning a new car a new truck, as well as used ones. Using fuel, propane, gas and electricity. you have a pet and a garden.
+                                                        Obviously no one is that average person. And that is one reason why reported inflation doesn't match inflation impacting you.
+                                
                                 </p>
-                                <a href="#">Register now</a>
+                            </div>
+
+
+                            <button class="accordion">Changing Weight of items</button>
+                            <div class="accordion-content">
+                                <p>
+                                    The balance between average consumed items can also change year to year. If something got more expensive, people bought it less, and it will result in less weight in the balance.
+                                                    If people used to buy 2 avocados at 1$ on average for a total of 2$ and suddendy the price increase by 50%, they might start buying only 1 avocado for 1.5$. Which means the weight of avocado has dropped by 25%. This way the increase of 50% in price is reduced to 37.5% in statistics.
+                                </p>
+                            </div>
+
+
+                            <button class="accordion">Category Aggregation</button>
+                            <div class="accordion-content">
+                                <p>
+                                    A third way inflation can be skewed is by having categories englobing multiple products. In case of a rise in a price of a product, it is considered that a consumer would buy an alternative instead of what was bought previously.
+                                                    Let's say in the category "Meats, poultry, and fish" you usually buy more beef, if the beef increase in price, it doesn't mean that the category will have inflation.
+                                                    By considering that consumers will instead buy poultry and fish that have not changed price, the category will not reflect the inflation you see when buying beef.
+                                </p>
+                            </div>
+
+		                    <button class="accordion">Hedonic adjustments</button>
+                            <div class="accordion-content">
+                                <p>
+                                    Hedonic adjustements are supposed to take into account quality improvements of products. Which can make sense in some cases, like how a mobile phone can also be a camera today.
+                                                    But can also not really reflect changes related to usage, if you buy a car for going from A to B, it may not really matter to you if the car has A/C or not. The car has more functionality but the car cost more.
+                                                    See the list of categories here: https://www.bls.gov/cpi/quality-adjustment/
+			                    </p>
+                            </div>
+                        </div>
+    <script>
+  var accordions = document.getElementsByClassName("accordion");
+
+for (var i = 0; i < accordions.length; i++) {
+  accordions[i].onclick = function() {
+    this.classList.toggle('is-open');
+
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight) {
+      // accordion is currently open, so close it
+      content.style.maxHeight = null;
+    } else {
+      // accordion is currently closed, so open it
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  }
+}</script>
+                        </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="abouts-us">
+                            <h3>How can we  <strong class="cur">Fix</strong> this ?</h3>
+                            
+                            
+                                <p>
+
+                                    By setting up category weight that correspond to <strong>your</strong> spendings, 
+                                    we can still use some of the bls data and see how inflation impacts you.
+                                </p>
+                                <p>
+                                    You can use the preset category to view how inflation change depending on types of consumer
+                                    </p>
+                                <p>
+                                    Or <strong><a href ="Download.html" >download the application</a></strong> to customize weight of category further, or see monthly data.
+
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <button class="send-btn">Send</button>
+                </div>
+        </div>
+    </div>
+
+    <!-- service -->
+    <div class="service">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="STRONG">
+                            <i><img src="icon/strong.png" alt="icon"/></i>
+                            <h3>PROTECT YOURSELF AGAINST INFLATION</h3>
+                            <p>With low interest on your bank account you are constantly losing purchasing power</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="world">
+                            <i><img src="icon/world.png" alt="icon"/></i>
+                            <h3>OTHER COUNTRY DATA</h3>
+                            <p>Data for european countries is coming next</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+                    <div class="service-box">
+                        <h2>our <strong class="cur">goal</strong></h2>
+                        <p> We are not questioning the protocols gathering the data,
+                            nor are we trying to uncover any conspiracy.
+                            The goal of this website is to teach how inflation will affect you,
+                            and by how much to help you plan for your future.
+                            There will still be some averaging, depending on locations, stores,
+                            and how you manage your expenses, but at least you will get closer to the minimum inflation. </p>
+                        <figure><img class="img-responsive" src="images/service-image.jpg" alt="img"/></figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end service -->
+    <!-- state abouts -->
+    <div class="our experts">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage2">
+                        <h2>Help <strong class="cur">Donate</strong></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="experts-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <div class="experts-threebox">
+                            <figure><img src="images/experts-1.jpg" alt="img"/></figure>
+                            <h3>marco verratti </h3>
+                            <span>Ceo Founder</span>
+                            <p>exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor</p>
+                            <div class="icon"> <i> <a href="#"><img src="images/facebook.png"></a></i> <i> <a href="#"><img src="images/Twitter.png"></a></i> <i> <a href="#"><img src="images/linkedin.png"></a></i> <i> <a href="#"><img src="images/instagram.png"></a></i> </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <div class="experts-threebox">
+                            <figure><img src="images/experts-2.jpg" alt="img"/></figure>
+                            <h3>lina marzouki</h3>
+                            <span>Director</span>
+                            <p>exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor</p>
+                            <div class="icon"> <i> <a href="#"><img src="images/facebook.png"></a></i> <i> <a href="#"><img src="images/Twitter.png"></a></i> <i> <a href="#"><img src="images/linkedin.png"></a></i> <i> <a href="#"><img src="images/instagram.png"></a></i> </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <div class="experts-threebox">
+                            <figure><img src="images/experts-3.jpg" alt="img"/></figure>
+                            <h3>antonio conte </h3>
+                            <span>Money Developer</span>
+                            <p>
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                            <div class="icon"> <i> <a href="#"><img src="images/facebook.png"></a></i> <i> <a href="#"><img src="images/Twitter.png"></a></i> <i> <a href="#"><img src="images/linkedin.png"></a></i> <i> <a href="#"><img src="images/instagram.png"></a></i> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end abouts -->
+    <div class="Request">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage3">
+                        <h2>Request A call</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <form>
+                        <input class="form-control" placeholder="Name" type="Name">
+                        <input class="form-control" placeholder="Phone" type="Phone">
+                        <input class="form-control" placeholder="Email" type="Email">
+                        <textarea class="textarea" placeholder="Message">Message</textarea>
+                    </form>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="Request-box">
+                        <figure><img src="images/Request.jpg" alt="img"/></figure>
+                        <div class="Register">
+                            <h3>Get started today widh digital money bitcon</h3>
+                            <p>
+                                consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim
+                            </p>
+                            <a href="#">Register now</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <div class="Contact">
+                            <h3>Feedback</h3>
+                            <ul class="contant_icon">
+                                <li> <a href="#"><img src="icon/location.png"></a></li>
+                                <li> <a href="#"><img src="icon/tellephone.png"></a></li>
+                                <li> <a href="#"><img src="icon/email.png"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                        <div class="Social">
+                            <h3>Social links</h3>
+                            <ul class="socil_link">
+                                <li><a href="#"><img src="icon/fb.png"></a></li>
+                                <li><a href="#"><img src="icon/Tw.png"></a></li>
+                                <li> <a href="#"><img src="icon/lin.png"></a></li>
+                                <li> <a href="#"><img src="icon/insta.png"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+                        <div class="newsletter">
+                            <h3>newsletter</h3>
+                            <input class="new" placeholder="Enter your email" type="Enter your email">
+                            <button class="subscribe">subscribe</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- footer -->
-        <footer>
-            <div class="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                            <div class="Contact">
-                                <h3>Feedback</h3>
-                                <ul class="contant_icon">
-                                    <li> <a href="#"><img src="icon/location.png"></a></li>
-                                    <li> <a href="#"><img src="icon/tellephone.png"></a></li>
-                                    <li> <a href="#"><img src="icon/email.png"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                            <div class="Social">
-                                <h3>Social links</h3>
-                                <ul class="socil_link">
-                                    <li><a href="#"><img src="icon/fb.png"></a></li>
-                                    <li><a href="#"><img src="icon/Tw.png"></a></li>
-                                    <li> <a href="#"><img src="icon/lin.png"></a></li>
-                                    <li> <a href="#"><img src="icon/insta.png"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
-                            <div class="newsletter">
-                                <h3>newsletter</h3>
-                                <input class="new" placeholder="Enter your email" type="Enter your email">
-                                <button class="subscribe">subscribe</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="copyright">
+            <div class="container">
+                <p>Copyright 2019 All Right Reserved By <a href="http://html.design">Free html Templates</a></p>
             </div>
+        </div>
+    </footer>
+    <!-- end footer -->
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/plugin.js"></script>
 
-            <div class="copyright">
-                <div class="container">
-                    <p>Copyright 2019 All Right Reserved By <a href="http://html.design">Free html Templates</a></p>
-                </div>
-            </div>
-        </footer>
-        <!-- end footer -->
-        <!-- Javascript files-->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/jquery-3.0.0.min.js"></script>
-        <script src="js/plugin.js"></script>
-
-        <!-- sidebar -->
-        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="js/custom.js"></script>
+    <!-- sidebar -->
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
     </body>
-</html>
-
-
-
-
-@using Contracts
-@using EmptyMVC
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-</script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>View inflation based on your consumption</p>
-</div>
-
-<p>
-    Average American as per bls statistics
-    <form method="POST" action="?consumerType=0">
-        <button type="submit">Regular</button>
-    </form>
-
-    Minimalist with only need of shelter and food at home
-    <form method="POST" action="?consumerType=1">
-        <button type="submit">Minimalist Renter</button>
-    </form>
-
-    Minimalist owning their home and making own meals
-    <form method="POST" action="?consumerType=2">
-        <button type="submit">Minimalist Home owner</button>
-    </form>
-
-    Enjoying eating outside
-    <form method="POST" action="?consumerType=3">
-        <button type="submit">Restaurant Foodie</button>
-    </form>
-</p>
-
-<canvas id="InflationChart" style="width:100%;max-width:700px"></canvas>
-
-
-
-
-   
-
-<pre>Inflation is based on an average of what people consume. So as an average of everyone else, you are considered to be both a home owner and a renter, drinking, smoking, eating candies, eating fruits and vegetable at home and going to restaurants. You are buying both clothes for men and for women, owning a new car a new truck, as well as used ones. Using fuel, propane, gas and electricity. you have a pet and a garden. 
-    Obviously no one is that average person. And that is one reason why reported inflation doesn't match inflation impacting you.
-    
-    The balance between these items can also change year to year. If something got more expensive, people bought it less, and it will result in less weight in the balance.
-    If people used to buy 2 avocados at 1$ on average for a total of 2$ and suddendly the price increase buy 50%, they might start buying only 1 avocado for 1.5$. Which means the weight of avocado has dropped by 25%.  This way the increase of 50% in price is reduced to 37.5% in statistics.
-    
-    A second way inflation can be skewed is by having categories englobing multiple products. In case of a rise in a price of a product, it is considered that a consumer would buy an alternative instead of what was bought previously.
-    Let's say in the category "Meats, poultry, and fish" you usually buy more beef, if the beef increase in price, it doesn't mean that the category will have inflation.
-    By considering that consumers will instead buy poultry and fish that have not changed price, the category will not reflect the inflation you see when buying beef.
-    
-    By setting up more precise weight that correspond to your spendings, you can still use some of the bls data and see how inflation impacts you.
-    
-    There are still some limitation, like hedonic adjustements, which are supposed to take into account quality improvements of products. Which can make sense in some cases, like how a mobile phone can also be a camera today. 
-    But can also not really reflect changes related to usage, if you buy a car for going from A to B, it may not really matter to you if the car has A/C or not. The car has more functionality but the car cost more. 
-    See the list of categories here: https://www.bls.gov/cpi/quality-adjustment/ 
+    </html>
     
 
-    but we are not questioning the protocols gathering the data, nor are we trying to uncover any conspiracy.
-    The goal of this website is to teach how inflation will affect you, and by how much to help you plan for your future. 
-    There will still be some averaging, depending on locations, stores, and how you manage your expenses, but at least you will get closer to the minimum inflation.
-    </pre>
-
-    <h1>Weights of categories</h1>>
-
-    
-
-   
-
-    <script type="text/javascript">
+<script type="text/javascript">
 
 
         var myArray = [];
@@ -617,10 +684,3 @@ Little text about inflation facts
         });
 
     </script>
-
-
-    <p>
-        For setting more customized weights (let's say you are vegan and don't eat meats, so you want to remove it)
-        saving and loading data
-        Please download the application
-    </p>
