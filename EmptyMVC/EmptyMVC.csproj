@@ -44,7 +44,7 @@
     <None Remove="wwwroot\images\instagram.png" />
     <None Remove="wwwroot\images\linkedin.png" />
     <None Remove="wwwroot\images\loading.gif" />
-    <None Remove="wwwroot\images\logo.jpg" />
+    <None Remove="wwwroot\images\Logo.png" />
     <None Remove="wwwroot\images\Request.jpg" />
     <None Remove="wwwroot\images\search_icon.png" />
     <None Remove="wwwroot\images\service-image.jpg" />
@@ -239,7 +239,7 @@
     <Content Update="wwwroot\images\loading.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\logo.jpg">
+    <Content Update="wwwroot\images\Logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\images\Request.jpg">

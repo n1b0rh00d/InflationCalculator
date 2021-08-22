@@ -13,6 +13,7 @@
         int depth = values.Depth;
         var avgInf = values.AvgInflation;
         var valueOfDollar = values.ValueOfDollar;
+        var cType = 1;
     }
     @{
         SerieObservations inflationNumbers = root.CalculateInflationRecursivelyFromProvidedLevels();
@@ -80,8 +81,8 @@
         <link rel="stylesheet" href="css/style.css">
         <!-- Responsive-->
         <link rel="stylesheet" href="css/responsive.css">
-        <!-- fevicon -->
-        <link rel="icon" href="images/fevicon.png" type="image/gif"/>
+        <!-- favicon -->
+        <link rel="icon" href="images/favicon.png" type="image/gif"/>
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
         <!-- Tweaks for older IEs-->
@@ -119,7 +120,7 @@
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                     <div class="full">
                         <div class="center-desk">
-                            <div class="logo"> <a href="/"><img src="images/logo.jpg" alt="#"></a> </div>
+                            <div class="logo"> <a href="/"><img src="images/Logo.png" alt="#"></a> </div>
                         </div>
                     </div>
                 </div>
@@ -149,10 +150,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <!-- state banner -->
-                    <h2>Yearly reported inflation</h2>
+                    <h2>Yearly reported inflation in percent</h2>
                     <canvas id="InflationChart" style="width: 100%;"></canvas>
-                    <h4>Average Inflation: @avgInf</h4>
-                    <h4>Value of a 1997 Dollar today: @valueOfDollar</h4>
+                    <h2>Average Inflation: @avgInf %</h2>
+                    <h2>Value of a 1997 Dollar today: @valueOfDollar</h2>
                     <!-- end banner -->
                 </div>
                 <div class="col-md-6">
@@ -196,19 +197,19 @@
                             <h3>Average Consumer</h3>
                             <p>Official data, correspond to the average consumer</p>
                         </div>
-                        <form method="POST" action="?consumerType=0">
+                        <form method="POST" action="?consumerType=0&depth=@depth">
                             <button class="read-more" type="submit">Average</button>
                         </form>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="three-box">
-                        <figure><img src="images/2.jpg" alt="img"/></figure>
+                        <figure><img src="images/minimalistRenter.jpg" alt="img"/></figure>
                         <div class="Bitcoin">
                             <h3>Minimalist Renter</h3>
                             <p>Minimalist with only need of shelter and food at home </p>
                         </div>
-                        <form method="POST" action="?consumerType=1">
+                        <form method="POST" action="?consumerType=1&depth=@depth">
                             <button class="read-more" type="submit">Minimalist Renter</button>
                         </form>
 
@@ -216,52 +217,48 @@
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="three-box">
-                        <figure><img src="images/3.jpg" alt="img"/></figure>
+                        <figure><img src="images/minimalistOwner.jpg" alt="img"/></figure>
                         <div class="Bitcoin">
-                            <i><img src="images/dollar.png" alt="img"/></i>
-                            <h3>Minimalist Home Owner</h3>
+                            <h3>Minimalist Owner</h3>
                             <p> Minimalist owning their home and making own meals </p>
                         </div>
-                        <form method="POST" action="?consumerType=2">
+                        <form method="POST" action="?consumerType=2&depth=@depth">
                             <button class="read-more" type="submit">Minimalist Home owner</button>
                         </form>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="three-box">
-                        <figure><img src="images/3.jpg" alt="img"/></figure>
+                        <figure><img src="images/EatOutside.jpg" alt="img"/></figure>
                         <div class="Bitcoin">
-                            <i><img src="images/dollar.png" alt="img"/></i>
-                            <h3>Maximalist</h3>
-                            <p>Less eating at home, more activities </p>
+                            <h3>Food Taster</h3>
+                            <p>Less eating at home, more food outside and party </p>
                         </div>
-                        <form method="POST" action="?consumerType=3">
+                        <form method="POST" action="?consumerType=3&depth=@depth">
                             <button class="read-more" type="submit">Restaurant Foodie</button>
                         </form>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="three-box">
-                        <figure><img src="images/3.jpg" alt="img"/></figure>
+                        <figure><img src="images/Active.jpg" alt="img"/></figure>
                         <div class="Bitcoin">
-                            <i><img src="images/dollar.png" alt="img"/></i>
-                            <h3>Maximalist</h3>
-                            <p>Less eating at home, more activities </p>
+                            <h3>Active</h3>
+                            <p>More activities/sports, some degree of eating outside and more driving </p>
                         </div>
-                        <form method="POST" action="?consumerType=3">
+                        <form method="POST" action="?consumerType=4&depth=@depth">
                             <button class="read-more" type="submit">Restaurant Foodie</button>
                         </form>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="three-box">
-                        <figure><img src="images/3.jpg" alt="img"/></figure>
+                        <figure><img src="images/BadHabit.jpg" alt="img"/></figure>
                         <div class="Bitcoin">
-                            <i><img src="images/dollar.png" alt="img"/></i>
-                            <h3>Maximalist</h3>
-                            <p>Less eating at home, more activities </p>
+                            <h3>Bad Habits</h3>
+                            <p>Drink, smoke, eat more unhealthy, and spend more for healthcare</p>
                         </div>
-                        <form method="POST" action="?consumerType=3">
+                        <form method="POST" action="?consumerType=5&depth=@depth">
                             <button class="read-more" type="submit">Restaurant Foodie</button>
                         </form>
                     </div>
@@ -279,20 +276,19 @@
             <div class="row">
                 <p>Choose a different depth to see sub categories</p>
 
-                <form action="">
-
+                <form method="POST" action="?consumerType=@cType">
                     <select name="depth" id="depth">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
+                        <option value="1" @(depth == 1 ? "selected" : "")>1</option>
+                        <option value="2" @(depth == 2 ? "selected" : "")>2</option>
+                        <option value="3" @(depth == 3 ? "selected" : "")>3</option>
+                        <option value="4" @(depth == 4 ? "selected" : "")>4</option>
+                        <option value="5" @(depth == 5 ? "selected" : "")>5</option>
+                        <option value="6" @(depth == 6 ? "selected" : "")>6</option>
+                        <option value="7" @(depth == 7 ? "selected" : "")>7</option>
+                        <option value="8" @(depth == 8 ? "selected" : "")>8</option>
+                        <option value="9" @(depth == 9 ? "selected" : "")>9</option>
+                        <option value="10" @(depth == 10 ? "selected" : "")>10</option>
+                        <option value="11" @(depth == 11 ? "selected" : "")>11</option>
                     </select>
                     <input type="submit">
 
@@ -352,7 +348,6 @@
                     <div class="three-box">
                         <figure><img src="images/1.jpg" alt="img"/></figure>
                         <div class="Bitcoin">
-                            <i><img src="images/dollar.png" alt="img"/></i>
                             <h3>Invest in Bitcoin</h3>
                             <p>Investing in cryptocurrency can be a way to beat inflation, with a finite number of bitcoins this is the best investment against inflation</p>
                         </div>
@@ -361,9 +356,8 @@
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="three-box">
-                        <figure><img src="images/2.jpg" alt="img"/></figure>
+                        <figure><img src="images/stock.jpg" alt="img"/></figure>
                         <div class="Bitcoin">
-                            <i><img src="images/dollar.png" alt="img"/></i>
                             <h3>Invest in equities</h3>
                             <p>Investing in promising companies in the stock market is a safe way to protect yourself from prices always going up</p>
                         </div>
@@ -372,9 +366,8 @@
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="three-box">
-                        <figure><img src="images/3.jpg" alt="img"/></figure>
+                        <figure><img src="images/borrow.jpg" alt="img"/></figure>
                         <div class="Bitcoin">
-                            <i><img src="images/dollar.png" alt="img"/></i>
                             <h3>Credit and Credit Consolidation</h3>
                             <p>With debasement of the currency, it is interesting to borrow in fiat for your investments, while keeping interest rate low</p>
                         </div>
