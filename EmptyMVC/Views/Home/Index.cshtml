@@ -152,8 +152,8 @@
                     <!-- state banner -->
                     <h2>Yearly reported inflation in percent</h2>
                     <canvas id="InflationChart" style="width: 100%;"></canvas>
-                    <h2>Average Inflation: @avgInf %</h2>
-                    <h2>Value of a 1997 Dollar today: @valueOfDollar</h2>
+                    <h2>Average Inflation: @Math.Round(avgInf,4) %</h2>
+                    <h2>Value of a 1997 Dollar today: @Math.Round(valueOfDollar,4) $</h2>
                     <!-- end banner -->
                 </div>
                 <div class="col-md-6">
@@ -195,7 +195,7 @@
                         <figure><img src="images/Avg.jpg" alt="img"/></figure>
                         <div class="Bitcoin">
                             <h3>Average Consumer</h3>
-                            <p>Official data, correspond to the average consumer</p>
+                            <p>Official data, correspond to the average consumer.<br />Budget 5000$</p>
                         </div>
                         <form method="POST" action="?consumerType=0&depth=@depth">
                             <button class="read-more" type="submit">Average</button>
@@ -207,7 +207,7 @@
                         <figure><img src="images/minimalistRenter.jpg" alt="img"/></figure>
                         <div class="Bitcoin">
                             <h3>Minimalist Renter</h3>
-                            <p>Minimalist with only need of shelter and food at home </p>
+                            <p>Minimalist with only need of shelter and food at home.<br />Budget 2000$</p>
                         </div>
                         <form method="POST" action="?consumerType=1&depth=@depth">
                             <button class="read-more" type="submit">Minimalist Renter</button>
@@ -220,7 +220,7 @@
                         <figure><img src="images/minimalistOwner.jpg" alt="img"/></figure>
                         <div class="Bitcoin">
                             <h3>Minimalist Owner</h3>
-                            <p> Minimalist owning their home and making own meals </p>
+                            <p> Similar to renter, but paying mortgage instead.<br />Budget 2000$</p>
                         </div>
                         <form method="POST" action="?consumerType=2&depth=@depth">
                             <button class="read-more" type="submit">Minimalist Home owner</button>
@@ -232,10 +232,10 @@
                         <figure><img src="images/EatOutside.jpg" alt="img"/></figure>
                         <div class="Bitcoin">
                             <h3>Food Taster</h3>
-                            <p>Less eating at home, more food outside and party </p>
+                            <p>Less cooking at home, more food outside and delivery to eat in front of TV.<br />Budget 3000$</p>
                         </div>
                         <form method="POST" action="?consumerType=3&depth=@depth">
-                            <button class="read-more" type="submit">Restaurant Foodie</button>
+                            <button class="read-more" type="submit">Food Taster</button>
                         </form>
                     </div>
                 </div>
@@ -244,10 +244,10 @@
                         <figure><img src="images/Active.jpg" alt="img"/></figure>
                         <div class="Bitcoin">
                             <h3>Active</h3>
-                            <p>More activities/sports, some degree of eating outside and more driving </p>
+                            <p>More activities/sports, some degree of eating outside and more driving, also buys more stuff. <br />Budget 4000$</p>
                         </div>
                         <form method="POST" action="?consumerType=4&depth=@depth">
-                            <button class="read-more" type="submit">Restaurant Foodie</button>
+                            <button class="read-more" type="submit">Active</button>
                         </form>
                     </div>
                 </div>
@@ -256,10 +256,11 @@
                         <figure><img src="images/BadHabit.jpg" alt="img"/></figure>
                         <div class="Bitcoin">
                             <h3>Bad Habits</h3>
-                            <p>Drink, smoke, eat more unhealthy, and spend more for healthcare</p>
+                            <p>Big budget, Drink, smoke, eat more unhealthy, and spend more for healthcare. 
+                                <br />Budget 3500$</p>
                         </div>
                         <form method="POST" action="?consumerType=5&depth=@depth">
-                            <button class="read-more" type="submit">Restaurant Foodie</button>
+                            <button class="read-more" type="submit">Bad Habits</button>
                         </form>
                     </div>
                 </div>

@@ -155,5 +155,10 @@ namespace WinFormsApp1
             LoadData();
             Refresh();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            rootLevel.PrintNodesWeightRecursive(rootLevel);
+        }
     }
 }

@@ -32,6 +32,7 @@ namespace WinFormsApp1
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonNormalize = new System.Windows.Forms.Button();
             this.buttonSetTo0 = new System.Windows.Forms.Button();
@@ -72,7 +73,7 @@ namespace WinFormsApp1
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 82;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(1721, 783);
+            this.dataGridView1.Size = new System.Drawing.Size(1722, 314);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
@@ -106,7 +107,7 @@ namespace WinFormsApp1
             this.formsPlot1.Location = new System.Drawing.Point(22, 26);
             this.formsPlot1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.formsPlot1.Name = "formsPlot1";
-            this.formsPlot1.Size = new System.Drawing.Size(1721, 736);
+            this.formsPlot1.Size = new System.Drawing.Size(1722, 736);
             this.formsPlot1.TabIndex = 3;
             // 
             // listBox1
@@ -185,9 +186,10 @@ namespace WinFormsApp1
             // buttonSave
             // 
             this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSave.Location = new System.Drawing.Point(1372, 754);
+            this.buttonSave.Location = new System.Drawing.Point(1372, 753);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 46);
+            this.buttonSave.Size = new System.Drawing.Size(74, 47);
             this.buttonSave.TabIndex = 10;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -196,9 +198,10 @@ namespace WinFormsApp1
             // buttonLoad
             // 
             this.buttonLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonLoad.Location = new System.Drawing.Point(1453, 754);
+            this.buttonLoad.Location = new System.Drawing.Point(1452, 753);
+            this.buttonLoad.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.buttonLoad.Name = "buttonLoad";
-            this.buttonLoad.Size = new System.Drawing.Size(104, 46);
+            this.buttonLoad.Size = new System.Drawing.Size(104, 47);
             this.buttonLoad.TabIndex = 11;
             this.buttonLoad.Text = "Reload";
             this.buttonLoad.UseVisualStyleBackColor = true;
@@ -207,9 +210,10 @@ namespace WinFormsApp1
             // buttonReset
             // 
             this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReset.Location = new System.Drawing.Point(1563, 754);
+            this.buttonReset.Location = new System.Drawing.Point(1564, 753);
+            this.buttonReset.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(153, 46);
+            this.buttonReset.Size = new System.Drawing.Size(152, 47);
             this.buttonReset.TabIndex = 12;
             this.buttonReset.Text = "ResetData";
             this.buttonReset.UseVisualStyleBackColor = true;
@@ -219,7 +223,7 @@ namespace WinFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1766, 1638);
+            this.ClientSize = new System.Drawing.Size(1766, 1182);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.buttonSave);
@@ -233,9 +237,10 @@ namespace WinFormsApp1
             this.Controls.Add(this.buttonSetTo0);
             this.Controls.Add(this.buttonNormalize);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Personalized Inflation";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

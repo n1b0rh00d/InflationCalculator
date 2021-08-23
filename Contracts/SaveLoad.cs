@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -50,6 +51,8 @@ namespace Contracts
 
         // need something to get latest data
         //https://download.bls.gov/pub/time.series/cu/cu.data.0.Current
+
+       
 
     }
 }

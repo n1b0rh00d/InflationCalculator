@@ -106,6 +106,37 @@ namespace Contracts
 
         }
 
+        public void PrintNodesWeightRecursive(TreeNode<TCategory> oParentNode)
+        {
+            if (oParentNode._value.HasUserSetWeight)
+            {
+                var lineTOprint = "root";
+                var reversedOrder = new List<int>();
+                var node = oParentNode;
+                while (node.Name != "All items")
+                {
+                    reversedOrder.Add(node.Parent.Children.IndexOf(node));
+                    node = node.Parent;
+                }
+                
+                reversedOrder.Reverse();
+                foreach (var n in reversedOrder)
+                {
+                    lineTOprint += $".Children[{n}]";
+                }
+
+                lineTOprint += $".UpdateWeightUpAndDown({oParentNode.Value._weight},true);";
+                Debug.WriteLine(lineTOprint);
+            }
+
+            // Start recursion on all subnodes.
+            foreach (TreeNode<TCategory> oSubNode in oParentNode._children)
+            {
+                PrintNodesWeightRecursive(oSubNode);
+            }
+
+        }
+
         public void BackPopulateNodesRecursive()
         {
             this.BackFillMissingYearlyData();

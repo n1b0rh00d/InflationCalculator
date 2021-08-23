@@ -12,57 +12,671 @@ namespace Contracts
             {
                 case ConsumerType.Regular:
                     return;
-                case ConsumerType.EssentialRenter:
+                case ConsumerType.EssentialRenter: //2000
                     AdjustWeightForEssentialRenter(root);
                     return;
-                case ConsumerType.EssentialHomeOwner:
+                case ConsumerType.EssentialHomeOwner: // 2000 (equivalent rent)
                     AdjustWeightForEssentialHomeOwner(root);
                     return;
-                case ConsumerType.Prodige:
-                    AdjustWeightForProdige(root);
+                case ConsumerType.Foodie: //3000
+                    AdjustWeightForFoodie(root);
+                    return;
+                case ConsumerType.Active://3500
+                    AdjustWeightForActive(root);
+                    return;
+                case ConsumerType.BadHabit://2500
+                    AdjustWeightForBadHabit(root);
                     return;
             }
         }
 
         public static void AdjustWeightForEssentialRenter(TreeNode<Category> root)
         {
-            root.UpdateWeightUpAndDown(0, true);
-            root[0].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(5,true); // Cereals and cereal products
-            root[0].Children[0].Children[1].UpdateWeightUpAndDown(10,true); //      Meats, poultry, fish, and eggs
-            root[0].Children[0].Children[2].UpdateWeightUpAndDown(10,true); //            Dairy and related products
-            root[0].Children[0].Children[3].UpdateWeightUpAndDown(10,true); //            Fruits and vegetables
-            root[0].Children[0].Children[4].UpdateWeightUpAndDown(0,true); //         Nonalcoholic beverages and beverage materials
-            root[0].Children[0].Children[5].UpdateWeightUpAndDown(0,true); //               Other food at home
-            root[0].Children[0].Children[5].Children[1].Children[1].UpdateWeightUpAndDown(2,true); //              Butter and margarine
+            root[0].Children[0].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[0].Children[1].Children[2].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[0].Children[1].Children[3].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[1].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[1].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[2].Children[0].Children[1].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[2].Children[2].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[2].Children[3].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[4].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[5].Children[0].Children[1].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[5].Children[1].Children[1].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[5].Children[0].Children[2].UpdateWeightUpAndDown(0, true);
+            root[0].Children[0].Children[5].Children[2].UpdateWeightUpAndDown(0, true);
+            root[0].Children[1].UpdateWeightUpAndDown(0, true);
+            root[1].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(0, true);
+            root[1].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(0, true);
+            root[1].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(0, true);
+            root[1].Children[1].Children[1].UpdateWeightUpAndDown(0, true);
+            root[2].Children[0].Children[1].UpdateWeightUpAndDown(0, true);
+            root[2].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(0, true);
+            root[2].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(0, true);
+            root[2].Children[1].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(0, true);
+            root[2].Children[0].Children[4].Children[0].Children[0].UpdateWeightUpAndDown(0, true);
+            root[2].Children[0].Children[7].Children[0].UpdateWeightUpAndDown(0, true);
+            root[2].Children[0].Children[4].Children[0].Children[2].UpdateWeightUpAndDown(0, true);
+            root[2].Children[0].Children[4].Children[0].Children[3].UpdateWeightUpAndDown(0, true);
+            root[2].Children[0].Children[4].Children[1].UpdateWeightUpAndDown(0, true);
+            root[2].Children[0].Children[4].Children[2].UpdateWeightUpAndDown(0, true);
+            root[2].Children[0].Children[4].Children[3].UpdateWeightUpAndDown(0, true);
+            root[2].Children[0].Children[4].Children[4].UpdateWeightUpAndDown(0, true);
+            root[2].Children[0].Children[4].Children[5].UpdateWeightUpAndDown(0, true);
+            root[2].Children[0].Children[5].UpdateWeightUpAndDown(0, true);
+            root[2].Children[0].Children[6].UpdateWeightUpAndDown(0, true);
+            root[2].Children[0].Children[7].UpdateWeightUpAndDown(0, true);
+            root[2].Children[1].Children[3].Children[2].UpdateWeightUpAndDown(0, true);
+            root[2].Children[1].Children[3].Children[3].UpdateWeightUpAndDown(0, true);
 
-            root[1].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(5, true);//          Gasoline
-            root[1].Children[1].Children[0].UpdateWeightUpAndDown(20, true);//                Electricity
+            root[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(12, true);
+            root[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(24, true);
+            root[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[2].UpdateWeightUpAndDown(16, true);
+            root[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[3].UpdateWeightUpAndDown(8, true);
+            root[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(8, true);
+            root[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[3].UpdateWeightUpAndDown(8, true);
+            root[0].Children[0].Children[3].Children[0].Children[2].Children[2].Children[0].UpdateWeightUpAndDown(8, true);
+            root[0].Children[0].Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(12, true);
+            root[0].Children[0].Children[1].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(30, true);
+            root[0].Children[0].Children[1].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(36, true);
+            root[0].Children[0].Children[5].Children[1].Children[0].Children[0].UpdateWeightUpAndDown(12, true);
+            root[0].Children[0].Children[1].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(2, true);
+            root[2].Children[1].Children[4].Children[4].Children[1].Children[0].UpdateWeightUpAndDown(5, true);
+            root[2].Children[1].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(1600, true);
+            root[0].Children[0].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(17, true);
+            root[0].Children[0].Children[1].Children[0].Children[1].UpdateWeightUpAndDown(32, true);
+            root[0].Children[0].Children[1].Children[0].Children[2].UpdateWeightUpAndDown(36, true);
+            root[0].Children[0].Children[1].Children[0].Children[3].UpdateWeightUpAndDown(10, true);
+            root[1].Children[0].Children[1].Children[0].Children[0].UpdateWeightUpAndDown(40, true);
+            root[2].Children[0].Children[2].Children[2].Children[1].UpdateWeightUpAndDown(10, true);
+            root[2].Children[0].Children[4].Children[0].Children[1].UpdateWeightUpAndDown(10, true);
+            root[2].Children[1].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(15, true);
+            root[2].Children[1].Children[5].Children[0].Children[0].UpdateWeightUpAndDown(30, true);
+            root[0].Children[0].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(4, true);
+            root[0].Children[0].Children[3].Children[0].Children[2].UpdateWeightUpAndDown(8, true);
+            root[0].Children[0].Children[5].Children[0].Children[0].UpdateWeightUpAndDown(4, true);
+            root[0].Children[0].Children[5].Children[1].Children[2].UpdateWeightUpAndDown(3, true);
+            root[2].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(2, true);
+            root[2].Children[0].Children[0].Children[5].Children[0].UpdateWeightUpAndDown(3, true);
+            root[2].Children[0].Children[0].Children[5].Children[1].UpdateWeightUpAndDown(4, true);
+            root[2].Children[0].Children[3].Children[0].Children[0].UpdateWeightUpAndDown(5, true);
+            root[2].Children[1].Children[6].Children[1].Children[0].UpdateWeightUpAndDown(1, true);
+            root[2].Children[1].Children[7].Children[1].Children[3].UpdateWeightUpAndDown(6, true);
+            root[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(10, true);
+            root[0].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(40, true);
+            root[1].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(40, true);
+            root[2].Children[1].Children[3].Children[4].UpdateWeightUpAndDown(50, true);
+            root[2].Children[1].Children[4].Children[3].UpdateWeightUpAndDown(60, true);
+            root[2].Children[0].Children[0].Children[4].UpdateWeightUpAndDown(1, true);
+            root[2].Children[1].Children[2].Children[2].UpdateWeightUpAndDown(4, true);
+            root[0].Children[0].Children[3].UpdateWeightUpAndDown(200, true);
+            root[2].Children[1].Children[1].UpdateWeightUpAndDown(100, true);
+            root[1].Children[1].Children[0].UpdateWeightUpAndDown(70, true);
+            root[2].Children[1].Children[3].UpdateWeightUpAndDown(90, true);
+            root[2].Children[1].Children[4].UpdateWeightUpAndDown(65, true);
+            root[2].Children[1].Children[5].UpdateWeightUpAndDown(30, true);
+            root[2].Children[1].Children[2].UpdateWeightUpAndDown(4, true);
+            root[2].Children[1].Children[6].UpdateWeightUpAndDown(1, true);
+            root[2].Children[1].Children[7].UpdateWeightUpAndDown(6, true);
+            //root[0].Children[0].UpdateWeightUpAndDown(450, true);
+            root[2].UpdateWeightUpAndDown(1950, true);
+            root[0].UpdateWeightUpAndDown(450, true);
 
-            //shelter
-            root[2].Children[1].Children[0].Children[0].UpdateWeightUpAndDown(50, true); //Rent of shelter
             root.UpdateWeightUpAndDown(100, true);
-            root.NormalizeWeights(); 
+
         }
 
         public static void AdjustWeightForEssentialHomeOwner(TreeNode<Category> root)
         {
-            root.UpdateWeightUpAndDown(0, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[2].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[2].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[2].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[4].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[5].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[5].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[5].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[5].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[4].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[5].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[5].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[6].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[7].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[7].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[3].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[3].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[2].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[2].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[2].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[4].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[5].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[5].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[5].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[5].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[4].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[5].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[5].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[6].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[7].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[7].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[3].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[3].Children[3].UpdateWeightUpAndDown(0m, true);
 
-            root.UpdateWeightUpAndDown(25, true); //food at home
-            root.UpdateWeightUpAndDown(25, true); //food at home
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(12.32m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[2].UpdateWeightUpAndDown(16.42m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(12.32m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(24.64m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[3].UpdateWeightUpAndDown(8.21m, true);
+            root.Children[0].Children[0].Children[3].Children[0].Children[2].Children[2].Children[0].UpdateWeightUpAndDown(8.21m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[3].UpdateWeightUpAndDown(8.21m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(8.21m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[3].UpdateWeightUpAndDown(8.21m, true);
+            root.Children[0].Children[0].Children[3].Children[0].Children[2].Children[2].Children[0].UpdateWeightUpAndDown(8.21m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(12.32m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(31.21m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(36.95m, true);
+            root.Children[0].Children[0].Children[5].Children[1].Children[0].Children[0].UpdateWeightUpAndDown(12.32m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(12.32m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(31.21m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(36.95m, true);
+            root.Children[0].Children[0].Children[5].Children[1].Children[0].Children[0].UpdateWeightUpAndDown(12.32m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(1700m, true);
+            root.Children[2].Children[1].Children[4].Children[4].Children[1].Children[0].UpdateWeightUpAndDown(5.19m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(1700m, true);
+            root.Children[2].Children[1].Children[4].Children[4].Children[1].Children[0].UpdateWeightUpAndDown(5.19m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(1.9m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(1.9m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(17.56m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[2].UpdateWeightUpAndDown(36.95m, true);
+            root.Children[1].Children[0].Children[1].Children[0].Children[0].UpdateWeightUpAndDown(41.49m, true);
+            root.Children[2].Children[0].Children[2].Children[2].Children[1].UpdateWeightUpAndDown(10.37m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[1].UpdateWeightUpAndDown(10.37m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(15.56m, true);
+            root.Children[2].Children[1].Children[5].Children[0].Children[0].UpdateWeightUpAndDown(31.11m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(17.56m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[2].UpdateWeightUpAndDown(36.95m, true);
+            root.Children[1].Children[0].Children[1].Children[0].Children[0].UpdateWeightUpAndDown(41.49m, true);
+            root.Children[2].Children[0].Children[2].Children[2].Children[1].UpdateWeightUpAndDown(10.37m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[1].UpdateWeightUpAndDown(10.37m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(15.56m, true);
+            root.Children[2].Children[1].Children[5].Children[0].Children[0].UpdateWeightUpAndDown(31.11m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(4.11m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[1].UpdateWeightUpAndDown(33.1m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[3].UpdateWeightUpAndDown(9.85m, true);
+            root.Children[0].Children[0].Children[3].Children[0].Children[2].UpdateWeightUpAndDown(8.21m, true);
+            root.Children[0].Children[0].Children[5].Children[0].Children[0].UpdateWeightUpAndDown(4.11m, true);
+            root.Children[0].Children[0].Children[5].Children[1].Children[2].UpdateWeightUpAndDown(3.28m, true);
+            root.Children[2].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(2.07m, true);
+            root.Children[2].Children[0].Children[0].Children[5].Children[0].UpdateWeightUpAndDown(3.11m, true);
+            root.Children[2].Children[0].Children[0].Children[5].Children[1].UpdateWeightUpAndDown(4.15m, true);
+            root.Children[2].Children[0].Children[3].Children[0].Children[0].UpdateWeightUpAndDown(5.19m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(1700m, true);
+            root.Children[2].Children[1].Children[6].Children[1].Children[0].UpdateWeightUpAndDown(1.04m, true);
+            root.Children[2].Children[1].Children[7].Children[1].Children[3].UpdateWeightUpAndDown(6.22m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(4.11m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[1].UpdateWeightUpAndDown(33.1m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[3].UpdateWeightUpAndDown(9.85m, true);
+            root.Children[0].Children[0].Children[3].Children[0].Children[2].UpdateWeightUpAndDown(8.21m, true);
+            root.Children[0].Children[0].Children[5].Children[0].Children[0].UpdateWeightUpAndDown(4.11m, true);
+            root.Children[0].Children[0].Children[5].Children[1].Children[2].UpdateWeightUpAndDown(3.28m, true);
+            root.Children[2].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(2.07m, true);
+            root.Children[2].Children[0].Children[0].Children[5].Children[0].UpdateWeightUpAndDown(3.11m, true);
+            root.Children[2].Children[0].Children[0].Children[5].Children[1].UpdateWeightUpAndDown(4.15m, true);
+            root.Children[2].Children[0].Children[3].Children[0].Children[0].UpdateWeightUpAndDown(5.19m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(1700m, true);
+            root.Children[2].Children[1].Children[6].Children[1].Children[0].UpdateWeightUpAndDown(1.04m, true);
+            root.Children[2].Children[1].Children[7].Children[1].Children[3].UpdateWeightUpAndDown(6.22m, true);
+            root.Children[0].Children[0].Children[2].Children[0].Children[0].UpdateWeightUpAndDown(9.3m, true);
+            root.Children[0].Children[0].Children[2].Children[0].Children[0].UpdateWeightUpAndDown(9.3m, true);
+            root.Children[0].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(41.06m, true);
+            root.Children[1].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(41.49m, true);
+            root.Children[2].Children[1].Children[3].Children[4].UpdateWeightUpAndDown(51.86m, true);
+            root.Children[2].Children[1].Children[4].Children[3].UpdateWeightUpAndDown(62.23m, true);
+            root.Children[0].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(41.06m, true);
+            root.Children[1].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(41.49m, true);
+            root.Children[2].Children[1].Children[3].Children[4].UpdateWeightUpAndDown(51.86m, true);
+            root.Children[2].Children[1].Children[4].Children[3].UpdateWeightUpAndDown(62.23m, true);
+            root.Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(9.85m, true);
+            root.Children[2].Children[0].Children[0].Children[4].UpdateWeightUpAndDown(1.04m, true);
+            root.Children[2].Children[1].Children[2].Children[2].UpdateWeightUpAndDown(4.15m, true);
+            root.Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(9.85m, true);
+            root.Children[2].Children[0].Children[0].Children[4].UpdateWeightUpAndDown(1.04m, true);
+            root.Children[2].Children[1].Children[2].Children[2].UpdateWeightUpAndDown(4.15m, true);
+            root.Children[0].Children[0].Children[3].UpdateWeightUpAndDown(213.51m, true);
+            root.Children[2].Children[1].Children[1].UpdateWeightUpAndDown(103.71m, true);
+            root.Children[0].Children[0].Children[3].UpdateWeightUpAndDown(213.51m, true);
+            root.Children[2].Children[1].Children[1].UpdateWeightUpAndDown(103.71m, true);
+            root.Children[2].Children[1].Children[3].UpdateWeightUpAndDown(94.25m, true);
+            root.Children[2].Children[1].Children[4].UpdateWeightUpAndDown(67.41m, true);
+            root.Children[2].Children[1].Children[5].UpdateWeightUpAndDown(31.11m, true);
+            root.Children[2].Children[1].Children[3].UpdateWeightUpAndDown(94.25m, true);
+            root.Children[2].Children[1].Children[4].UpdateWeightUpAndDown(67.41m, true);
+            root.Children[2].Children[1].Children[5].UpdateWeightUpAndDown(31.11m, true);
+            root.Children[1].Children[1].Children[0].UpdateWeightUpAndDown(72.6m, true);
+            root.Children[2].Children[1].Children[2].UpdateWeightUpAndDown(4.15m, true);
+            root.Children[2].Children[1].Children[6].UpdateWeightUpAndDown(1.04m, true);
+            root.Children[2].Children[1].Children[7].UpdateWeightUpAndDown(6.22m, true);
+            root.Children[1].Children[1].Children[0].UpdateWeightUpAndDown(72.6m, true);
+            root.Children[2].Children[1].Children[2].UpdateWeightUpAndDown(4.15m, true);
+            root.Children[2].Children[1].Children[6].UpdateWeightUpAndDown(1.04m, true);
+            root.Children[2].Children[1].Children[7].UpdateWeightUpAndDown(6.22m, true);
+            root.Children[0].Children[0].UpdateWeightUpAndDown(466.71m, true);
+            root.Children[0].UpdateWeightUpAndDown(466.71m, true);
+            root.Children[2].UpdateWeightUpAndDown(2059.8m, true);
+
             root.UpdateWeightUpAndDown(100, true);
-
-            root.NormalizeWeights();
         }
 
-        public static void AdjustWeightForProdige(TreeNode<Category> root)
+        public static void AdjustWeightForFoodie(TreeNode<Category> root)
         {
-            root.UpdateWeightUpAndDown(0, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[2].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[2].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[2].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[5].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[5].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[5].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[5].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[4].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[5].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[5].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[7].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[7].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[3].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[3].Children[3].UpdateWeightUpAndDown(0m, true);
 
-            root.UpdateWeightUpAndDown(25, true); //Eat outside
-            root.UpdateWeightUpAndDown(25, true); //food at home
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(3.96m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(7.92m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[3].UpdateWeightUpAndDown(2.64m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(2.64m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[2].UpdateWeightUpAndDown(5.28m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[3].UpdateWeightUpAndDown(2.64m, true);
+            root.Children[0].Children[0].Children[3].Children[0].Children[2].Children[2].Children[0].UpdateWeightUpAndDown(2.64m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(10.03m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(11.88m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(3.96m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(0.61m, true);
+            root.Children[0].Children[0].Children[5].Children[1].Children[0].Children[0].UpdateWeightUpAndDown(3.96m, true);
+            root.Children[2].Children[1].Children[4].Children[4].Children[1].Children[0].UpdateWeightUpAndDown(5.3m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[1].UpdateWeightUpAndDown(10.64m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[2].UpdateWeightUpAndDown(11.88m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(15.91m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(1.32m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(5.64m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[3].UpdateWeightUpAndDown(3.17m, true);
+            root.Children[0].Children[0].Children[2].Children[0].Children[0].UpdateWeightUpAndDown(2.99m, true);
+            root.Children[0].Children[0].Children[3].Children[0].Children[2].UpdateWeightUpAndDown(2.64m, true);
+            root.Children[0].Children[0].Children[5].Children[0].Children[0].UpdateWeightUpAndDown(1.32m, true);
+            root.Children[0].Children[0].Children[5].Children[1].Children[2].UpdateWeightUpAndDown(1.06m, true);
+            root.Children[2].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(2.12m, true);
+            root.Children[2].Children[0].Children[0].Children[5].Children[0].UpdateWeightUpAndDown(3.18m, true);
+            root.Children[2].Children[0].Children[0].Children[5].Children[1].UpdateWeightUpAndDown(4.24m, true);
+            root.Children[2].Children[0].Children[2].Children[2].Children[1].UpdateWeightUpAndDown(10.6m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[1].UpdateWeightUpAndDown(10.6m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(1600m, true);
+            root.Children[2].Children[1].Children[6].Children[1].Children[0].UpdateWeightUpAndDown(1.06m, true);
+            root.Children[2].Children[1].Children[7].Children[1].Children[3].UpdateWeightUpAndDown(6.36m, true);
+            root.Children[2].Children[0].Children[3].Children[0].Children[0].UpdateWeightUpAndDown(5.3m, true);
+            root.Children[0].Children[0].Children[4].Children[1].Children[0].UpdateWeightUpAndDown(20m, true);
+            root.Children[1].Children[0].Children[1].Children[0].Children[0].UpdateWeightUpAndDown(80m, true);
+            root.Children[2].Children[1].Children[5].Children[0].Children[0].UpdateWeightUpAndDown(60m, true);
+            root.Children[2].Children[1].Children[3].Children[4].UpdateWeightUpAndDown(53.02m, true);
+            root.Children[2].Children[1].Children[4].Children[3].UpdateWeightUpAndDown(63.63m, true);
+            root.Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(3.17m, true);
+            root.Children[0].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(13.2m, true);
+            root.Children[2].Children[0].Children[0].Children[4].UpdateWeightUpAndDown(1.06m, true);
+            root.Children[2].Children[1].Children[2].Children[2].UpdateWeightUpAndDown(4.24m, true);
+            root.Children[1].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(80m, true);
+            root.Children[2].Children[0].Children[6].Children[0].UpdateWeightUpAndDown(30m, true);
+            root.Children[2].Children[0].Children[6].Children[1].UpdateWeightUpAndDown(60m, true);
+            root.Children[2].Children[1].Children[1].UpdateWeightUpAndDown(106.05m, true);
+            root.Children[0].Children[0].Children[3].UpdateWeightUpAndDown(68.62m, true);
+            root.Children[1].Children[1].Children[0].UpdateWeightUpAndDown(74.23m, true);
+            root.Children[2].Children[1].Children[3].UpdateWeightUpAndDown(96.38m, true);
+            root.Children[2].Children[1].Children[4].UpdateWeightUpAndDown(68.93m, true);
+            root.Children[2].Children[1].Children[2].UpdateWeightUpAndDown(4.24m, true);
+            root.Children[2].Children[1].Children[6].UpdateWeightUpAndDown(1.06m, true);
+            root.Children[2].Children[1].Children[7].UpdateWeightUpAndDown(6.36m, true);
+            root.Children[0].Children[1].Children[0].UpdateWeightUpAndDown(650m, true);
+            root.Children[0].Children[0].Children[4].UpdateWeightUpAndDown(20m, true);
+            root.Children[0].Children[1].Children[3].UpdateWeightUpAndDown(30m, true);
+            root.Children[2].Children[0].Children[6].UpdateWeightUpAndDown(90m, true);
+            root.Children[2].Children[1].Children[5].UpdateWeightUpAndDown(60m, true);
+            root.Children[0].Children[0].UpdateWeightUpAndDown(170m, true);
+            root.Children[0].Children[1].UpdateWeightUpAndDown(680m, true);
+            root.Children[2].UpdateWeightUpAndDown(2086.08m, true);
+            root.Children[0].UpdateWeightUpAndDown(850m, true);
+
             root.UpdateWeightUpAndDown(100, true);
-            root.NormalizeWeights();
+        }
+        public static void AdjustWeightForActive(TreeNode<Category> root)
+        {
+            root.Children[0].Children[0].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[2].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[2].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[2].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[5].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[5].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[4].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[7].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[3].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[3].Children[3].UpdateWeightUpAndDown(0m, true);
+
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[0].Children[1].UpdateWeightUpAndDown(10m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(4.97m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(9.94m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[3].UpdateWeightUpAndDown(3.31m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(3.31m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[2].UpdateWeightUpAndDown(6.62m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[3].UpdateWeightUpAndDown(3.31m, true);
+            root.Children[0].Children[0].Children[3].Children[0].Children[2].Children[2].Children[0].UpdateWeightUpAndDown(3.31m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(10m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(12.59m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(14.91m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(4.97m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(0.77m, true);
+            root.Children[0].Children[0].Children[5].Children[1].Children[0].Children[0].UpdateWeightUpAndDown(4.97m, true);
+            root.Children[2].Children[1].Children[4].Children[4].Children[1].Children[0].UpdateWeightUpAndDown(4.58m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[3].Children[1].UpdateWeightUpAndDown(15m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(1188.18m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[1].UpdateWeightUpAndDown(13.35m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[2].UpdateWeightUpAndDown(14.91m, true);
+            root.Children[1].Children[0].Children[1].Children[0].Children[0].UpdateWeightUpAndDown(69.04m, true);
+            root.Children[2].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(19.95m, true);
+            root.Children[2].Children[0].Children[0].Children[5].Children[0].UpdateWeightUpAndDown(29.93m, true);
+            root.Children[2].Children[0].Children[0].Children[5].Children[1].UpdateWeightUpAndDown(39.91m, true);
+            root.Children[2].Children[0].Children[2].Children[2].Children[1].UpdateWeightUpAndDown(19.99m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(11.81m, true);
+            root.Children[2].Children[1].Children[5].Children[0].Children[0].UpdateWeightUpAndDown(51.78m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(1.66m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(7.08m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[3].UpdateWeightUpAndDown(3.97m, true);
+            root.Children[0].Children[0].Children[2].Children[0].Children[0].UpdateWeightUpAndDown(3.75m, true);
+            root.Children[0].Children[0].Children[3].Children[0].Children[2].UpdateWeightUpAndDown(3.31m, true);
+            root.Children[0].Children[0].Children[5].Children[0].Children[0].UpdateWeightUpAndDown(1.66m, true);
+            root.Children[0].Children[0].Children[5].Children[1].Children[2].UpdateWeightUpAndDown(1.32m, true);
+            root.Children[2].Children[0].Children[3].Children[0].Children[0].UpdateWeightUpAndDown(4.58m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[1].UpdateWeightUpAndDown(9.15m, true);
+            root.Children[2].Children[1].Children[6].Children[1].Children[0].UpdateWeightUpAndDown(0.92m, true);
+            root.Children[2].Children[1].Children[7].Children[1].Children[3].UpdateWeightUpAndDown(5.49m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[3].UpdateWeightUpAndDown(15m, true);
+            root.Children[0].Children[0].Children[4].Children[1].Children[0].UpdateWeightUpAndDown(30m, true);
+            root.Children[2].Children[0].Children[4].Children[5].Children[0].UpdateWeightUpAndDown(20m, true);
+            root.Children[2].Children[0].Children[5].Children[1].Children[0].UpdateWeightUpAndDown(30m, true);
+            root.Children[2].Children[0].Children[5].Children[1].Children[2].UpdateWeightUpAndDown(50m, true);
+            root.Children[2].Children[1].Children[4].Children[5].Children[0].UpdateWeightUpAndDown(30m, true);
+            root.Children[2].Children[1].Children[5].Children[3].Children[0].UpdateWeightUpAndDown(50m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(5m, true);
+            root.Children[0].Children[0].Children[5].Children[1].Children[1].UpdateWeightUpAndDown(3m, true);
+            root.Children[0].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(16.56m, true);
+            root.Children[1].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(69.04m, true);
+            root.Children[2].Children[0].Children[6].Children[0].UpdateWeightUpAndDown(25.89m, true);
+            root.Children[2].Children[0].Children[6].Children[1].UpdateWeightUpAndDown(51.78m, true);
+            root.Children[2].Children[1].Children[3].Children[4].UpdateWeightUpAndDown(45.76m, true);
+            root.Children[2].Children[1].Children[4].Children[3].UpdateWeightUpAndDown(54.91m, true);
+            root.Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(3.97m, true);
+            root.Children[2].Children[0].Children[0].Children[4].UpdateWeightUpAndDown(9.98m, true);
+            root.Children[2].Children[1].Children[0].Children[0].UpdateWeightUpAndDown(1200m, true);
+            root.Children[2].Children[1].Children[2].Children[2].UpdateWeightUpAndDown(3.66m, true);
+            root.Children[2].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(200m, true);
+            root.Children[2].Children[0].Children[4].Children[1].UpdateWeightUpAndDown(150m, true);
+            root.Children[2].Children[0].Children[4].Children[2].UpdateWeightUpAndDown(150m, true);
+            root.Children[0].Children[0].Children[4].Children[0].UpdateWeightUpAndDown(20m, true);
+            root.Children[0].Children[0].Children[5].Children[2].UpdateWeightUpAndDown(20m, true);
+            root.Children[2].Children[0].Children[2].Children[2].UpdateWeightUpAndDown(20m, true);
+            root.Children[2].Children[0].Children[4].Children[5].UpdateWeightUpAndDown(20m, true);
+            root.Children[2].Children[0].Children[7].Children[1].UpdateWeightUpAndDown(50m, true);
+            root.Children[2].Children[1].Children[2].Children[3].UpdateWeightUpAndDown(30m, true);
+            root.Children[2].Children[1].Children[6].Children[2].UpdateWeightUpAndDown(50m, true);
+            root.Children[2].Children[1].Children[6].Children[3].UpdateWeightUpAndDown(50m, true);
+            root.Children[0].Children[1].Children[0].UpdateWeightUpAndDown(334.56m, true);
+            root.Children[2].Children[1].Children[5].UpdateWeightUpAndDown(101.78m, true);
+            root.Children[2].Children[1].Children[6].UpdateWeightUpAndDown(100.92m, true);
+            root.Children[0].Children[0].Children[3].UpdateWeightUpAndDown(86.12m, true);
+            root.Children[0].Children[1].Children[3].UpdateWeightUpAndDown(15.44m, true);
+            root.Children[1].Children[1].Children[0].UpdateWeightUpAndDown(64.06m, true);
+            root.Children[2].Children[0].Children[6].UpdateWeightUpAndDown(77.67m, true);
+            root.Children[2].Children[1].Children[1].UpdateWeightUpAndDown(91.51m, true);
+            root.Children[2].Children[1].Children[2].UpdateWeightUpAndDown(33.66m, true);
+            root.Children[2].Children[1].Children[3].UpdateWeightUpAndDown(83.17m, true);
+            root.Children[2].Children[1].Children[4].UpdateWeightUpAndDown(89.48m, true);
+            root.Children[2].Children[1].Children[7].UpdateWeightUpAndDown(5.49m, true);
+            root.Children[2].Children[0].Children[0].UpdateWeightUpAndDown(100m, true);
+            root.Children[2].Children[0].Children[1].UpdateWeightUpAndDown(100m, true);
+            root.Children[2].Children[0].Children[5].UpdateWeightUpAndDown(130m, true);
+            root.Children[0].Children[0].Children[4].UpdateWeightUpAndDown(50m, true);
+            root.Children[2].Children[0].Children[7].UpdateWeightUpAndDown(50m, true);
+            root.Children[0].Children[0].UpdateWeightUpAndDown(291.24m, true);
+            root.Children[0].Children[1].UpdateWeightUpAndDown(350m, true);
+            root.Children[2].UpdateWeightUpAndDown(2717.41m, true);
+            root.Children[0].UpdateWeightUpAndDown(641.24m, true);
+
+            root.UpdateWeightUpAndDown(100, true);
+        }
+        public static void AdjustWeightForBadHabit(TreeNode<Category> root)
+        {
+            root.Children[0].Children[0].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[2].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[2].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[2].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[3].Children[0].Children[2].Children[2].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[0].Children[0].Children[5].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[1].Children[1].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[1].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[5].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[0].Children[4].Children[5].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[3].Children[2].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[3].Children[3].UpdateWeightUpAndDown(0m, true);
+            root.Children[2].Children[1].Children[5].Children[3].Children[0].UpdateWeightUpAndDown(0m, true);
+
+
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[0].Children[1].UpdateWeightUpAndDown(8.59m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(4.27m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(8.54m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[0].Children[3].UpdateWeightUpAndDown(2.85m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(8.59m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(2.85m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[2].UpdateWeightUpAndDown(5.69m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[1].Children[3].UpdateWeightUpAndDown(2.85m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[3].Children[1].UpdateWeightUpAndDown(12.89m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(10.81m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(12.81m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(4.27m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(0.66m, true);
+            root.Children[0].Children[0].Children[5].Children[1].Children[0].Children[0].UpdateWeightUpAndDown(4.27m, true);
+            root.Children[2].Children[1].Children[4].Children[4].Children[1].Children[0].UpdateWeightUpAndDown(3.93m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[2].Children[0].UpdateWeightUpAndDown(10m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(20m, true);
+            root.Children[0].Children[0].Children[3].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(10m, true);
+            root.Children[2].Children[1].Children[5].Children[3].Children[1].Children[0].UpdateWeightUpAndDown(15m, true);
+            root.Children[2].Children[1].Children[5].Children[3].Children[1].Children[1].UpdateWeightUpAndDown(30m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(5m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(1089.17m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[3].UpdateWeightUpAndDown(12.89m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[1].UpdateWeightUpAndDown(11.47m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[2].UpdateWeightUpAndDown(17.81m, true);
+            root.Children[0].Children[0].Children[4].Children[1].Children[0].UpdateWeightUpAndDown(25.78m, true);
+            root.Children[1].Children[0].Children[1].Children[0].Children[0].UpdateWeightUpAndDown(59.31m, true);
+            root.Children[2].Children[0].Children[0].Children[1].Children[1].UpdateWeightUpAndDown(17.14m, true);
+            root.Children[2].Children[0].Children[0].Children[5].Children[0].UpdateWeightUpAndDown(25.72m, true);
+            root.Children[2].Children[0].Children[0].Children[5].Children[1].UpdateWeightUpAndDown(34.29m, true);
+            root.Children[2].Children[0].Children[2].Children[2].Children[1].UpdateWeightUpAndDown(17.18m, true);
+            root.Children[2].Children[0].Children[3].Children[0].Children[0].UpdateWeightUpAndDown(24.97m, true);
+            root.Children[2].Children[1].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(10.83m, true);
+            root.Children[2].Children[1].Children[4].Children[5].Children[0].UpdateWeightUpAndDown(25.78m, true);
+            root.Children[2].Children[1].Children[5].Children[0].Children[0].UpdateWeightUpAndDown(44.49m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[0].UpdateWeightUpAndDown(1.42m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[2].UpdateWeightUpAndDown(6.08m, true);
+            root.Children[0].Children[0].Children[1].Children[0].Children[3].UpdateWeightUpAndDown(3.41m, true);
+            root.Children[0].Children[0].Children[2].Children[0].Children[0].UpdateWeightUpAndDown(3.22m, true);
+            root.Children[2].Children[0].Children[4].Children[0].Children[1].UpdateWeightUpAndDown(7.86m, true);
+            root.Children[2].Children[0].Children[5].Children[1].Children[0].UpdateWeightUpAndDown(9.23m, true);
+            root.Children[2].Children[1].Children[6].Children[1].Children[0].UpdateWeightUpAndDown(0.79m, true);
+            root.Children[2].Children[1].Children[7].Children[1].Children[3].UpdateWeightUpAndDown(4.72m, true);
+            root.Children[0].Children[0].Children[5].Children[2].Children[1].UpdateWeightUpAndDown(100m, true);
+            root.Children[0].Children[0].Children[0].Children[0].Children[1].UpdateWeightUpAndDown(10m, true);
+            root.Children[0].Children[0].Children[0].Children[1].Children[2].UpdateWeightUpAndDown(20m, true);
+            root.Children[0].Children[0].Children[3].Children[0].Children[2].UpdateWeightUpAndDown(10m, true);
+            root.Children[0].Children[0].Children[5].Children[0].Children[0].UpdateWeightUpAndDown(10m, true);
+            root.Children[0].Children[0].Children[5].Children[0].Children[1].UpdateWeightUpAndDown(10m, true);
+            root.Children[0].Children[0].Children[5].Children[2].Children[2].UpdateWeightUpAndDown(30m, true);
+            root.Children[0].Children[0].Children[5].Children[2].Children[5].UpdateWeightUpAndDown(10m, true);
+            root.Children[2].Children[0].Children[5].Children[1].Children[2].UpdateWeightUpAndDown(50m, true);
+            root.Children[2].Children[1].Children[3].Children[0].Children[0].UpdateWeightUpAndDown(20m, true);
+            root.Children[0].Children[0].Children[5].Children[1].Children[1].UpdateWeightUpAndDown(5m, true);
+            root.Children[0].Children[0].Children[5].Children[1].Children[2].UpdateWeightUpAndDown(3m, true);
+            root.Children[0].Children[0].Children[5].Children[2].Children[0].UpdateWeightUpAndDown(1m, true);
+            root.Children[0].Children[0].Children[5].Children[2].Children[3].UpdateWeightUpAndDown(1m, true);
+            root.Children[0].Children[0].Children[5].Children[2].Children[4].UpdateWeightUpAndDown(1m, true);
+            root.Children[2].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(171.83m, true);
+            root.Children[0].Children[0].Children[2].Children[1].UpdateWeightUpAndDown(14.23m, true);
+            root.Children[0].Children[0].Children[4].Children[0].UpdateWeightUpAndDown(17.18m, true);
+            root.Children[1].Children[0].Children[1].Children[0].UpdateWeightUpAndDown(59.31m, true);
+            root.Children[2].Children[0].Children[2].Children[2].UpdateWeightUpAndDown(17.18m, true);
+            root.Children[2].Children[0].Children[7].Children[1].UpdateWeightUpAndDown(42.96m, true);
+            root.Children[2].Children[1].Children[2].Children[3].UpdateWeightUpAndDown(25.78m, true);
+            root.Children[2].Children[1].Children[3].Children[4].UpdateWeightUpAndDown(39.31m, true);
+            root.Children[2].Children[1].Children[4].Children[3].UpdateWeightUpAndDown(47.18m, true);
+            root.Children[2].Children[1].Children[6].Children[2].UpdateWeightUpAndDown(42.96m, true);
+            root.Children[2].Children[1].Children[6].Children[3].UpdateWeightUpAndDown(42.96m, true);
+            root.Children[0].Children[0].Children[2].Children[0].UpdateWeightUpAndDown(3.41m, true);
+            root.Children[2].Children[0].Children[0].Children[4].UpdateWeightUpAndDown(8.57m, true);
+            root.Children[2].Children[1].Children[0].Children[0].UpdateWeightUpAndDown(1100m, true);
+            root.Children[2].Children[1].Children[2].Children[2].UpdateWeightUpAndDown(3.15m, true);
+            root.Children[0].Children[0].Children[5].Children[2].UpdateWeightUpAndDown(143m, true);
+            root.Children[2].Children[0].Children[6].Children[0].UpdateWeightUpAndDown(150m, true);
+            root.Children[0].Children[0].Children[2].Children[2].UpdateWeightUpAndDown(10m, true);
+            root.Children[2].Children[0].Children[4].Children[4].UpdateWeightUpAndDown(10m, true);
+            root.Children[2].Children[0].Children[6].Children[1].UpdateWeightUpAndDown(50m, true);
+            root.Children[2].Children[0].Children[7].Children[0].UpdateWeightUpAndDown(20m, true);
+            root.Children[2].Children[1].Children[3].Children[1].UpdateWeightUpAndDown(10m, true);
+            root.Children[0].Children[0].Children[4].UpdateWeightUpAndDown(42.96m, true);
+            root.Children[0].Children[1].Children[0].UpdateWeightUpAndDown(95.59m, true);
+            root.Children[1].Children[1].Children[0].UpdateWeightUpAndDown(55.04m, true);
+            root.Children[2].Children[0].Children[0].UpdateWeightUpAndDown(85.92m, true);
+            root.Children[2].Children[0].Children[1].UpdateWeightUpAndDown(85.92m, true);
+            root.Children[2].Children[0].Children[5].UpdateWeightUpAndDown(74.62m, true);
+            root.Children[2].Children[0].Children[7].UpdateWeightUpAndDown(62.96m, true);
+            root.Children[2].Children[1].Children[1].UpdateWeightUpAndDown(78.63m, true);
+            root.Children[2].Children[1].Children[2].UpdateWeightUpAndDown(28.92m, true);
+            root.Children[2].Children[1].Children[3].UpdateWeightUpAndDown(78.96m, true);
+            root.Children[2].Children[1].Children[4].UpdateWeightUpAndDown(76.88m, true);
+            root.Children[2].Children[1].Children[5].UpdateWeightUpAndDown(89.49m, true);
+            root.Children[0].Children[1].Children[3].UpdateWeightUpAndDown(4.41m, true);
+            root.Children[2].Children[1].Children[6].UpdateWeightUpAndDown(86.7m, true);
+            root.Children[2].Children[1].Children[7].UpdateWeightUpAndDown(4.72m, true);
+            root.Children[2].Children[0].Children[6].UpdateWeightUpAndDown(200m, true);
+            root.Children[0].Children[0].Children[3].UpdateWeightUpAndDown(10m, true);
+            root.Children[2].Children[0].Children[3].UpdateWeightUpAndDown(25m, true);
+            root.Children[0].Children[0].UpdateWeightUpAndDown(395.62m, true);
+            root.Children[0].Children[1].UpdateWeightUpAndDown(100m, true);
+            root.Children[2].UpdateWeightUpAndDown(2285.58m, true);
+            root.Children[0].UpdateWeightUpAndDown(495.62m, true);
+
+            root.UpdateWeightUpAndDown(100, true);
         }
 
     }
@@ -72,7 +686,10 @@ namespace Contracts
         Regular  = 0,
         EssentialRenter = 1, // rent + food + gas
         EssentialHomeOwner = 2,
-        Prodige = 3 //eat outside, drink
+        Foodie = 3, //eat outside, drink,
+        Active = 4,
+        BadHabit =5
+        
     }
 
 }
