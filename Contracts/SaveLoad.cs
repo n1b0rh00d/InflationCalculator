@@ -19,7 +19,7 @@ namespace Contracts
         {
             var cats =  JsonConvert.DeserializeObject<List<Category>>(
                 File.ReadAllText("inflationData.txt"));
-            return new ParseCategory(cats).root;
+            return new ParseCategoryUS(cats).root;
         }
 
         public static List<Category>  DownloadOriginalData()
@@ -40,7 +40,7 @@ namespace Contracts
             }
             else
             {
-                return new ParseCategory(DownloadOriginalData()).root;
+                return new ParseCategoryUS(DownloadOriginalData()).root;
             }
         }
 

@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace Contracts
 {
-    public class ParseCategory
+    public class ParseCategoryEU
     {
-        private char[] delimiter = new char[] { '\t' };
+        private char[] delimiter = new char[] { ',' };
 
         //The top-level Node
         public TreeNode<Category> root;
@@ -21,12 +21,12 @@ namespace Contracts
         //The depth step between two layers
         private int depthdifference = 1;
 
-        public ParseCategory()
+        public ParseCategoryEU()
         {
-            buildDirectoryFromFile("C:\\Users\\rchapas\\source\\repos\\InflationCalculator\\ItemWeight.txt");
+            buildDirectoryFromFile("C:\\Users\\rchapas\\source\\repos\\InflationCalculator\\prc_hicp_inw_1_Data.csv");
         }
 
-        public ParseCategory(List<Category> cats)
+        public ParseCategoryEU(List<Category> cats)
         {
             buildDirectoryFromListOfCat(cats);
         }
@@ -36,13 +36,22 @@ namespace Contracts
             foreach (var line in File.ReadLines(fileLocation))
             {
                 var data = line.Split(delimiter).Select(x => x.Trim()).ToArray();
-                if (data.Length != 4)
+                if (data.Length != 6)
                 {
                     throw new NotImplementedException();
                 }
 
-                var newCat = new Category(data[0], data[1], data[2], data[3]);
-                parseTextIntoTree(newCat, newCat._depth);
+                //country, serie code, name, year, value, footnote
+                if ("CP00".Equals(data[1]))
+                {
+                    var newCat = new Category(data[2], data[4], data[1].Length - 4, data[1]);
+                    parseTextIntoTree(newCat, newCat._depth);
+                }
+                else
+                {
+                    var newCat = new Category(data[2], data[4], data[1].Length - 3, data[1]);
+                    parseTextIntoTree(newCat, newCat._depth);
+                }
             }
         }
 

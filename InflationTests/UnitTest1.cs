@@ -20,7 +20,7 @@ namespace InflationTests
         [TestMethod]
         public void TestWeightParsing()
         {
-            var readFile = new ParseCategory();
+            var readFile = new ParseCategoryUS();
             var rootLevel = readFile.root;
 
         }
@@ -30,7 +30,7 @@ namespace InflationTests
         {
             var readObs = new DictionaryObservations();
 
-            var readCat = new ParseCategory();
+            var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;
 
             foreach (var branch in rootLevel.Flatten())
@@ -47,7 +47,7 @@ namespace InflationTests
         {
             var readObs = new DictionaryObservations();
 
-            var readCat = new ParseCategory();
+            var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;
 
             var allNodes = rootLevel.ListAll();
@@ -64,7 +64,7 @@ namespace InflationTests
         {
             var readObs = new DictionaryObservations();
 
-            var readCat = new ParseCategory();
+            var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;
 
             foreach (var branch in rootLevel.Flatten())
@@ -83,7 +83,7 @@ namespace InflationTests
         {
             var readObs = new DictionaryObservations();
 
-            var readCat = new ParseCategory();
+            var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;
 
             var listall = rootLevel.ListAll();
@@ -111,7 +111,7 @@ namespace InflationTests
         {
             var readObs = new DictionaryObservations();
 
-            var readCat = new ParseCategory();
+            var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;
 
             foreach (var branch in rootLevel.Flatten())
@@ -137,7 +137,7 @@ namespace InflationTests
         {
             var readObs = new DictionaryObservations();
 
-            var readCat = new ParseCategory();
+            var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;
 
             foreach (var branch in rootLevel.Flatten())
@@ -156,7 +156,7 @@ namespace InflationTests
         {
             var readObs = new DictionaryObservations();
 
-            var readCat = new ParseCategory();
+            var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;
 
             foreach (var branch in rootLevel.Flatten())
@@ -185,9 +185,16 @@ namespace InflationTests
         [TestMethod]
         public void UpdateData()
         {
+            //get latest data USA
+            //https://download.bls.gov/pub/time.series/
+
+            //Get data france
+            // http://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do
+            // select prc_hicp_aind (annual) and move the columns to have cocoip as rows
+            //item weight prc_hicp_inw
             var readObs = new DictionaryObservations();
 
-            var readCat = new ParseCategory();
+            var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;
 
             foreach (var branch in rootLevel.Flatten())

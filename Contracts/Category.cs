@@ -28,6 +28,16 @@ namespace Contracts
             _depth = int.Parse(depth);
         }
 
+        public Category(string name, string weight, int depth, string serieCodeId)
+        {
+            _name = name;
+            _serieCodeId = serieCodeId;
+            decimal extratedWeight;
+            var isValid = decimal.TryParse(weight, out extratedWeight);
+            _weight = isValid ? extratedWeight : 0;
+            _depth = depth;
+        }
+
         public void SetObservation(SerieObservations obs)
         {
             observations = obs;
