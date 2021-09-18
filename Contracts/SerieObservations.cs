@@ -41,8 +41,15 @@ namespace Contracts
                 observations[0]._percentChange = 0;
                 for (int i = 1; i < observations.Count; i++)
                 {
-                    observations[i]._percentChange =
-                        100 * (observations[i]._value / observations[i - 1]._value - 1);
+                    if (observations[i - 1]._value == 0)
+                    {
+                        observations[i]._percentChange = 0;
+                    }
+                    else
+                    {
+                        observations[i]._percentChange =
+                            100 * (observations[i]._value / observations[i - 1]._value - 1);
+                    }
                 }
             }
         }

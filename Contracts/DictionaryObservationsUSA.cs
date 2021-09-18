@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace Contracts
 {
-    public class DictionaryObservations
+    public class DictionaryObservationsUSA
     {
         public Dictionary<string, SerieObservations> series;
 
         char[] delimiter = new char[] { '\t' };
 
-        public DictionaryObservations ()
+        public DictionaryObservationsUSA ()
         {
             series = new Dictionary<string, SerieObservations>();
             ParseFile();

@@ -14,7 +14,7 @@ namespace InflationTests
         [TestMethod]
         public void TestSerieParsing()
         {
-            var readFile = new DictionaryObservations();
+            var readFile = new DictionaryObservationsUSA();
         } 
         
         [TestMethod]
@@ -28,7 +28,7 @@ namespace InflationTests
         [TestMethod]
         public void TestParseAndPopulate()
         {
-            var readObs = new DictionaryObservations();
+            var readObs = new DictionaryObservationsUSA();
 
             var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;
@@ -40,12 +40,29 @@ namespace InflationTests
 
             TreeNode<Category>.PrintNodesRecursive(rootLevel);
 
-        } 
-        
+        }
+
+        [TestMethod]
+        public void TestParseAndPopulateEU()
+        {
+            var readObs = new DictionaryObservationsEU();
+
+            var readCat = new ParseCategoryEU();
+            var rootLevel = readCat.root;
+
+            foreach (var branch in rootLevel.Flatten())
+            {
+                branch.SetObservation(readObs.series[branch._serieCodeId]);
+            }
+
+            TreeNode<Category>.PrintNodesRecursive(rootLevel);
+
+        }
+
         [TestMethod]
         public void TestParseAndListNodes()
         {
-            var readObs = new DictionaryObservations();
+            var readObs = new DictionaryObservationsUSA();
 
             var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;
@@ -62,7 +79,7 @@ namespace InflationTests
         [TestMethod]
         public void TestBackPopulate()
         {
-            var readObs = new DictionaryObservations();
+            var readObs = new DictionaryObservationsUSA();
 
             var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;
@@ -81,7 +98,7 @@ namespace InflationTests
         [TestMethod]
         public void TestUpdateWeights()
         {
-            var readObs = new DictionaryObservations();
+            var readObs = new DictionaryObservationsUSA();
 
             var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;
@@ -109,7 +126,7 @@ namespace InflationTests
         [TestMethod]
         public void TestCaculateInflationFromTop()
         {
-            var readObs = new DictionaryObservations();
+            var readObs = new DictionaryObservationsUSA();
 
             var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;
@@ -135,7 +152,7 @@ namespace InflationTests
         [TestMethod]
         public void TestCaculateYearlyInflationAllItems()
         {
-            var readObs = new DictionaryObservations();
+            var readObs = new DictionaryObservationsUSA();
 
             var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;
@@ -154,7 +171,7 @@ namespace InflationTests
 
         public void TestCaculateInflationAfterNormalize()
         {
-            var readObs = new DictionaryObservations();
+            var readObs = new DictionaryObservationsUSA();
 
             var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;
@@ -191,8 +208,9 @@ namespace InflationTests
             //Get data france
             // http://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do
             // select prc_hicp_aind (annual) and move the columns to have cocoip as rows
+            //remove CP01155 (incomplete data)
             //item weight prc_hicp_inw
-            var readObs = new DictionaryObservations();
+            var readObs = new DictionaryObservationsUSA();
 
             var readCat = new ParseCategoryUS();
             var rootLevel = readCat.root;

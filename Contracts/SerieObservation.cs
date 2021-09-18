@@ -26,7 +26,14 @@ namespace Contracts
             _serieId = serieId;
             _year = year;
             _month = month;
-            _value = Decimal.Parse(value);
+            if (value == ":")
+            {
+                _value = 0;
+            }
+            else
+            {
+                _value = Decimal.Parse(value.Replace(" ",""));
+            }
         }
 
         public SerieObservation(string serieId, string year, string month, decimal percentChange)

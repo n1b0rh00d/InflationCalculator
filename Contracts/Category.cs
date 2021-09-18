@@ -33,7 +33,7 @@ namespace Contracts
             _name = name;
             _serieCodeId = serieCodeId;
             decimal extratedWeight;
-            var isValid = decimal.TryParse(weight, out extratedWeight);
+            var isValid = decimal.TryParse(weight.Replace(" ",""), out extratedWeight);
             _weight = isValid ? extratedWeight : 0;
             _depth = depth;
         }

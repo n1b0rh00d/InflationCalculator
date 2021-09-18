@@ -35,22 +35,43 @@ namespace Contracts
         {
             foreach (var line in File.ReadLines(fileLocation))
             {
-                var data = line.Split(delimiter).Select(x => x.Trim()).ToArray();
-                if (data.Length != 6)
+                var data = line.Replace("\"", "").Split(delimiter).Select(x => x.Trim()).ToArray();
+                if (data.Length < 5)
                 {
                     throw new NotImplementedException();
                 }
-
+                if (data[4].Equals("0"))
+                {
+                    continue;
+                }
                 //country, serie code, name, year, value, footnote
+                if (data[1].Contains("_") || data[1].Contains("-"))
+                {
+                    continue;
+                }
+                 
                 if ("CP00".Equals(data[1]))
                 {
                     var newCat = new Category(data[2], data[4], data[1].Length - 4, data[1]);
                     parseTextIntoTree(newCat, newCat._depth);
                 }
+                else if(data[1].Equals("CP0820") || data[1].Equals("CP0830"))
+                {
+                    var newCat = new Category(data[2], data[4], 2, data[1]);
+                    parseTextIntoTree(newCat, newCat._depth);
+                }
                 else
                 {
-                    var newCat = new Category(data[2], data[4], data[1].Length - 3, data[1]);
-                    parseTextIntoTree(newCat, newCat._depth);
+                    if (data[1][data[1].Length - 2] == '0' && !(data[1][data[1].Length - 3] == 'P' || data[1][data[1].Length - 3] == '1' && data[1][data[1].Length - 4] == 'P'))
+                    {
+                         var newCat = new Category(data[2], data[4], data[1].Length - 4, data[1]);
+                        parseTextIntoTree(newCat, newCat._depth);
+                    }
+                    else
+                    {
+                        var newCat = new Category(data[2], data[4], data[1].Length - 3, data[1]);
+                        parseTextIntoTree(newCat, newCat._depth);
+                    }
                 }
             }
         }
@@ -74,6 +95,10 @@ namespace Contracts
             }
             else
             {
+                if (cat._serieCodeId.Equals("CP03"))
+                {
+                    var a = "";
+                }
                 //Search the parent node for the current depth
                 while (depth <= actualdepth)
                 {
