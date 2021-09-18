@@ -10,43 +10,56 @@ namespace Contracts
 {
     public class SaveLoad
     {
+        public static string FileName(bool isEu)
+        {
+            return isEu ? "inflationDataEU.txt" : "inflationData.txt";
+        }
+
         public static void SaveBackfilledData(List<Category> categories, string path = "inflationData.txt")
         {
             var serializedData = JsonConvert.SerializeObject(categories);
             File.WriteAllText(path, serializedData);
         }
-        public static TreeNode<Category> LoadBackfilledData()
+
+        public static void SaveBackfilledData(List<Category> categories, bool isEU)
+        {
+            var serializedData = JsonConvert.SerializeObject(categories);
+            File.WriteAllText(FileName(isEU), serializedData);
+        }
+
+        public static TreeNode<Category> LoadBackfilledData(bool isEU = false)
         {
             var cats =  JsonConvert.DeserializeObject<List<Category>>(
-                File.ReadAllText("inflationData.txt"));
+                File.ReadAllText(FileName(isEU)));
             return new ParseCategoryUS(cats).root;
         }
 
-        public static List<Category>  DownloadOriginalData()
+
+        public static List<Category>  DownloadOriginalData(bool isEU = false)
         {
             WebClient w = new WebClient();
             var originalData = w.DownloadString(
-                "https://raw.githubusercontent.com/n1b0rh00d/InflationCalculator/master/inflationData.txt");
+                "https://raw.githubusercontent.com/n1b0rh00d/InflationCalculator/master/"+ FileName(isEU));
             var cats = JsonConvert.DeserializeObject<List<Category>>(originalData);
             SaveBackfilledData(cats);
             return cats;
         }
 
-        public static TreeNode<Category> LoadOrDownload()
+        public static TreeNode<Category> LoadOrDownload(bool isEU = false)
         {
-            if (File.Exists("inflationData.txt"))
+            if (File.Exists(FileName(isEU)))
             {
                 return LoadBackfilledData();
             }
             else
             {
-                return new ParseCategoryUS(DownloadOriginalData()).root;
+                return new ParseCategoryUS(DownloadOriginalData(isEU)).root;
             }
         }
 
-        public static void DeleteData()
+        public static void DeleteData(bool isEU = false)
         {
-            File.Delete("inflationData.txt");
+            File.Delete(FileName(isEU));
         }
 
         // need something to get latest data

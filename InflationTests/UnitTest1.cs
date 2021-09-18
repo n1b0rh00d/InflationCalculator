@@ -234,6 +234,41 @@ namespace InflationTests
         }
 
         [TestMethod]
+        public void UpdateDataEU()
+        {
+            //get latest data USA
+            //https://download.bls.gov/pub/time.series/
+
+            //Get data france
+            // http://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do
+            // select prc_hicp_aind (annual) and move the columns to have cocoip as rows
+            //remove CP01155 (incomplete data)
+            //item weight prc_hicp_inw
+            var readObs = new DictionaryObservationsEU();
+
+            var readCat = new ParseCategoryEU();
+            var rootLevel = readCat.root;
+
+            foreach (var branch in rootLevel.Flatten())
+            {
+
+                branch.SetObservation(readObs.series[branch._serieCodeId]);
+
+            }
+
+            rootLevel.BackPopulateNodesRecursive();
+            rootLevel.NormalizeWeights();
+            rootLevel.UpdateWeightUpAndDown(100);
+
+
+
+            SaveLoad.SaveBackfilledData(rootLevel.Flatten().ToList(), "../../../../inflationDataEU.txt");
+
+            //upload new data
+        }
+
+
+        [TestMethod]
         public void RoundData()
         {
             var s = @"root.UpdateWeightUpAndDown(2895.5471227254042630742641281,true);

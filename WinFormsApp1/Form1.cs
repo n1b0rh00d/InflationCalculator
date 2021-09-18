@@ -17,6 +17,8 @@ namespace WinFormsApp1
         private int Depth=1;
         private bool isAnnual = true;
 
+        private bool isEU = true;
+
         public Form1()
         {
             InitializeComponent();
@@ -36,17 +38,17 @@ namespace WinFormsApp1
 
         private void LoadData()
         {
-            rootLevel = SaveLoad.LoadOrDownload();
+            rootLevel = SaveLoad.LoadOrDownload(isEU);
         }
 
         private void SaveData()
         {
-            SaveLoad.SaveBackfilledData(rootLevel.Flatten().ToList());
+            SaveLoad.SaveBackfilledData(rootLevel.Flatten().ToList(),isEU);
         }
 
         private void DeleteSavedData()
         {
-            SaveLoad.DeleteData();
+            SaveLoad.DeleteData(isEU);
         }
 
 
