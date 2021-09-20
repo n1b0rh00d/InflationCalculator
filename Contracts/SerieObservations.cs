@@ -65,7 +65,7 @@ namespace Contracts
         {
             SerieObservations result = new SerieObservations();
             // if serie1 is null or empty return the serie 2;
-            if(serie1.AnnualObservations.Count() == 0 || serie1.MensualObservations.Count() == 0)
+            if(serie1.AnnualObservations.Count() == 0 && serie1.MensualObservations.Count() == 0)
             {
                 return serie2;
             }
@@ -74,13 +74,32 @@ namespace Contracts
                 throw new NotImplementedException("BackfillData");
             }
 
-            foreach (var so in serie1.AnnualObservations)
+            if (serie1.AnnualObservations.Count() != 0)
             {
-                result.Add(new SerieObservation("CalculatedSum",so.Value._year, so.Value._month, so.Value._percentChange + serie2.AnnualObservations[so.Key]._percentChange));
+                foreach (var so in serie1.AnnualObservations)
+                {
+                    result.Add(
+                        new SerieObservation(
+                            "CalculatedSum",
+                            so.Value._year,
+                            so.Value._month,
+                            so.Value._percentChange +
+                            serie2.AnnualObservations[so.Key]._percentChange));
+                }
             }
-            foreach (var so in serie1.MensualObservations)
+
+            if (serie1.MensualObservations.Count() != 0)
             {
-                result.Add(new SerieObservation("CalculatedSum", so.Value._year, so.Value._month, so.Value._percentChange + serie2.MensualObservations[so.Key]._percentChange));
+                foreach (var so in serie1.MensualObservations)
+                {
+                    result.Add(
+                        new SerieObservation(
+                            "CalculatedSum",
+                            so.Value._year,
+                            so.Value._month,
+                            so.Value._percentChange +
+                            serie2.MensualObservations[so.Key]._percentChange));
+                }
             }
 
             return result;
