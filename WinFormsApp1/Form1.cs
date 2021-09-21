@@ -17,7 +17,7 @@ namespace WinFormsApp1
         private int Depth=1;
         private bool isAnnual = true;
 
-        private bool isEU = true;
+        private bool isEU = false;
 
         public Form1()
         {
@@ -121,6 +121,7 @@ namespace WinFormsApp1
 
             dataGridView1.Refresh();
             refreshGraph(isAnnual);
+            label2.Text = "Value of a " + (isEU ? "Euro" : "Dollar");
         }
 
         private void buttonSwitch_Click(object sender, EventArgs e)
@@ -128,13 +129,13 @@ namespace WinFormsApp1
             if (isAnnual)
             {
                 isAnnual = false;
-                this.label1.Text = "Switch to Annual";
+                this.buttonSwitch.Text = "Switch to Annual";
                 
             }
             else
             {
                 isAnnual = true;
-                this.label1.Text = "Switch to Mensual";
+                this.buttonSwitch.Text = "Switch to Mensual";
             }
 
             refreshGraph(isAnnual);
@@ -161,6 +162,13 @@ namespace WinFormsApp1
         private void button1_Click_1(object sender, EventArgs e)
         {
             rootLevel.PrintNodesWeightRecursive(rootLevel);
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            isEU = !isEU;
+            LoadData();
+            Refresh();
         }
     }
 }
