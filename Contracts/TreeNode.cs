@@ -55,7 +55,7 @@ namespace Contracts
         {
             get
             {
-                return (double)this.Value.observations.AnnualObservations
+                return (double)this.Value.observations.AnnualObservations.Observations
                     .Select(x => x.Value._percentChange)
                     .Average();
             }
@@ -65,8 +65,8 @@ namespace Contracts
         {
             get
             {
-                return 1/Math.Pow(1+(double) this.Value.observations.AnnualObservations
-                    .Select(x => x.Value._percentChange).Average()/100, this.Value.observations.AnnualObservations.Count);
+                return 1/Math.Pow(1+(double) this.Value.observations.AnnualObservations.Observations
+                    .Select(x => x.Value._percentChange).Average()/100, this.Value.observations.AnnualObservations.Observations.Count);
             }
         }
 
@@ -140,7 +140,7 @@ namespace Contracts
         public void BackPopulateNodesRecursive()
         {
             this.BackFillMissingYearlyData();
-            this.BackFillMissingMonthlyData();
+            //this.BackFillMissingMonthlyData();
 
             // Start recursion on all subnodes.
             foreach (TreeNode<TCategory> oSubNode in this._children)
@@ -176,7 +176,7 @@ namespace Contracts
             return result;
         }
 
-        public (decimal,SerieObservations) CalculateInflationRecursivelyFromProvidedLevels2()
+        public (decimal, SerieObservations) CalculateInflationRecursivelyFromProvidedLevels2()
         {
             // If no adjustement of weight was provided at a lower level, use the parent level to calculate inflation (ie if nothing is provided, the "all item" would be used
             var result = new SerieObservations(); //after backfill all data should be populated and equal
@@ -195,7 +195,7 @@ namespace Contracts
             {
                 // return the serie of observation * the ponderation
                 Debug.WriteLine($"WeightUsed: {Value.GetWeight} for {Value._name} depth: {Value._depth}");
-                return (Value.GetWeight,SerieObservations.WeightedObservationsPercentages(Value.observations, Value.GetWeight));
+                return (Value.GetWeight, SerieObservations.WeightedObservationsPercentages(Value.observations, Value.GetWeight));
             }
             Debug.WriteLine($"TotalWeights: {totalWeights}");
 
@@ -345,7 +345,7 @@ namespace Contracts
             var needBackfill = false;
             decimal SumExistingPonderationTimesValues = 0;
             decimal SumMissingPonderations = 0;
-            foreach (var obs in Value.observations.AnnualObservations)
+            foreach (var obs in Value.observations.AnnualObservations.Observations)
             {
                 if(this.Name.Contains("Water and sewer and trash collection services"))
                 {
@@ -353,11 +353,11 @@ namespace Contracts
                 }
                 foreach (var childnode in _children)
                 {
-                    if (childnode.Value.observations.AnnualObservations.ContainsKey(obs.Key))
+                    if (childnode.Value.observations.AnnualObservations.Observations.ContainsKey(obs.Key))
                     {
                         SumExistingPonderationTimesValues +=
                             childnode.Value.GetWeight *
-                            childnode.Value.observations.AnnualObservations[obs.Key]._percentChange;
+                            childnode.Value.observations.AnnualObservations.Observations[obs.Key]._percentChange;
                     }
                     else
                     {
@@ -370,18 +370,18 @@ namespace Contracts
                 {
                     if(SumMissingPonderations == 0) SumMissingPonderations += 1;
                     var retro = (Value.GetWeight *
-                                Value.observations.AnnualObservations[obs.Key]._percentChange - SumExistingPonderationTimesValues) / SumMissingPonderations ;
+                                Value.observations.AnnualObservations.Observations[obs.Key]._percentChange - SumExistingPonderationTimesValues) / SumMissingPonderations ;
                     foreach (var childnode in _children)
                     {
 
-                        if (childnode.Value.observations.AnnualObservations.ContainsKey(obs.Key))
+                        if (childnode.Value.observations.AnnualObservations.Observations.ContainsKey(obs.Key))
                         {
                            
                         }
                         else
                         {
                             // we are averaging the remaining inflation into the childs
-                            childnode.Value.observations.AnnualObservations.Add(obs.Key, new
+                            childnode.Value.observations.AnnualObservations.Observations.Add(obs.Key, new
                                 SerieObservation(
                                     childnode.Value._serieCodeId,
                                     obs.Value._year,
@@ -389,7 +389,7 @@ namespace Contracts
                                     retro));
 
                         }
-                        Debug.WriteLine($"Backfilling {childnode.Value._name} on {obs.Key} with {retro} while parent was {Value.observations.AnnualObservations[obs.Key]._percentChange}");
+                        Debug.WriteLine($"Backfilling {childnode.Value._name} on {obs.Key} with {retro} while parent was {Value.observations.AnnualObservations.Observations[obs.Key]._percentChange}");
 
                     }
 
@@ -406,15 +406,15 @@ namespace Contracts
             var needBackfill = false;
             decimal SumExistingPonderationTimesValues = 0;
             decimal SumMissingPonderations = 0;
-            foreach (var obs in Value.observations.MensualObservations)
+            foreach (var obs in Value.observations.MensualObservations.Observations)
             {
                 foreach (var childnode in _children)
                 {
-                    if (childnode.Value.observations.MensualObservations.ContainsKey(obs.Key))
+                    if (childnode.Value.observations.MensualObservations.Observations.ContainsKey(obs.Key))
                     {
                         SumExistingPonderationTimesValues +=
                             childnode.Value.GetWeight *
-                            childnode.Value.observations.MensualObservations[obs.Key]._percentChange;
+                            childnode.Value.observations.MensualObservations.Observations[obs.Key]._percentChange;
                     }
                     else
                     {
@@ -427,18 +427,18 @@ namespace Contracts
                 {
                     if (SumMissingPonderations == 0) SumMissingPonderations += 1;
                     var retro = (Value.GetWeight *
-                                Value.observations.MensualObservations[obs.Key]._percentChange - SumExistingPonderationTimesValues) / SumMissingPonderations;
+                                Value.observations.MensualObservations.Observations[obs.Key]._percentChange - SumExistingPonderationTimesValues) / SumMissingPonderations;
                     foreach (var childnode in _children)
                     {
 
-                        if (childnode.Value.observations.MensualObservations.ContainsKey(obs.Key))
+                        if (childnode.Value.observations.MensualObservations.Observations.ContainsKey(obs.Key))
                         {
 
                         }
                         else
                         {
                             // we are averaging the remaining inflation into the childs
-                            childnode.Value.observations.MensualObservations.Add(obs.Key, new
+                            childnode.Value.observations.MensualObservations.Observations.Add(obs.Key, new
                                 SerieObservation(
                                     childnode.Value._serieCodeId,
                                     obs.Value._year,
@@ -446,7 +446,7 @@ namespace Contracts
                                     retro));
 
                         }
-                        Debug.WriteLine($"Backfilling {childnode.Value._name} on {obs.Key} with {retro} while parent was {Value.observations.MensualObservations[obs.Key]._percentChange}");
+                        Debug.WriteLine($"Backfilling {childnode.Value._name} on {obs.Key} with {retro} while parent was {Value.observations.MensualObservations.Observations[obs.Key]._percentChange}");
 
                     }
 

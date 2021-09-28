@@ -80,14 +80,14 @@ namespace WinFormsApp1
             
             if (isAnnual)
             {
-                var annualInflation = inflationNumbers.AnnualObservations;
+                var annualInflation = inflationNumbers.AnnualObservations.Observations;
                 x = annualInflation.Select(x => new DateTime(year: int.Parse(x.Value._year), month: 1, 1).ToOADate()).ToArray();
 
                 y = annualInflation.Select(x => (double)x.Value._percentChange).ToArray();
             }
             else
             {
-                var mensualInflation = inflationNumbers.MensualObservations;
+                var mensualInflation = inflationNumbers.MensualObservations.Observations;
                 x = mensualInflation.Select(x => new DateTime(year: int.Parse( x.Value._year), month: int.Parse(x.Value._month.Replace("M","")), 1).ToOADate()).ToArray();
                 y = mensualInflation.Select(x => (double)x.Value._percentChange).ToArray();
             }
@@ -95,9 +95,9 @@ namespace WinFormsApp1
             this.formsPlot1.Plot.XAxis.DateTimeFormat(true);
             this.formsPlot1.Plot.Clear();
             this.formsPlot1.Plot.AddScatter(x, y);
-            this.labelAvg.Text = "" + (isAnnual ? 1 : 12 )* y.Average();
+           // this.labelAvg.Text = "" + (isAnnual ? 1 : 12 )* y.Average();
 
-            this.labelValueOfDollar.Text = "" +  1 / Math.Pow(1 + y.Average() / 100, y.Length);
+           // this.labelValueOfDollar.Text = "" +  1 / Math.Pow(1 + y.Average() / 100, y.Length);
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

@@ -25,7 +25,7 @@
     }
     @{
         SerieObservations inflationNumbers = root.CalculateInflationRecursivelyFromProvidedLevels();
-        var annualInflation = inflationNumbers.AnnualObservations;
+        var annualInflation = inflationNumbers.AnnualObservations.Observations;
     }
 
     <!DOCTYPE html>

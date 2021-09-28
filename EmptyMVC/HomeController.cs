@@ -38,7 +38,7 @@ namespace EmptyMVC
             var annualInflation = inflationNumbers.AnnualObservations;
             //var x = annualInflation.Select(x => new DateTime(year: int.Parse(x.Value._year), month: 1, 1).ToOADate()).ToArray();
 
-            var y = annualInflation.Select(x => (double)x.Value._percentChange).ToArray();
+            var y = annualInflation.Observations.Select(x => (double)x.Value._percentChange).ToArray();
 
             AvgInflation = y.Average();
 
