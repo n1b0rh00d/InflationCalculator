@@ -158,14 +158,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <!-- state banner -->
-                    <h2>Yearly reported inflation in percent</h2>
-                    <canvas id="InflationChart" style="width: 100%;"></canvas>
-                    <h2>Average Inflation: @Math.Round(avgInf,4) %</h2>
-                    <h2>Value of a 1997 Dollar today: @Math.Round(valueOfDollar,4) $</h2>
-                    <!-- end banner -->
-                </div>
-                <div class="col-md-6">
+                    
                     <div class="full-slider_cont">
                         <h1>Inflation Is Eating
                             <br>
@@ -173,16 +166,144 @@
                         </h1>
                         <p>Inflation is a general increase in prices and fall in the purchasing value of money.<br />
                             Technologies, Sciences and Scale should make the price of every commodities drop, while our purchasing power and quality of life increase.<br />
-                        <b>But it's not happening</b> ! Prices keep rising and by the time you retire, your savings will have become meaningless.<br />
-                        View below why <b>inflation number aren't accurate</b> and learn how to calculate inflation based on your spending</p>
+                            <b>But it's not happening</b> ! Prices keep rising and by the time you retire, your savings will have become meaningless.<br />
+                            View below why <b>inflation number aren't accurate</b> and learn how to calculate inflation based on your spending</p>
                     </div>
+                   
                 </div>
+                <style>
+                    .float-container {
+                        border: 3px solid #fff;
+                        padding: 20px;
+                    }
+
+                    .float-child {
+                        width: 50%;
+                        float: left;
+                        padding: 20px;
+                        border: 4px solid #ad2100;
+                    }
+                </style>
+                <div class="col-md-6">
+
+                    <div class="full-slider2_cont">
+                        <h1>Get real inflation numbers based on
+                            <br>
+                            <span class="dark_brown">Your Spending Habits</span>
+                        </h1>
+                        <p>Depending on your consumption style the inflation can drastically change<br />
+
+                            Every investment and forecast on your future aims to always beat inflation to not loose money.<br />
+                            But the number you have to beat may be very different than the official numbers<br />
+                            In my case inflation is <b>50%</b> more than official inflation.
+                            If I used average inflation, I would <b>run out of money</b> much faster than expected, and would end up broke during my retirement, leaving nothing for my child<br />
+                            Calculate your personal inflation using our tool and reconsider your investment goals</p>
+                    </div>
+
+                            
+                        
+
+                    <!-- <canvas id="InflationChart" style="width: 100%;"></canvas> -->
+
+
+
+
+
+
+                    <!-- end banner -->
+                </div>
+
             </div>
         </div>
     </section>
+    <span><img src="images/boder.png" class="center" alt="img"/> </span>
     <div class="container">
-        <div class="row">
+        <div class="full-slider_cont">
+            <div class="float-container">
 
+                <div class="float-child">
+                    <div class="green">
+                        <h2>Every year your savings are decreasing by : <span class="dark_brown"> @Math.Round(avgInf, 4) %</span></h2>
+                    </div>
+                </div>
+
+                <div class="float-child">
+                    <div class="blue">
+                        <h2>Today the value of a Dollar from 1997 is only worth : <span class="dark_brown">@Math.Round(valueOfDollar, 4) $</span></h2>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <!-- Styles -->
+            <style>
+                #chartdiv {
+                    width: 100%;
+                    height: 500px;
+                }
+
+            </style>
+
+            <!-- Resources -->
+            <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+            <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+            <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+            <!-- Chart code -->
+            <script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+ var data = [];
+
+      
+
+var data = [];
+var value = 50;
+@foreach (var v in  annualInflation)
+{
+    @: var date = new Date();
+    @:  date.setHours(0,0,0,0);
+    @: date.setYear(@v.Value._year);
+    @: value = @v.Value._percentChange;
+    @: data.push({date:date, value: value});
+}
+
+chart.data = data;
+
+
+// Create axes
+var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+dateAxis.renderer.minGridDistance = 60;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+// Create series
+var series = chart.series.push(new am4charts.LineSeries());
+series.dataFields.valueY = "value";
+series.dataFields.dateX = "date";
+series.tooltipText = "{value}"
+
+series.tooltip.pointerOrientation = "vertical";
+
+chart.cursor = new am4charts.XYCursor();
+chart.cursor.snapToSeries = series;
+chart.cursor.xAxis = dateAxis;
+
+//chart.scrollbarY = new am4core.Scrollbar();
+chart.scrollbarX = new am4core.Scrollbar();
+
+}); // end am4core.ready()
+</script>
+
+            <!-- HTML -->
+            <div id="chartdiv"></div>
 
         </div>
     </div>
@@ -347,7 +468,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="titlepage">
-                        <h2>NEED TO TAKE CARE OF YOUR <strong class="cur">CURRENCY INVESTMENTS</strong></h2>
+                        <h2>TAKE CARE OF YOUR <strong class="cur">INVESTMENTS</strong></h2>
                         <span><img src="images/boder.png" alt="img"/> </span>
                     </div>
                 </div>
