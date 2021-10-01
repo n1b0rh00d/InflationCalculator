@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Views\Home\Donate.html" />
+    <None Remove="Views\Home\Retire.html" />
     <None Remove="Views\Home\Download.html" />
     <None Remove="Views\Home\Feedback.html" />
     <None Remove="wwwroot\fonts\fontawesome-webfont.eot" />

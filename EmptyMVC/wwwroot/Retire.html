@@ -53,7 +53,6 @@
                         <div class="email"> <a href="#">Personalized Inflation Numbers</a> </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                         <div class="contact"> <a href="#">Contact : PersonalizedInflation@gmail.com</a> </div>
@@ -78,9 +77,8 @@
                                     <li> <a href="/">Home</a> </li>
                                     <li> <a href="Download.html">Download</a> </li>
                                     <li> <a href="Methodology.html">Methodology</a> </li>
-                                    <li class="active"> <a href="Donate.html">Donate</a> </li>
+                                    <li class="active"> <a href="Retire.html">Retire</a> </li>
                                     <li> <a href="Feedback.html">Feedback</a> </li>
-
                                 </ul>
                             </nav>
                         </div>
@@ -97,7 +95,7 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div class="abouttitle">
-                        <h2>Donations</h2>
+                        <h2>Financial Independence and Retire Early</h2>
                     </div>
                 </div>
             </div>
@@ -110,17 +108,154 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="titlepage2">
-                        <h2>Help <strong class="cur">Donate</strong></h2>
-                        <p> You can help our team with server costs, keeping data up to date, and research for including more precise CPI by donating here. </p>
-                        <figure><img src="images/money.jpg" alt="img" /></figure>
-                        <form action="https://www.paypal.com/donate" method="post" target="_top">
-                            <input type="hidden" name="business" value="QW458QXKKQUB2" />
-                            <input type="hidden" name="no_recurring" value="0" />
-                            <input type="hidden" name="item_name" value="Support Website maintenance cost" />
-                            <input type="hidden" name="currency_code" value="USD" />
-                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-                            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-                        </form>
+                        <h2>Projection for living from your <strong class="cur">savings</strong></h2>
+                    </div>
+                    <div class="container">
+                         <!-- Styles -->
+                        <style>
+                            #chartdiv {
+                                width: 100%;
+                                height: 500px;
+                            }
+                        </style>
+
+                        <!-- Resources -->
+                        <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+                        <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+                        <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+                        <table style="width:100%">
+                            <tr>
+                                <th>Amount of Savings</th>
+                                <th><input type="number" name="Start" id="Start" value="1000000" step="50000" onchange="refresh()"></th>
+                            </tr>
+                            <tr>
+                                <th>Amount Spent per year</th>
+                                <th>
+                                    <input type="number" name="Spending" id="Spending" value="30000" step="2500" onchange="refresh()">
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th>Your inflation in percent</th>
+                                <th>
+                                    <input type="number" name="Inflation" id="Inflation" value="3" step="0.2" onchange="refresh()">
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Investment interest rate in percent</th>
+                                <th>
+                                    <input type="number" name="Return" id="Return" value="5" step="0.2" onchange="refresh()">
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Years projected</th>
+                                <th>
+                                    <input type="number" name="Years" id="Years" value="60" onchange="refresh()">
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Spending ratio in percent (spent/total savings)</th>
+                                <th>
+                                    <input type="number" name="SpendingRatio" id="SpendingRatio" value="0" readonly>
+
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Investment return in percent needed for equilibrium </th>
+                                <th>
+                                    <input type="number" name="Equilibre" id="Equilibre" value="0" readonly>
+                                </th>
+                            </tr>
+
+                        </table>
+
+
+
+                        <!-- Chart code -->
+                        <script>
+                            function refreshData(Start, Spending, Inflation, Return, Years) {
+                                am4core.ready(function () {
+
+                                    // Themes begin
+                                    am4core.useTheme(am4themes_animated);
+                                    // Themes end
+
+                                    var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+                                    var data = [];
+
+                                    //init first year
+                                    var initdate = new Date();
+                                    initdate.setHours(0, 0, 0, 0);
+                                    initdate.setFullYear(new Date().getFullYear());
+                                    data.push({ date: initdate, value: Start - Spending });
+
+                                    Return = 1 + Return / 100;
+                                    Inflation = 1 + Inflation / 100;
+
+                                    var value = 50;
+                                    for (var i = 1; i < Years; i++) {
+                                        var date = new Date();
+                                        date.setHours(0, 0, 0, 0);
+                                        date.setFullYear(new Date().getFullYear() + i);
+                                        var moneyLeft = data[i - 1].value * Return / Inflation - Spending;
+                                        if (moneyLeft < 0) moneyLeft = 0;
+                                        value = moneyLeft;
+                                        data.push({ date: date, value: value });
+                                    }
+
+
+                                    chart.data = data;
+
+                                    // Create axes
+                                    var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+                                    dateAxis.renderer.minGridDistance = 60;
+                                    dateAxis.title.text = "Years";
+
+                                    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+                                    valueAxis.title.text = "Savings in today's dollar";
+                                    valueAxis.min = 0;
+
+                                    // Create series
+                                    var series = chart.series.push(new am4charts.LineSeries());
+                                    series.dataFields.valueY = "value";
+                                    series.dataFields.dateX = "date";
+                                    series.tooltipText = "{value}"
+
+                                    series.tooltip.pointerOrientation = "vertical";
+
+                                    chart.cursor = new am4charts.XYCursor();
+                                    chart.cursor.snapToSeries = series;
+                                    chart.cursor.xAxis = dateAxis;
+
+                                    //chart.scrollbarY = new am4core.Scrollbar();
+                                    //chart.scrollbarX = new am4core.Scrollbar();
+
+                                }); // end am4core.ready()
+                            }
+                        </script>
+
+                        <script type="text/javascript">
+                            function calculateReadonlyValues() {
+                                document.getElementById('SpendingRatio').value = 100 * document.getElementById('Spending').value / document.getElementById('Start').value;
+                                document.getElementById('Equilibre').value = ((1 + (document.getElementById('Inflation').value / 100)) / (1 - (document.getElementById('Spending').value / document.getElementById('Start').value)) - 1) * 100;
+                            }
+
+                            function refresh() {
+                                calculateReadonlyValues();
+                                refreshData(document.getElementById('Start').value,
+                                    document.getElementById('Spending').value,
+                                    document.getElementById('Inflation').value,
+                                    document.getElementById('Return').value,
+                                    document.getElementById('Years').value);
+                            }
+                        </script>
+
+
+
+                        <!-- HTML -->
+                        <div id="chartdiv"></div>
+                        <script>                            window.onload = refresh();</script>
                     </div>
                 </div>
             </div>
@@ -131,7 +266,7 @@
                   <div class="row">
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <div class="experts-threebox">
-                  <figure><img src="images/experts-1.jpg" alt="img"/></figure>
+                  <figure><img src="images/experts-1.jpg" alt="img" /></figure>
                   <h3>marco verratti </h3>
                   <span>Ceo Founder</span>
                   <p>exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor</p>
@@ -140,7 +275,7 @@
               </div>
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <div class="experts-threebox">
-                  <figure><img src="images/experts-2.jpg" alt="img"/></figure>
+                  <figure><img src="images/experts-2.jpg" alt="img" /></figure>
                   <h3>lina marzouki</h3>
                   <span>Director</span>
                   <p>exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor</p>
@@ -149,7 +284,7 @@
               </div>
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <div class="experts-threebox">
-                  <figure><img src="images/experts-3.jpg" alt="img"/></figure>
+                  <figure><img src="images/experts-3.jpg" alt="img" /></figure>
                   <h3>antonio conte </h3>
                   <span>Money Developer</span>
                   <p>exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
@@ -163,39 +298,39 @@
     <!-- end abouts -->
     <footer>
         <!-- <div class="footer">
-         <div class="container">
-             <div class="row">
-                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                     <div class="Contact">
-                         <h3>Feedback</h3>
-                         <ul class="contant_icon">
-                             <li> <a href="#"><img src="icon/location.png"></a></li>
-                             <li> <a href="#"><img src="icon/tellephone.png"></a></li>
-                             <li> <a href="#"><img src="icon/email.png"></a></li>
-                         </ul>
-                     </div>
-                 </div>
-                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                     <div class="Social">
-                         <h3>Social links</h3>
-                         <ul class="socil_link">
-                             <li><a href="#"><img src="icon/fb.png"></a></li>
-                             <li><a href="#"><img src="icon/Tw.png"></a></li>
-                             <li> <a href="#"><img src="icon/lin.png"></a></li>
-                             <li> <a href="#"><img src="icon/insta.png"></a></li>
-                         </ul>
-                     </div>
-                 </div>
-                 <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
-                     <div class="newsletter">
-                         <h3>newsletter</h3>
-                         <input class="new" placeholder="Enter your email" type="Enter your email">
-                         <button class="subscribe">subscribe</button>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <div class="Contact">
+                            <h3>Feedback</h3>
+                            <ul class="contant_icon">
+                                <li> <a href="#"><img src="icon/location.png"></a></li>
+                                <li> <a href="#"><img src="icon/tellephone.png"></a></li>
+                                <li> <a href="#"><img src="icon/email.png"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                        <div class="Social">
+                            <h3>Social links</h3>
+                            <ul class="socil_link">
+                                <li><a href="#"><img src="icon/fb.png"></a></li>
+                                <li><a href="#"><img src="icon/Tw.png"></a></li>
+                                <li> <a href="#"><img src="icon/lin.png"></a></li>
+                                <li> <a href="#"><img src="icon/insta.png"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+                        <div class="newsletter">
+                            <h3>newsletter</h3>
+                            <input class="new" placeholder="Enter your email" type="Enter your email">
+                            <button class="subscribe">subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
         <div class="copyright">
             <div class="container">
                 <p>Copyright 2021 All Right Reserved</p>
@@ -204,7 +339,8 @@
     </footer>
     <!-- end footer -->
     <!-- Javascript files-->
-    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.min.js">
+    </script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery-3.0.0.min.js"></script>
