@@ -158,6 +158,7 @@ namespace WinFormsApp1
             this.buttonSwitch.TabIndex = 7;
             this.buttonSwitch.Text = "Switch to Mensual";
             this.buttonSwitch.UseVisualStyleBackColor = true;
+            this.buttonSwitch.Visible = false;
             this.buttonSwitch.Click += new System.EventHandler(this.buttonSwitch_Click);
             // 
             // label2
