@@ -6,12 +6,12 @@ namespace Contracts
 {
     public class Category
     {
-        public string _name;
+        public string _name; 
         public string _serieCodeId;
         public decimal _weight;
         public int _depth;
         public SerieObservations observations;
-        private  bool UserAdjustedWeight = false;
+        public bool _userAdjustedWeight = false;
 
         public Category()
         {
@@ -37,6 +37,15 @@ namespace Contracts
             _weight = isValid ? extratedWeight : 0;
             _depth = depth;
         }
+        
+
+        //Override the weights
+        public void OverrideWithSlimCategories(SlimCategory c)
+        {
+            _serieCodeId = c._serieCodeId;
+            _weight = c._weight;
+            _userAdjustedWeight = c._userAdjustedWeight;
+        }
 
         public void SetObservation(SerieObservations obs)
         {
@@ -48,15 +57,13 @@ namespace Contracts
             return _weight > 0;
         }
 
-        public bool HasUserSetWeight => UserAdjustedWeight;
+        public bool HasUserSetWeight => _userAdjustedWeight;
         public decimal GetWeight => _weight;
 
         public void UpdateWeight(decimal newWeight, bool IsFromUser = false)
         {
             _weight = newWeight;
-            UserAdjustedWeight = UserAdjustedWeight || IsFromUser;
+            _userAdjustedWeight = _userAdjustedWeight || IsFromUser;
         }
-
-
     }
 }

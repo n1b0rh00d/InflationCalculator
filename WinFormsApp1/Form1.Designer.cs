@@ -43,10 +43,11 @@ namespace WinFormsApp1
             this.buttonSwitch = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.labelValueOfDollar = new System.Windows.Forms.Label();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonLoad = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.buttonSaveWeights = new System.Windows.Forms.Button();
+            this.buttonLoadWeights = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,21 +70,20 @@ namespace WinFormsApp1
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 853);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 400);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 82;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(1722, 314);
+            this.dataGridView1.Size = new System.Drawing.Size(927, 147);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
             // buttonNormalize
             // 
-            this.buttonNormalize.Location = new System.Drawing.Point(22, 798);
-            this.buttonNormalize.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.buttonNormalize.Location = new System.Drawing.Point(12, 374);
+            this.buttonNormalize.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.buttonNormalize.Name = "buttonNormalize";
-            this.buttonNormalize.Size = new System.Drawing.Size(150, 47);
+            this.buttonNormalize.Size = new System.Drawing.Size(81, 22);
             this.buttonNormalize.TabIndex = 1;
             this.buttonNormalize.Text = "Normalize";
             this.buttonNormalize.UseVisualStyleBackColor = true;
@@ -91,10 +91,10 @@ namespace WinFormsApp1
             // 
             // buttonSetTo0
             // 
-            this.buttonSetTo0.Location = new System.Drawing.Point(175, 798);
-            this.buttonSetTo0.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.buttonSetTo0.Location = new System.Drawing.Point(94, 374);
+            this.buttonSetTo0.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.buttonSetTo0.Name = "buttonSetTo0";
-            this.buttonSetTo0.Size = new System.Drawing.Size(150, 47);
+            this.buttonSetTo0.Size = new System.Drawing.Size(81, 22);
             this.buttonSetTo0.TabIndex = 2;
             this.buttonSetTo0.Text = "Set to 0";
             this.buttonSetTo0.UseVisualStyleBackColor = true;
@@ -105,16 +105,16 @@ namespace WinFormsApp1
             this.formsPlot1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.formsPlot1.BackColor = System.Drawing.Color.Transparent;
-            this.formsPlot1.Location = new System.Drawing.Point(22, 26);
-            this.formsPlot1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.formsPlot1.Location = new System.Drawing.Point(12, 12);
+            this.formsPlot1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.formsPlot1.Name = "formsPlot1";
-            this.formsPlot1.Size = new System.Drawing.Size(1722, 736);
+            this.formsPlot1.Size = new System.Drawing.Size(927, 345);
             this.formsPlot1.TabIndex = 3;
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 32;
+            this.listBox1.ItemHeight = 15;
             this.listBox1.Items.AddRange(new object[] {
             "1",
             "2",
@@ -126,39 +126,35 @@ namespace WinFormsApp1
             "8",
             "9",
             "10"});
-            this.listBox1.Location = new System.Drawing.Point(334, 798);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(6);
+            this.listBox1.Location = new System.Drawing.Point(180, 374);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(221, 36);
+            this.listBox1.Size = new System.Drawing.Size(121, 19);
             this.listBox1.TabIndex = 4;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(570, 806);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(307, 378);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(275, 32);
+            this.label1.Size = new System.Drawing.Size(136, 15);
             this.label1.TabIndex = 5;
             this.label1.Text = "Average annual Inflation";
             // 
             // labelAvg
             // 
             this.labelAvg.AutoSize = true;
-            this.labelAvg.Location = new System.Drawing.Point(834, 806);
-            this.labelAvg.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.labelAvg.Location = new System.Drawing.Point(449, 378);
             this.labelAvg.Name = "labelAvg";
-            this.labelAvg.Size = new System.Drawing.Size(27, 32);
+            this.labelAvg.Size = new System.Drawing.Size(13, 15);
             this.labelAvg.TabIndex = 6;
             this.labelAvg.Text = "0";
             // 
             // buttonSwitch
             // 
-            this.buttonSwitch.Location = new System.Drawing.Point(22, 740);
-            this.buttonSwitch.Margin = new System.Windows.Forms.Padding(6);
+            this.buttonSwitch.Location = new System.Drawing.Point(12, 347);
             this.buttonSwitch.Name = "buttonSwitch";
-            this.buttonSwitch.Size = new System.Drawing.Size(303, 49);
+            this.buttonSwitch.Size = new System.Drawing.Size(163, 23);
             this.buttonSwitch.TabIndex = 7;
             this.buttonSwitch.Text = "Switch to Mensual";
             this.buttonSwitch.UseVisualStyleBackColor = true;
@@ -167,54 +163,28 @@ namespace WinFormsApp1
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1014, 806);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(546, 378);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(190, 32);
+            this.label2.Size = new System.Drawing.Size(92, 15);
             this.label2.TabIndex = 8;
             this.label2.Text = "Value of a Dollar";
             // 
             // labelValueOfDollar
             // 
             this.labelValueOfDollar.AutoSize = true;
-            this.labelValueOfDollar.Location = new System.Drawing.Point(1196, 806);
-            this.labelValueOfDollar.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.labelValueOfDollar.Location = new System.Drawing.Point(644, 378);
             this.labelValueOfDollar.Name = "labelValueOfDollar";
-            this.labelValueOfDollar.Size = new System.Drawing.Size(27, 32);
+            this.labelValueOfDollar.Size = new System.Drawing.Size(13, 15);
             this.labelValueOfDollar.TabIndex = 9;
             this.labelValueOfDollar.Text = "0";
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSave.Location = new System.Drawing.Point(1372, 753);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(74, 47);
-            this.buttonSave.TabIndex = 10;
-            this.buttonSave.Text = "Save";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-            // 
-            // buttonLoad
-            // 
-            this.buttonLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonLoad.Location = new System.Drawing.Point(1452, 753);
-            this.buttonLoad.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.buttonLoad.Name = "buttonLoad";
-            this.buttonLoad.Size = new System.Drawing.Size(104, 47);
-            this.buttonLoad.TabIndex = 11;
-            this.buttonLoad.Text = "Reload";
-            this.buttonLoad.UseVisualStyleBackColor = true;
-            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
             // 
             // buttonReset
             // 
             this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReset.Location = new System.Drawing.Point(1564, 753);
-            this.buttonReset.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.buttonReset.Location = new System.Drawing.Point(842, 378);
+            this.buttonReset.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(152, 47);
+            this.buttonReset.Size = new System.Drawing.Size(98, 22);
             this.buttonReset.TabIndex = 12;
             this.buttonReset.Text = "ResetData";
             this.buttonReset.UseVisualStyleBackColor = true;
@@ -223,24 +193,58 @@ namespace WinFormsApp1
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(1372, 806);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.button1.Location = new System.Drawing.Point(739, 378);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 47);
+            this.button1.Size = new System.Drawing.Size(99, 22);
             this.button1.TabIndex = 13;
             this.button1.Text = "Switch Country";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
+            // buttonSaveWeights
+            // 
+            this.buttonSaveWeights.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSaveWeights.Location = new System.Drawing.Point(842, 354);
+            this.buttonSaveWeights.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.buttonSaveWeights.Name = "buttonSaveWeights";
+            this.buttonSaveWeights.Size = new System.Drawing.Size(43, 22);
+            this.buttonSaveWeights.TabIndex = 14;
+            this.buttonSaveWeights.Text = "Save";
+            this.buttonSaveWeights.UseVisualStyleBackColor = true;
+            this.buttonSaveWeights.Click += new System.EventHandler(this.buttonSaveWeights_Click);
+            // 
+            // buttonLoadWeights
+            // 
+            this.buttonLoadWeights.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonLoadWeights.Location = new System.Drawing.Point(896, 354);
+            this.buttonLoadWeights.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.buttonLoadWeights.Name = "buttonLoadWeights";
+            this.buttonLoadWeights.Size = new System.Drawing.Size(43, 22);
+            this.buttonLoadWeights.TabIndex = 15;
+            this.buttonLoadWeights.Text = "Load";
+            this.buttonLoadWeights.UseVisualStyleBackColor = true;
+            this.buttonLoadWeights.Click += new System.EventHandler(this.buttonLoadWeight_Click_1);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(740, 358);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(101, 15);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Custom Weights :";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1766, 1182);
+            this.ClientSize = new System.Drawing.Size(951, 554);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.buttonLoadWeights);
+            this.Controls.Add(this.buttonSaveWeights);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonReset);
-            this.Controls.Add(this.buttonLoad);
-            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.labelValueOfDollar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonSwitch);
@@ -252,7 +256,6 @@ namespace WinFormsApp1
             this.Controls.Add(this.buttonNormalize);
             this.Controls.Add(this.dataGridView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.Text = "Personalized Inflation";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -273,10 +276,11 @@ namespace WinFormsApp1
         private System.Windows.Forms.Button buttonSwitch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelValueOfDollar;
-        private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Button buttonLoad;
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSaveWeights;
+        private System.Windows.Forms.Button buttonLoadWeights;
+        private System.Windows.Forms.Label label3;
     }
 
 

@@ -170,5 +170,16 @@ namespace WinFormsApp1
             LoadData();
             Refresh();
         }
+
+        private void buttonSaveWeights_Click(object sender, EventArgs e)
+        {
+            SaveLoad.SaveWeights(rootLevel, isEU);
+        }
+
+        private void buttonLoadWeight_Click_1(object sender, EventArgs e)
+        {
+            SaveLoad.OverrideWeights(rootLevel, isEU);
+            Refresh();
+        }
     }
 }
