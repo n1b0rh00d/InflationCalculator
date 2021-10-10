@@ -21,6 +21,8 @@ namespace EmptyMVC
 
         public int Depth;
 
+        public int cType;
+
         public double AvgInflation;
 
         public double ValueOfDollar;
@@ -32,7 +34,7 @@ namespace EmptyMVC
             var c = (ConsumerType)consumerType;
 
             AdjustWeightToConsumerType.AdjustWeight(RootLevel, c);
-
+            cType = consumerType;
             Depth = depth;
             SerieObservations inflationNumbers = RootLevel.CalculateInflationRecursivelyFromProvidedLevels();
             var annualInflation = inflationNumbers.AnnualObservations;

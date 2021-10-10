@@ -21,7 +21,7 @@
         int depth = values.Depth;
         var avgInf = values.AvgInflation;
         var valueOfDollar = values.ValueOfDollar;
-        var cType = 0;
+        var cType = values.cType;
     }
     @{
         SerieObservations inflationNumbers = root.CalculateInflationRecursivelyFromProvidedLevels();
@@ -313,7 +313,7 @@ chart.scrollbarX = new am4core.Scrollbar();
             <div class="row">
                 <div class="col-md-12">
                     <div class="titlepage">
-                        <h2>VIEW INFLATION BASED ON YOUR <strong class="cur">CONSUMPTION STYLE</strong></h2>
+                        <h2>CALCULATE INFLATION BASED ON YOUR <strong class="cur">CONSUMPTION STYLE</strong></h2>
                         <span><img src="images/boder.png" alt="img"/> </span>
                     </div>
                 </div>
@@ -405,7 +405,7 @@ chart.scrollbarX = new am4core.Scrollbar();
                 </div>
             </div>
             <div class="row">
-                <p>Choose a different depth to see sub categories</p>
+                <p><h3>Choose a different depth to see sub categories</h3></p>
 
                 <form method="POST" action="?consumerType=@cType">
                     <select name="depth" id="depth">
@@ -468,7 +468,7 @@ chart.scrollbarX = new am4core.Scrollbar();
             <div class="row">
                 <div class="col-md-12">
                     <div class="titlepage">
-                        <h2>TAKE CARE OF YOUR <strong class="cur">INVESTMENTS</strong></h2>
+                        <h2>FIGHT INFLATION WITH <strong class="cur">BETTER INVESTMENTS</strong></h2>
                         <span><img src="images/boder.png" alt="img"/> </span>
                     </div>
                 </div>
