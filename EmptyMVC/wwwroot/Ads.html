@@ -1,4 +1,31 @@
 <html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
 <body>
 
     Hilltops<br />
@@ -14,9 +41,7 @@
     </script>
     <br />
 
-    Adcash<br />
-    <script data-cfasync="false" type="text/javascript" src="https://www.onclickperformance.com/a/display.php?r=5176443"></script>
-    <br />
+   
     Revenue hits<br />
     <script data-cfasync='false' type='text/javascript' src='//p439495.clksite.com/adServe/banners?tid=439495_860969_0'></script><br />
 
@@ -99,11 +124,11 @@
     $6.00 when SKU List is Autos
     $6.00 when SKU List is Finance
     <br /><a href="https://click.linksynergy.com/fs-bin/click?id=miiJVsAMFD4&offerid=272405.10000165&type=4&subid=0"><IMG alt="CarsDirect.com" border="0" src="http://cdc.ibsrv.net/linkshare/putt_468x60_03.jpg"></a><IMG border="0" width="1" height="1" src="https://ad.linksynergy.com/fs-bin/show?id=miiJVsAMFD4&bids=272405.10000165&type=4&subid=0">
-<br />
-zebit 10 KSU signup
+    <br />
+    zebit 10 KSU signup
     <br /><a href="https://click.linksynergy.com/fs-bin/click?id=miiJVsAMFD4&offerid=976682.7&subid=0&type=4"><IMG border="0" alt="Zebit" src="https://ad.linksynergy.com/fs-bin/show?id=miiJVsAMFD4&bids=976682.7&subid=0&type=4&gridnum=0"></a>
-<br />
-Cheese 15 sku is funded account
+    <br />
+    Cheese 15 sku is funded account
     <br /><a href="https://click.linksynergy.com/fs-bin/click?id=miiJVsAMFD4&offerid=913355.4&subid=0&type=4"><IMG border="0" alt="Cheese" src="https://ad.linksynergy.com/fs-bin/show?id=miiJVsAMFD4&bids=913355.4&subid=0&type=4&gridnum=0"></a>
     <br />
     <br />
@@ -125,6 +150,35 @@ Cheese 15 sku is funded account
 
 
 
+
+        <h2>Adult ads</h2>
+
+        <p>A Collapsible:</p>
+        <button type="button" class="collapsible">Open Collapsible</button>
+        <div class="content">
+            Adcash<br />
+            <script data-cfasync="false" type="text/javascript" src="https://www.onclickperformance.com/a/display.php?r=5176443"></script>
+            <br />
+        </div>
+
+<script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
+            }
+        </script>
+
+   
 
 
 
